@@ -1,3 +1,10 @@
 jupyter-book
 matplotlib
 numpy
+scipy
+pandas
+tqdm
+PrettyTable
+sympy
+pytorch
+numba
