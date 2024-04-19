@@ -1,0 +1,1661 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Deterministic Randomness &#8212; Computational Physics I (PHYS 3500K)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter3/Chapter3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Numerical Differentiation" href="../Chapter4/Chapter4.html" />
+    <link rel="prev" title="Computer Number Representations" href="../Chapter2/Chapter2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/d2lbanner2.png" class="logo__image only-light" alt="Computational Physics I (PHYS 3500K) - Home"/>
+    <script>document.write(`<img src="../../_static/d2lbanner2.png" class="logo__image only-dark" alt="Computational Physics I (PHYS 3500K) - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">Making Computers Obey</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">Computer Number Representations</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deterministic Randomness</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">Numerical Differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">Trial-and-Error Root Finding</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">Introduction</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">Introduction</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">Introduction</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapters/Chapter3/Chapter3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Chapters/Chapter3/Chapter3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deterministic Randomness</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Deterministic Randomness</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sequences">Random Sequences</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-number-generation">Random Number Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-numbers-of-arbitrary-distributions">Generating Random Numbers of Arbitrary Distributions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks">Random Walks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-theoretical-description">Random Walks: Theoretical Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digression-object-oriented-programming-in-python">Digression: Object-Oriented Programming in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walk-simulation">Random-Walk Simulation</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><font size="6"> <strong>Chapter 3: Randomness and Random Walks</strong> </font></p>
+<section class="tex2jax_ignore mathjax_ignore" id="deterministic-randomness">
+<h1>Deterministic Randomness<a class="headerlink" href="#deterministic-randomness" title="Link to this heading">#</a></h1>
+<p>Some people are attracted to computing because of its deterministic nature. Nevertheless, many computer cycles are used for <strong>Monte Carlo calculations</strong>.</p>
+<p>Monte Carlo calculations include elements of chance at their very core (hence the name). They involve <em>random-like</em> numbers generated by a computer to simulate naturally-random processes, such as thermal motion or radioactive decay.</p>
+<p>Monte Carlo techniques are able to solve very challenging problems!</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="random-sequences">
+<h1>Random Sequences<a class="headerlink" href="#random-sequences" title="Link to this heading">#</a></h1>
+<p>We define a sequence <span class="math notranslate nohighlight">\(r_1, r_2,...\)</span> as random if there are no correlations between the coefficients.</p>
+<p>But: being random does not mean all numbers in the sequence are equally likely to occur!</p>
+<p>If all numbers in a sequence are equally likely to occur: the sequence is called <strong>uniform</strong>.</p>
+<p>Mathematically: the likelihood of a number occurring is described by a distribution <span class="math notranslate nohighlight">\(P(r)\)</span>, where <span class="math notranslate nohighlight">\(P(r)\mathrm{d}r\)</span> is the probability of finding <span class="math notranslate nohighlight">\(r\)</span> in the interval <span class="math notranslate nohighlight">\([r, r+\mathrm{d}r]\)</span>.</p>
+<p>For a <strong>uniform distribution</strong>: <span class="math notranslate nohighlight">\(P(r) = \mathrm{constant}\)</span>.</p>
+<p>The standard random number generator on computers generates <em>uniform</em> distributions between 0 and 1, i.e. it outputs numbers in this interval with equal probability, yet independent from the previous number.</p>
+<p>By their nature: computers are deterministic devices, and therefore cannot create a random sequence. Computed random number sequences must contain correlations, and therefore cannot be truly random. This implies that if we know <span class="math notranslate nohighlight">\(r_m\)</span> and its preceding elements, then it is always possible to figure out <span class="math notranslate nohighlight">\(r_{m+1}\)</span>. For this reason, computers are said to generate <strong>pseudorandom numbers</strong>.</p>
+<p>A primitive alternative to this is to read off a table of truly random numbers, determined by  naturally-random process, such as radioactive decay, or to connect the computer to an experimental device that measures random events.</p>
+<section id="random-number-generation">
+<h2>Random Number Generation<a class="headerlink" href="#random-number-generation" title="Link to this heading">#</a></h2>
+<p>Sequences of pseudorandom numbers can be generated on a computer via the “linear congruent” or “power residue” method:</p>
+<p>To generate a pseudorandom sequence of numbers <span class="math notranslate nohighlight">\(0 \leq r_i \leq M-1\)</span> over the interval <span class="math notranslate nohighlight">\([0, M-1]\)</span>, starting with <span class="math notranslate nohighlight">\(r_1\)</span>, to obtain the next random number <span class="math notranslate nohighlight">\(r_2\)</span>, multiply <span class="math notranslate nohighlight">\(r_1\)</span> by a constant <span class="math notranslate nohighlight">\(a\)</span>, add another constant <span class="math notranslate nohighlight">\(c\)</span> and keep the <em>remainder</em>. Repeat this with <span class="math notranslate nohighlight">\(r_2\)</span> to get <span class="math notranslate nohighlight">\(r_3\)</span> and so on. So to get <span class="math notranslate nohighlight">\(r_{i+1}\)</span>, given <span class="math notranslate nohighlight">\(r_i\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(r_{i+1} = \mathrm{remainder} \left( \frac{a r_i + c}{M} \right)\)</span></p>
+<p>The initial number, the <em>seed</em>, <span class="math notranslate nohighlight">\(r_1\)</span> is frequently supplied by the user.</p>
+<p>In Python the remainder is given by the operator “%”, i.e. the above equation would read: <code class="docutils literal notranslate"><span class="pre">rnext</span> <span class="pre">=</span> <span class="pre">(a</span> <span class="pre">*</span> <span class="pre">rprevious</span> <span class="pre">+</span> <span class="pre">c)%M</span></code>.</p>
+<p>One can then divide the whole sequence by <span class="math notranslate nohighlight">\(M\)</span> to get numbers in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
+<p>If we want random numbers in an interval <span class="math notranslate nohighlight">\([A,B]\)</span> instead, then we can transform the generated sequence in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>, by:</p>
+<p><span class="math notranslate nohighlight">\(x_i = A + (B-A) r_i\)</span></p>
+<p>Note that the linear congruent method becomes completely correlated if a particular interger comes up a second time. The whole cycle then repeats.</p>
+<p>If e.g. 48-bit arithmetic is used, then <span class="math notranslate nohighlight">\(M \sim 2^{48} \simeq 3\times 10^{14}\)</span>. If your program would then use approximately these many random numbers (feasible, e.g. if your program is performing Monte Carlo simulations in many dimensions!), then you may need to “re-seed” (i.e. choose a new seed) to reset the sequence during intermediate steps.</p>
+<p>In Python, the default <code class="docutils literal notranslate"><span class="pre">random.random()</span></code> algorithm is the “Mersernne Twister”. It has an extremely long period: <span class="math notranslate nohighlight">\(2^{19937} -1\)</span> (a prime number) which is approximately <span class="math notranslate nohighlight">\(4.3 \times 10^{6001}\)</span>. This is many orders of magnitude larger than the estimated number of particles in the observable universe (<span class="math notranslate nohighlight">\(\sim 10^{87}\)</span>).</p>
+<p>See Wikipedia entry for more details, <a class="reference external" href="https://en.wikipedia.org/wiki/Mersenne_Twister">https://en.wikipedia.org/wiki/Mersenne_Twister</a>, as well as original paper: <a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/272991.272995">https://dl.acm.org/doi/pdf/10.1145/272991.272995</a>.</p>
+</section>
+<section id="generating-random-numbers-of-arbitrary-distributions">
+<h2>Generating Random Numbers of Arbitrary Distributions<a class="headerlink" href="#generating-random-numbers-of-arbitrary-distributions" title="Link to this heading">#</a></h2>
+<p>Supose we possess a random number generator that yields uniform random numbers in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>. We can use it to generate random numbers according to any distribution using the <em>inversion method</em>.</p>
+<p>The method proceeds as follows:</p>
+<ol class="arabic simple">
+<li><p>Suppose we want to distribute random numbers according to a function <span class="math notranslate nohighlight">\(f(x)\)</span>. We first calculate the <em>cumulative</em> distribution function (CDF) as: <span class="math notranslate nohighlight">\(F(x) = \int^x_0 \mathrm{d}x f(x)\)</span>.</p></li>
+<li><p>We then find the inverse of the desired CDF, i.e. we solve <span class="math notranslate nohighlight">\(y=F(x)\)</span> as <span class="math notranslate nohighlight">\(F^{-1}(y)=x\)</span>.</p></li>
+<li><p>If then “draw” <span class="math notranslate nohighlight">\(y_0\)</span> and calculate <span class="math notranslate nohighlight">\(x_0 = F^{-1}(y_0)\)</span>, then <span class="math notranslate nohighlight">\(x_0\)</span> is distributed according to <span class="math notranslate nohighlight">\(f(x)\)</span>.</p></li>
+</ol>
+<p>Here’s an example for <span class="math notranslate nohighlight">\(f(x)=3x^2\)</span> for <span class="math notranslate nohighlight">\(x \in [0,1]\)</span>. Note that <span class="math notranslate nohighlight">\(\int_0^1 \mathrm{d} x f(x)= 1\)</span> for <span class="math notranslate nohighlight">\(f(x)\)</span> in <span class="math notranslate nohighlight">\([0,1]\)</span>, as expected for a probability distribution.</p>
+<p>The CDF is <span class="math notranslate nohighlight">\(F(x) = x^3\)</span>. Then <span class="math notranslate nohighlight">\(x = y^{1/3}\)</span> and so we have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> 
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># import matplotlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># We have x = (y)**(1/3) and we pick y in [0,1] </span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span> <span class="c1"># generate 1000 points</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="c1"># generate random numbers in [0,1]</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+
+
+<span class="c1"># create the real distribution for comparison. Use numpy&quot;</span>
+<span class="n">xcomp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ycomp</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">xcomp</span><span class="p">)</span>
+    
+<span class="c1"># create a histogram of x:</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. This creates a figure containing a single axes.</span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(x)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. Note that the &#39;r&#39; is necessary to remove the need for double slashes. You can use LaTeX! </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># make a histogram of the values, density=True normalizes the histogram</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;generated values via inversion method&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="c1"># compare to how we expect it to look like:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xcomp</span><span class="p">,</span> <span class="n">ycomp</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;expected shape of $f(x) = 3x^2$&#39;</span><span class="p">)</span>
+
+<span class="c1"># construct the legend:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>  <span class="c1"># Add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/039e2a576cf3196e0f2477f9eeb3c92d75ffb04b087c3547f5c03e3753a3973d.png" src="../../_images/039e2a576cf3196e0f2477f9eeb3c92d75ffb04b087c3547f5c03e3753a3973d.png" />
+</div>
+</div>
+<p>This method predicates on the existence of an analytical expression for the CDF and its inverse, and therefore is not always useful! (see later)</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="random-walks">
+<h1>Random Walks<a class="headerlink" href="#random-walks" title="Link to this heading">#</a></h1>
+<p>Consider a pizza brought into this room. The molecules from its smell collide randomly with other molecules in the air and eventually reach your nose.</p>
+<p>The problem is to determine how many collisions, on average, a scent molecule makes in traveling a distance <span class="math notranslate nohighlight">\(R\)</span>, given that it travels an average (root-mean-square) distance <span class="math notranslate nohighlight">\(r_\mathrm{rms}\)</span> between collisions.</p>
+<section id="random-walks-theoretical-description">
+<h2>Random Walks: Theoretical Description<a class="headerlink" href="#random-walks-theoretical-description" title="Link to this heading">#</a></h2>
+<p>A “walker” takes sequential steps with the direction of each step independent of the direction of the previous step.</p>
+<p>Let’s consider a two-dimensional model. Start at the origin and take <span class="math notranslate nohighlight">\(N\)</span> steps in the <span class="math notranslate nohighlight">\(xy\)</span>-plane of lengths:</p>
+<p><span class="math notranslate nohighlight">\((\Delta x_1, \Delta y_1), (\Delta x_2, \Delta y_2), ..., (\Delta x_N, \Delta y_N)\)</span></p>
+<p>then, we have:</p>
+<p><span class="math notranslate nohighlight">\(R^2 = (\Delta x_1 + \Delta x_2 + ... + \Delta x_N)^2 + (\Delta y_1 + \Delta y_2 + ... + \Delta y_N)^2\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow R^2 = \Delta x_1^2 + \Delta x_2^2 + \Delta x_N^2 + 2 \Delta x_1 \Delta x_2 + 2 \Delta x_1 \Delta x_3 +  ... + (x \rightarrow y)\)</span>.</p>
+<p>If a walk is random, then the walker is equally likely to travel in any direction at each step. If we take the average of <span class="math notranslate nohighlight">\(R^2\)</span> over a large number of such random steops, we expect that all cross terms would vanish:</p>
+<p><span class="math notranslate nohighlight">\(\left&lt; R^2 \right&gt; = \left&lt; (\Delta x_1^2 + \Delta y_1^2) + (\Delta x_2^2 + \Delta y_1^2) + .. + (\Delta x_N^2 + \Delta y_N^2) \right&gt; = N \left&lt;r^2\right&gt; = N r_\mathrm{rms}^2\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(r_\mathrm{rms} = \sqrt{\left&lt; r^2 \right&gt;}\)</span>.</p>
+<p>So:</p>
+<p><span class="math notranslate nohighlight">\(R_\mathrm{rms} = \sqrt{\left&lt; R^2 \right&gt;} = \sqrt{N} r_\mathrm{rms}\)</span>.</p>
+<p>Let’s investigate this theoretical description through a simulation!</p>
+<p>Before we do so, let’s introduce the concept of classes in Python (object-oriented programming), and use it in our example.</p>
+</section>
+<section id="digression-object-oriented-programming-in-python">
+<h2>Digression: Object-Oriented Programming in Python<a class="headerlink" href="#digression-object-oriented-programming-in-python" title="Link to this heading">#</a></h2>
+<p>Classes provide a means of bundling data and functionality together. Creating a new class creates a new type of object, allowing new instances of that type to be made.</p>
+<p>The simplest form of a class definition looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClassName</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">N</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can read all about classes and object-oriented programming at: <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a>. Here we are going to proceed by example.</p>
+<p>Suppose we wish to create a new object that has the properties we expect from complex numbers. We want this object to have a real and imaginary part, and we want to easily access those, as well as perform various operations on it: e.g. get its modulus, complex conjugate or argument.</p>
+<p>We can begin by defining a class as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a new class called Complex with real and imaginary parts (.r and .i):</span>
+<span class="k">class</span> <span class="nc">Complex</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A simple complex number class&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">realpart</span><span class="p">,</span> <span class="n">imagpart</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">realpart</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">imagpart</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method is automatically invoked when you create an instance of this class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an &quot;instance&quot; of the Complex class: </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span> <span class="c1"># the real part is 3.0 and the imaginary part is 4.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;real part=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;imaginary part=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>real part= 3.0
+imaginary part= 4.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also add “attribute references”, i.e. functions that operate on instances of this function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># define the Complex class, with mod(), arg() and cc() functions to return:</span>
+<span class="c1"># modulus, argument and complex conjugate</span>
+<span class="c1"># see https://en.wikipedia.org/wiki/Complex_number for details </span>
+<span class="k">class</span> <span class="nc">Complex</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A more advanced complex number class&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">realpart</span><span class="p">,</span> <span class="n">imagpart</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">realpart</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">imagpart</span>
+
+    <span class="c1"># the modulus:</span>
+    <span class="k">def</span> <span class="nf">mod</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># the argument </span>
+    <span class="k">def</span> <span class="nf">arg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">!=</span><span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">atan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">mod</span><span class="p">()))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">&lt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">arg</span> 
+
+    <span class="c1"># the complex conjugate, return a Complex object with - the imaginary part</span>
+    <span class="k">def</span> <span class="nf">cc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an &quot;instance&quot; of the updated Complex class: </span>
+<span class="n">x</span> <span class="o">=</span><span class="n">Complex</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span> <span class="c1"># the real part is 3.0 and the imaginary part is 4.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;real part=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;imaginary part=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>real part= 3.0
+imaginary part= 4.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the modulus:</span>
+<span class="n">x</span><span class="o">.</span><span class="n">mod</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.408326913195984
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the argument:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">arg</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9827937232473289
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the complex conjugate, another instance of the Complex class:</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">cc</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
+-4.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also define functions that act on two instantiations of the class. E.g. let’s say we want to be able to multiply two complex numbers together correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># define the Complex class, with mod(), arg() and cc() functions to return:</span>
+<span class="c1"># modulus, argument and complex conjugate</span>
+<span class="c1"># see https://en.wikipedia.org/wiki/Complex_number for details </span>
+<span class="k">class</span> <span class="nc">Complex</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A more advanced complex number class&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">realpart</span><span class="p">,</span> <span class="n">imagpart</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">realpart</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">imagpart</span>
+
+    <span class="c1"># the modulus:</span>
+    <span class="k">def</span> <span class="nf">mod</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># the argument </span>
+    <span class="k">def</span> <span class="nf">arg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">!=</span><span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">atan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">mod</span><span class="p">()))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">&lt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">arg</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">arg</span> 
+
+    <span class="c1"># the complex conjugate, return a Complex object with - the imaginary part</span>
+    <span class="k">def</span> <span class="nf">cc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># multiply two complex numbers together:</span>
+    <span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">r</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try it out!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define two complex numbers:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="c1"># multiply them to get another complex number</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-6.0
+10.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>(Check the answer!)</p>
+<p>Or we can multiply x by its complex conjugate to get a real number:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can get the c.c. directly:</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">cc</span><span class="p">())</span>
+<span class="c1"># print the real part and the imaginary parts: the latter should be zero. </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+<span class="c1"># the square root of the product x * x complex conjugate should the the modulus!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mod</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">r</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.25
+0.0
+5.408326913195984
+5.408326913195984
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-walk-simulation">
+<h2>Random-Walk Simulation<a class="headerlink" href="#random-walk-simulation" title="Link to this heading">#</a></h2>
+<p>We can now proceed with a simulation of random walks. We will define a class called “walker”, which will allow us to define multiple walkers and make them walk around.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">math</span> 
+
+<span class="k">class</span> <span class="nc">Walker</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A random walker class&quot;&quot;&quot;</span>
+    <span class="c1"># instantiations of this class are initialized with an initial position</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initialx</span><span class="p">,</span> <span class="n">initialy</span><span class="p">):</span>
+        <span class="c1"># initialize the x and y positions:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">initialx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">initialy</span>
+        <span class="c1"># keep the initial positions:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xinit</span> <span class="o">=</span> <span class="n">initialx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yinit</span> <span class="o">=</span> <span class="n">initialy</span>
+        <span class="c1"># keep all the positions that the walker has moved through in a list:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allx</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ally</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initialx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ally</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initialy</span><span class="p">)</span>
+
+    <span class="c1"># now let&#39;s create a function that allows us to take random steps with a certain stepsize</span>
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stepsize</span><span class="p">):</span>
+        <span class="n">deltax</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># choose random variables in the range [-1,1]</span>
+        <span class="n">deltay</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># normalize to stepsize:</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">deltax</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">deltay</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">deltax</span> <span class="o">=</span> <span class="n">deltax</span><span class="o">/</span><span class="n">L</span>
+        <span class="n">deltay</span> <span class="o">=</span> <span class="n">deltay</span><span class="o">/</span><span class="n">L</span>
+        <span class="c1"># add these to the current position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">deltax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">deltay</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ally</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># get the distance from the starting position</span>
+    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">xinit</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">yinit</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s test this out with a single walker starting from (0,0):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize &quot;Walker1&quot;, an instance of the class Walker</span>
+<span class="n">Walker1</span> <span class="o">=</span> <span class="n">Walker</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># move Walker1 1000 times with stepsize 1:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">Walker1</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># get the distance from the origin:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Walker1</span><span class="o">.</span><span class="n">distance</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.928217800314577
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our next task is to initialize N (=9 to start with) walkers at the origin and follow their path visually! We are going to use matplotlib and evolve walkers “dynamically” on a graph.</p>
+<p>It also will be interesting to investigate whether our theoretical expectations agree with this simulation.</p>
+<p>Let’s also calculate, and store, the root-mean-square (rms) distance versus the of number of steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="c1"># various time functions</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span> <span class="c1"># progress bar</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span> <span class="c1"># </span>
+
+<span class="c1"># this allows us to access dynamic updating of the plot: </span>
+<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">clear_output</span>
+
+<span class="c1"># setup the axis:</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#get the dynamic display:</span>
+<span class="n">dynamicdisplay</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">display_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># put a grid on the graph:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="c1"># set the aspect ratio to 1:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># set some parameters here:</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">9</span> <span class="c1"># the number of walkers</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># the number of steps</span>
+<span class="n">step</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># the step size</span>
+<span class="n">Nupdate</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># the frequency of steps used to update the plot</span>
+
+<span class="c1"># set the labels and limits:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">limitsize</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">step</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">limitsize</span><span class="p">,</span><span class="n">limitsize</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">limitsize</span><span class="p">,</span><span class="n">limitsize</span><span class="p">)</span>
+
+<span class="c1"># set the major ticks to correspond to twice step size:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">step</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">step</span><span class="p">))</span>
+
+<span class="c1"># initialize n walkers and put them in a list:</span>
+<span class="n">WalkerList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">WalkerColor</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># create a list with the colors of each walker </span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;violet&#39;</span><span class="p">]</span> <span class="c1"># 9 colours</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># counter to make sure we don&#39;t go over the 9 colors</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> 
+    <span class="n">WalkerList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Walker</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="c1"># set the color of each walker. If we w exceeds 8 then reset the counter j:</span>
+    <span class="k">if</span> <span class="n">w</span><span class="o">-</span><span class="mi">8</span><span class="o">*</span><span class="n">j</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">pass</span> 
+    <span class="n">WalkerColor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">w</span><span class="o">-</span><span class="mi">8</span><span class="o">*</span><span class="n">j</span><span class="p">])</span>
+
+<span class="c1"># now go through all the n walkers and get them to perform N steps</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
+    <span class="c1"># go through all the walkers in the WalkerList</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">walker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">WalkerList</span><span class="p">):</span>
+        <span class="c1"># move them one step in a random direction</span>
+        <span class="n">walker</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">Nupdate</span>==0: # only update every Nupdate steps
+        <span class="c1"># plot them!</span>
+        <span class="c1"># the list will contain the points so we can remove them later:</span>
+        <span class="n">walkers_plot</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">walker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">WalkerList</span><span class="p">):</span>
+            <span class="n">walkers_plot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">walker</span><span class="o">.</span><span class="n">allx</span><span class="p">,</span> <span class="n">walker</span><span class="o">.</span><span class="n">ally</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">WalkerColor</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">dynamicdisplay</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span> <span class="c1"># update the figure in the notebook</span>
+        <span class="c1"># remove the walkers from display for next run:</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">walker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">WalkerList</span><span class="p">):</span>
+            <span class="n">wmarker</span> <span class="o">=</span> <span class="n">walkers_plot</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">wmarker</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># &quot;sleep&quot; for half a second to allow us to see the evolution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b7597f3b3e1583dda493ddba69854518d4c1f0f537aa1ba00526dcf19da19b4a.png" src="../../_images/b7597f3b3e1583dda493ddba69854518d4c1f0f537aa1ba00526dcf19da19b4a.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                   | 0/100 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|█                                                                                                          | 1/100 [00:00&lt;00:14,  6.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|██▏                                                                                                        | 2/100 [00:00&lt;00:15,  6.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|███▏                                                                                                       | 3/100 [00:00&lt;00:14,  6.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|████▎                                                                                                      | 4/100 [00:00&lt;00:14,  6.65it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|█████▎                                                                                                     | 5/100 [00:00&lt;00:13,  6.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|██████▍                                                                                                    | 6/100 [00:00&lt;00:13,  6.90it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|███████▍                                                                                                   | 7/100 [00:01&lt;00:13,  6.95it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|████████▌                                                                                                  | 8/100 [00:01&lt;00:13,  6.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|█████████▋                                                                                                 | 9/100 [00:01&lt;00:13,  6.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|██████████▌                                                                                               | 10/100 [00:01&lt;00:12,  6.99it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|███████████▋                                                                                              | 11/100 [00:01&lt;00:13,  6.79it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|████████████▋                                                                                             | 12/100 [00:01&lt;00:13,  6.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█████████████▊                                                                                            | 13/100 [00:01&lt;00:13,  6.61it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|██████████████▊                                                                                           | 14/100 [00:02&lt;00:13,  6.51it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|███████████████▉                                                                                          | 15/100 [00:02&lt;00:13,  6.46it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|████████████████▉                                                                                         | 16/100 [00:02&lt;00:13,  6.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|██████████████████                                                                                        | 17/100 [00:02&lt;00:12,  6.60it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|███████████████████                                                                                       | 18/100 [00:02&lt;00:12,  6.63it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|████████████████████▏                                                                                     | 19/100 [00:02&lt;00:12,  6.74it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|█████████████████████▏                                                                                    | 20/100 [00:02&lt;00:11,  6.80it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|██████████████████████▎                                                                                   | 21/100 [00:03&lt;00:11,  6.85it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|███████████████████████▎                                                                                  | 22/100 [00:03&lt;00:11,  6.88it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|████████████████████████▍                                                                                 | 23/100 [00:03&lt;00:11,  6.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|█████████████████████████▍                                                                                | 24/100 [00:03&lt;00:10,  6.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██████████████████████████▌                                                                               | 25/100 [00:03&lt;00:10,  6.94it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|███████████████████████████▌                                                                              | 26/100 [00:03&lt;00:10,  6.90it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|████████████████████████████▌                                                                             | 27/100 [00:03&lt;00:10,  6.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|█████████████████████████████▋                                                                            | 28/100 [00:04&lt;00:10,  6.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██████████████████████████████▋                                                                           | 29/100 [00:04&lt;00:10,  6.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███████████████████████████████▊                                                                          | 30/100 [00:04&lt;00:10,  6.91it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|████████████████████████████████▊                                                                         | 31/100 [00:04&lt;00:10,  6.88it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|█████████████████████████████████▉                                                                        | 32/100 [00:04&lt;00:09,  6.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|██████████████████████████████████▉                                                                       | 33/100 [00:04&lt;00:09,  6.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|████████████████████████████████████                                                                      | 34/100 [00:05&lt;00:09,  6.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|█████████████████████████████████████                                                                     | 35/100 [00:05&lt;00:09,  6.80it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|██████████████████████████████████████▏                                                                   | 36/100 [00:05&lt;00:09,  6.82it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|███████████████████████████████████████▏                                                                  | 37/100 [00:05&lt;00:09,  6.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|████████████████████████████████████████▎                                                                 | 38/100 [00:05&lt;00:09,  6.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|█████████████████████████████████████████▎                                                                | 39/100 [00:05&lt;00:09,  6.77it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|██████████████████████████████████████████▍                                                               | 40/100 [00:05&lt;00:09,  6.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|███████████████████████████████████████████▍                                                              | 41/100 [00:06&lt;00:09,  6.41it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████████████████████████████████████████████▌                                                             | 42/100 [00:06&lt;00:09,  6.44it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|█████████████████████████████████████████████▌                                                            | 43/100 [00:06&lt;00:08,  6.48it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|██████████████████████████████████████████████▋                                                           | 44/100 [00:06&lt;00:08,  6.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|███████████████████████████████████████████████▋                                                          | 45/100 [00:06&lt;00:08,  6.47it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████████████████████████████████████████████████▊                                                         | 46/100 [00:06&lt;00:08,  6.52it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|█████████████████████████████████████████████████▊                                                        | 47/100 [00:06&lt;00:08,  6.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|██████████████████████████████████████████████████▉                                                       | 48/100 [00:07&lt;00:07,  6.59it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|███████████████████████████████████████████████████▉                                                      | 49/100 [00:07&lt;00:07,  6.64it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████████████████████████████████████████████████████                                                     | 50/100 [00:07&lt;00:07,  6.59it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|██████████████████████████████████████████████████████                                                    | 51/100 [00:07&lt;00:07,  6.63it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|███████████████████████████████████████████████████████                                                   | 52/100 [00:07&lt;00:07,  6.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|████████████████████████████████████████████████████████▏                                                 | 53/100 [00:07&lt;00:07,  6.69it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████████████████████████████████████████████████████████▏                                                | 54/100 [00:08&lt;00:06,  6.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|██████████████████████████████████████████████████████████▎                                               | 55/100 [00:08&lt;00:06,  6.71it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|███████████████████████████████████████████████████████████▎                                              | 56/100 [00:08&lt;00:06,  6.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|████████████████████████████████████████████████████████████▍                                             | 57/100 [00:08&lt;00:06,  6.53it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████████████████████████████████████████████████████████████▍                                            | 58/100 [00:08&lt;00:06,  6.56it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|██████████████████████████████████████████████████████████████▌                                           | 59/100 [00:08&lt;00:06,  6.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|███████████████████████████████████████████████████████████████▌                                          | 60/100 [00:08&lt;00:06,  6.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|████████████████████████████████████████████████████████████████▋                                         | 61/100 [00:09&lt;00:06,  6.41it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|█████████████████████████████████████████████████████████████████▋                                        | 62/100 [00:09&lt;00:05,  6.39it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████████████████████████████████████████████████████████████████▊                                       | 63/100 [00:09&lt;00:05,  6.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|███████████████████████████████████████████████████████████████████▊                                      | 64/100 [00:09&lt;00:05,  6.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|████████████████████████████████████████████████████████████████████▉                                     | 65/100 [00:09&lt;00:05,  6.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|█████████████████████████████████████████████████████████████████████▉                                    | 66/100 [00:09&lt;00:05,  6.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|███████████████████████████████████████████████████████████████████████                                   | 67/100 [00:10&lt;00:05,  6.17it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|████████████████████████████████████████████████████████████████████████                                  | 68/100 [00:10&lt;00:05,  6.25it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|█████████████████████████████████████████████████████████████████████████▏                                | 69/100 [00:10&lt;00:05,  6.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|██████████████████████████████████████████████████████████████████████████▏                               | 70/100 [00:10&lt;00:04,  6.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████████████████████████████████████████████████████████████████████████▎                              | 71/100 [00:10&lt;00:04,  6.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|████████████████████████████████████████████████████████████████████████████▎                             | 72/100 [00:10&lt;00:04,  6.15it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|█████████████████████████████████████████████████████████████████████████████▍                            | 73/100 [00:11&lt;00:04,  6.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|██████████████████████████████████████████████████████████████████████████████▍                           | 74/100 [00:11&lt;00:04,  6.17it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████████████████████████████████████████████████████████████████████████████▌                          | 75/100 [00:11&lt;00:04,  6.18it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|████████████████████████████████████████████████████████████████████████████████▌                         | 76/100 [00:11&lt;00:03,  6.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|█████████████████████████████████████████████████████████████████████████████████▌                        | 77/100 [00:11&lt;00:03,  6.15it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|██████████████████████████████████████████████████████████████████████████████████▋                       | 78/100 [00:11&lt;00:03,  5.97it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 79%|███████████████████████████████████████████████████████████████████████████████████▋                      | 79/100 [00:12&lt;00:03,  6.06it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████████████████████████████████████████████████████████████████████████████████▊                     | 80/100 [00:12&lt;00:03,  6.08it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|█████████████████████████████████████████████████████████████████████████████████████▊                    | 81/100 [00:12&lt;00:03,  6.19it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|██████████████████████████████████████████████████████████████████████████████████████▉                   | 82/100 [00:12&lt;00:02,  6.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 83%|███████████████████████████████████████████████████████████████████████████████████████▉                  | 83/100 [00:12&lt;00:02,  6.17it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|█████████████████████████████████████████████████████████████████████████████████████████                 | 84/100 [00:12&lt;00:02,  6.12it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|██████████████████████████████████████████████████████████████████████████████████████████                | 85/100 [00:13&lt;00:02,  6.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|███████████████████████████████████████████████████████████████████████████████████████████▏              | 86/100 [00:13&lt;00:02,  6.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████████████████████████████████████████████████████████████████████████████████████████▏             | 87/100 [00:13&lt;00:02,  6.15it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|█████████████████████████████████████████████████████████████████████████████████████████████▎            | 88/100 [00:13&lt;00:01,  6.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 89%|██████████████████████████████████████████████████████████████████████████████████████████████▎           | 89/100 [00:13&lt;00:01,  6.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|███████████████████████████████████████████████████████████████████████████████████████████████▍          | 90/100 [00:13&lt;00:01,  6.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|████████████████████████████████████████████████████████████████████████████████████████████████▍         | 91/100 [00:13&lt;00:01,  6.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|█████████████████████████████████████████████████████████████████████████████████████████████████▌        | 92/100 [00:14&lt;00:01,  6.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|██████████████████████████████████████████████████████████████████████████████████████████████████▌       | 93/100 [00:14&lt;00:01,  6.06it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|███████████████████████████████████████████████████████████████████████████████████████████████████▋      | 94/100 [00:14&lt;00:00,  6.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|████████████████████████████████████████████████████████████████████████████████████████████████████▋     | 95/100 [00:14&lt;00:00,  6.01it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 96%|█████████████████████████████████████████████████████████████████████████████████████████████████████▊    | 96/100 [00:14&lt;00:00,  5.97it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|██████████████████████████████████████████████████████████████████████████████████████████████████████▊   | 97/100 [00:14&lt;00:00,  6.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|███████████████████████████████████████████████████████████████████████████████████████████████████████▉  | 98/100 [00:15&lt;00:00,  6.06it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 99%|████████████████████████████████████████████████████████████████████████████████████████████████████████▉ | 99/100 [00:15&lt;00:00,  6.01it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:15&lt;00:00,  5.95it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:15&lt;00:00,  6.45it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../../_images/eba9e1225fe79d96924303a8123e6b8bd5c54854ff9065a379b6ee925bbe7a5c.png" src="../../_images/eba9e1225fe79d96924303a8123e6b8bd5c54854ff9065a379b6ee925bbe7a5c.png" />
+</div>
+</div>
+<p>Let’s plot the RMS distance versus the square root of N! First, let’s increase the number of walkers and the number of steps, without plotting:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span> <span class="c1"># progress bar</span>
+
+<span class="c1"># set some parameters here:</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># the number of walkers</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1"># the number of steps</span>
+<span class="n">step</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># the step size</span>
+<span class="n">Nupdate</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># the frequency of steps used to update the plot</span>
+
+<span class="c1"># initialize n walkers and put them in a list:</span>
+<span class="n">WalkerList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> 
+    <span class="n">WalkerList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Walker</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># list to store R squared average (i.e. the rms) *over all the walkers* after N steps:</span>
+<span class="n">R_rms_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># now go through all the n walkers and get them to perform N steps</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)):</span>
+    <span class="n">Rsq_av</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># variable used to calculate the square average</span>
+    <span class="c1"># go through all the walkers in the WalkerList</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">walker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">WalkerList</span><span class="p">):</span>
+        <span class="c1"># move them one step in a random direction</span>
+        <span class="n">walker</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+        <span class="c1"># add to the average:</span>
+        <span class="n">Rsq_av</span> <span class="o">=</span> <span class="n">Rsq_av</span> <span class="o">+</span> <span class="n">walker</span><span class="o">.</span><span class="n">distance</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span>
+    <span class="c1"># get the average and push it into the list:</span>
+    <span class="n">R_rms_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Rsq_av</span><span class="o">/</span><span class="n">n</span><span class="p">))</span> <span class="c1"># divide by the number of walkers to get the average</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                 | 0/10000 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|█▎                                                                                                   | 125/10000 [00:00&lt;00:07, 1243.32it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|██▋                                                                                                  | 260/10000 [00:00&lt;00:07, 1303.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|████                                                                                                 | 400/10000 [00:00&lt;00:07, 1340.27it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|█████▍                                                                                               | 542/10000 [00:00&lt;00:06, 1369.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|██████▉                                                                                              | 685/10000 [00:00&lt;00:06, 1388.42it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|████████▎                                                                                            | 829/10000 [00:00&lt;00:06, 1403.49it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|█████████▊                                                                                           | 970/10000 [00:00&lt;00:06, 1379.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|███████████                                                                                         | 1109/10000 [00:00&lt;00:06, 1348.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|████████████▍                                                                                       | 1244/10000 [00:00&lt;00:06, 1323.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█████████████▊                                                                                      | 1377/10000 [00:01&lt;00:06, 1283.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|███████████████                                                                                     | 1511/10000 [00:01&lt;00:06, 1299.00it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|████████████████▍                                                                                   | 1645/10000 [00:01&lt;00:06, 1310.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█████████████████▊                                                                                  | 1784/10000 [00:01&lt;00:06, 1333.42it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|███████████████████▏                                                                                | 1919/10000 [00:01&lt;00:06, 1336.43it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|████████████████████▌                                                                               | 2054/10000 [00:01&lt;00:05, 1340.22it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|█████████████████████▉                                                                              | 2195/10000 [00:01&lt;00:05, 1360.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|███████████████████████▎                                                                            | 2335/10000 [00:01&lt;00:05, 1370.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|████████████████████████▋                                                                           | 2473/10000 [00:01&lt;00:05, 1358.18it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|██████████████████████████                                                                          | 2609/10000 [00:01&lt;00:05, 1352.44it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|███████████████████████████▍                                                                        | 2749/10000 [00:02&lt;00:05, 1365.59it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|████████████████████████████▊                                                                       | 2886/10000 [00:02&lt;00:05, 1337.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|██████████████████████████████▎                                                                     | 3026/10000 [00:02&lt;00:05, 1353.34it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|███████████████████████████████▋                                                                    | 3166/10000 [00:02&lt;00:05, 1365.14it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|█████████████████████████████████                                                                   | 3303/10000 [00:02&lt;00:05, 1320.35it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|██████████████████████████████████▎                                                                 | 3436/10000 [00:02&lt;00:05, 1308.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███████████████████████████████████▋                                                                | 3574/10000 [00:02&lt;00:04, 1329.12it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|█████████████████████████████████████                                                               | 3708/10000 [00:02&lt;00:04, 1307.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|██████████████████████████████████████▍                                                             | 3845/10000 [00:02&lt;00:04, 1324.80it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|███████████████████████████████████████▊                                                            | 3984/10000 [00:02&lt;00:04, 1342.45it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|█████████████████████████████████████████▏                                                          | 4119/10000 [00:03&lt;00:04, 1335.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|██████████████████████████████████████████▌                                                         | 4261/10000 [00:03&lt;00:04, 1358.81it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████████████████████████████████████████████                                                        | 4402/10000 [00:03&lt;00:04, 1371.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|█████████████████████████████████████████████▍                                                      | 4545/10000 [00:03&lt;00:03, 1387.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|██████████████████████████████████████████████▊                                                     | 4687/10000 [00:03&lt;00:03, 1396.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████████████████████████████████████████████████▎                                                   | 4828/10000 [00:03&lt;00:03, 1399.64it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████████████████████████████████████████████████▋                                                  | 4970/10000 [00:03&lt;00:03, 1403.42it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|███████████████████████████████████████████████████                                                 | 5112/10000 [00:03&lt;00:03, 1406.98it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|████████████████████████████████████████████████████▌                                               | 5254/10000 [00:03&lt;00:03, 1408.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████████████████████████████████████████████████████▉                                              | 5396/10000 [00:03&lt;00:03, 1410.64it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|███████████████████████████████████████████████████████▍                                            | 5538/10000 [00:04&lt;00:03, 1400.04it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|████████████████████████████████████████████████████████▊                                           | 5681/10000 [00:04&lt;00:03, 1408.04it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|██████████████████████████████████████████████████████████▏                                         | 5823/10000 [00:04&lt;00:02, 1409.86it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|███████████████████████████████████████████████████████████▋                                        | 5965/10000 [00:04&lt;00:02, 1406.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|█████████████████████████████████████████████████████████████                                       | 6107/10000 [00:04&lt;00:02, 1408.00it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████████████████████████████████████████████████████████████▍                                     | 6248/10000 [00:04&lt;00:02, 1404.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|███████████████████████████████████████████████████████████████▉                                    | 6392/10000 [00:04&lt;00:02, 1412.24it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|█████████████████████████████████████████████████████████████████▎                                  | 6537/10000 [00:04&lt;00:02, 1420.99it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████████████████████████████████████████████████████████████████▊                                 | 6680/10000 [00:04&lt;00:02, 1420.48it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|████████████████████████████████████████████████████████████████████▏                               | 6824/10000 [00:04&lt;00:02, 1425.42it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|█████████████████████████████████████████████████████████████████████▋                              | 6967/10000 [00:05&lt;00:02, 1422.84it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████████████████████████████████████████████████████████████████████                             | 7111/10000 [00:05&lt;00:02, 1427.05it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|████████████████████████████████████████████████████████████████████████▌                           | 7254/10000 [00:05&lt;00:01, 1424.08it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|█████████████████████████████████████████████████████████████████████████▉                          | 7398/10000 [00:05&lt;00:01, 1428.08it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████████████████████████████████████████████████████████████████████████▍                        | 7541/10000 [00:05&lt;00:01, 1344.48it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|████████████████████████████████████████████████████████████████████████████▊                       | 7684/10000 [00:05&lt;00:01, 1367.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|██████████████████████████████████████████████████████████████████████████████▎                     | 7825/10000 [00:05&lt;00:01, 1378.73it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|███████████████████████████████████████████████████████████████████████████████▋                    | 7968/10000 [00:05&lt;00:01, 1393.29it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|█████████████████████████████████████████████████████████████████████████████████                   | 8112/10000 [00:05&lt;00:01, 1405.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 83%|██████████████████████████████████████████████████████████████████████████████████▌                 | 8253/10000 [00:06&lt;00:01, 1399.68it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|███████████████████████████████████████████████████████████████████████████████████▉                | 8396/10000 [00:06&lt;00:01, 1407.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|█████████████████████████████████████████████████████████████████████████████████████▍              | 8539/10000 [00:06&lt;00:01, 1413.46it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|██████████████████████████████████████████████████████████████████████████████████████▊             | 8683/10000 [00:06&lt;00:00, 1419.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████████████████████████████████████████████████████████████████████████████████████▎           | 8826/10000 [00:06&lt;00:00, 1421.11it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████████████████████████████████████████████████████████████████████████████████████▋          | 8969/10000 [00:06&lt;00:00, 1421.36it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|███████████████████████████████████████████████████████████████████████████████████████████         | 9112/10000 [00:06&lt;00:00, 1404.71it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|████████████████████████████████████████████████████████████████████████████████████████████▌       | 9253/10000 [00:06&lt;00:00, 1397.68it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████████████████████████████████████████████████████████████████████████████████████████▉      | 9395/10000 [00:06&lt;00:00, 1401.38it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|███████████████████████████████████████████████████████████████████████████████████████████████▍    | 9538/10000 [00:06&lt;00:00, 1408.46it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|████████████████████████████████████████████████████████████████████████████████████████████████▊   | 9679/10000 [00:07&lt;00:00, 1408.20it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|██████████████████████████████████████████████████████████████████████████████████████████████████▏ | 9820/10000 [00:07&lt;00:00, 1400.61it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████████████████████▌| 9961/10000 [00:07&lt;00:00, 1400.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:07&lt;00:00, 1378.28it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># first, create a list for square root(N):</span>
+<span class="n">sqrtN</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+
+<span class="c1"># the theoretical expectation is R_rms = sqrt(N) * r_rms (where r_rms = step in this case):</span>
+<span class="n">R_rms_theory</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">step</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+
+<span class="c1"># setup the axis:</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sqrt</span><span class="si">{N}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\left&lt;R^2\right&gt; = R_\mathrm</span><span class="si">{rms}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. Note that the &#39;r&#39; is necessary to remove the need for double slashes. You can use LaTeX! </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Pseudo-experiment vs. Theory for &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; walkers&#39;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># plot the pseudo-experiment result</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sqrtN</span><span class="p">,</span> <span class="n">R_rms_list</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{rms}</span><span class="s1">$ from pseudo-experiment&#39;</span><span class="p">)</span>
+
+<span class="c1"># plot the theoretical expectation</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sqrtN</span><span class="p">,</span> <span class="n">R_rms_theory</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$R_\mathrm</span><span class="si">{rms}</span><span class="s1">$ from theory&#39;</span><span class="p">)</span>
+
+<span class="c1"># construct the legend:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>  <span class="c1"># Add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1f39fc7a1a44ac0e902f28cc389dde8a944619b5a269147cf61cae30af77b6d6.png" src="../../_images/1f39fc7a1a44ac0e902f28cc389dde8a944619b5a269147cf61cae30af77b6d6.png" />
+</div>
+</div>
+<p>E.g. for <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">1000</span></code> walkers and <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">10000</span></code> steps, the agreement is excellent!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapters/Chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Chapter2/Chapter2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Computer Number Representations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Chapter4/Chapter4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Numerical Differentiation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Deterministic Randomness</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-sequences">Random Sequences</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-number-generation">Random Number Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-numbers-of-arbitrary-distributions">Generating Random Numbers of Arbitrary Distributions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks">Random Walks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walks-theoretical-description">Random Walks: Theoretical Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digression-object-oriented-programming-in-python">Digression: Object-Oriented Programming in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walk-simulation">Random-Walk Simulation</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Papaefstathiou
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
