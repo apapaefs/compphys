@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; Computational Physics I (PHYS 3500K)</title>
+    <title>9. Boundary Value and Eigenvalue Problems &#8212; Computational Physics I (PHYS 3500K)</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter9/Chapter9';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction" href="../Chapter10/Chapter10.html" />
-    <link rel="prev" title="Introduction" href="../Chapter8/Chapter8.html" />
+    <link rel="next" title="10. Partial Differential Equations" href="../Chapter10/Chapter10.html" />
+    <link rel="prev" title="8. An Introduction to Nonlinear Dynamics and Chaos" href="../Chapter8/Chapter8.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,51 +174,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    Computational Physics I - PHYS 3500K
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">Making Computers Obey</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">Computer Number Representations</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">Deterministic Randomness</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">Numerical Differentiation</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">Introduction</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">Trial-and-Error Root Finding</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">Introduction</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">Introduction</a></li>
-
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">Introduction</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">1. Hello Whimsical World of Pythonic Physics!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">2. To err is human, to really foul things up requires a computer!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">3. Randomness and Random Walks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">4. Numerical Differentiation and Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">5. Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">6. Matrix Computing, Trial-and-Error Searching and Data Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">7. Ordinary Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">8. An Introduction to Nonlinear Dynamics and Chaos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Boundary Value and Eigenvalue Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">10. Partial Differential Equations</a></li>
 </ul>
 
     </div>
@@ -404,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Boundary Value and Eigenvalue Problems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,29 +384,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-numerov-algorithm">The Numerov Algorithm</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-1-apply-the-numerov-algorithm-to-the-simple-harmonic-oscillator-problem">Example 9.1: Apply the Numerov algorithm to the Simple Harmonic Oscillator problem:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-numerov-algorithm">9.2. The Numerov Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-1-the-numerov-algorithm-for-simple-harmonic-oscillation">9.2.1. Example 9.1: The Numerov Algorithm for Simple Harmonic Oscillation</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-integration-of-boundary-value-problems-the-poisson-equation">Direct Integration of Boundary Value Problems: the Poisson Equation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-2-apply-the-numerov-algorithm-to-solve-poisson-s-equation-with-rho-r-frac-1-8-pi-e-r">Example 9.2: Apply the Numerov algorithm to solve Poisson’s equation with <span class="math notranslate nohighlight">\(\rho(r) = \frac{1}{8 \pi} e^{-r}\)</span>.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-apply-a-5-assumed-error-on-the-phi-1-input-of-example-9-2-and-compare-your-error-to-the-previous-one">Example 9.3: Apply a 5% assumed error on the <span class="math notranslate nohighlight">\(\phi_1\)</span> input of Example 9.2 and compare your error to the previous one.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-4-correct-the-bad-results-with-the-5-error-of-example-9-3">Example 9.4: Correct the “bad” results with the 5% error of Example 9.3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-integration-of-boundary-value-problems-the-poisson-equation">9.3. Direct Integration of Boundary Value Problems: the Poisson Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-2-the-numerov-algorithm-for-the-poisson-equation">9.3.1. Example 9.2: The Numerov Algorithm for the Poisson Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-numerov-algorithm-error-exploration">9.3.2. Example 9.3: Numerov Algorithm Error Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-4-bad-result-correction">9.3.3. Example 9.4: Bad Result Correction</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#green-s-function-solution-of-boundary-value-problems">Green’s Function Solution of Boundary Value Problems</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-5-a-simple-analytical-green-s-function-problem">Example 9.5: A Simple Analytical Green’s Function Problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-6-solve-the-problem">Example 9.6: Solve the problem:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#green-s-function-solution-of-boundary-value-problems">9.4. Green’s Function Solution of Boundary Value Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-5-a-simple-analytical-green-s-function-problem">9.4.1. Example 9.5: A Simple Analytical Green’s Function Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-6-green-s-function-example">9.4.2. Example 9.6: Green’s Function Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-wave-equation">Eigenvalues of the Wave Equation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-7-find-the-lowest-eigenvalue-of-the-stretched-string-problem-by-employing-the-shooting-method-described-above">Example 9.7: Find the lowest eigenvalue of the stretched string problem by employing the shooting method described above.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-wave-equation">9.5. Eigenvalues of the Wave Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-7-the-shooting-method">9.6. Example 9.7: The Shooting Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-dimensional-schrodinger-equation">9.7. The One-Dimensional Schrödinger Equation</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-dimensional-schrodinger-equation">The One-Dimensional Schrödinger Equation</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -447,9 +414,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><font size="6"> <strong>Chapter 9: Boundary Value and Eigenvalue Problems</strong> </font></p>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-and-eigenvalue-problems">
+<h1><span class="section-number">9. </span>Boundary Value and Eigenvalue Problems<a class="headerlink" href="#boundary-value-and-eigenvalue-problems" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Many of the important equations of physics can be cast in the form of a linear, second-order differential equation:</p>
 <p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d}^2 y }  { \mathrm{d} x^2 } + k^2 (x) y = S(x)\)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(S(x)\)</span> is an “inhomogeneous” (or “driving”, or “source” term) and <span class="math notranslate nohighlight">\(k^2(x)\)</span> is a real function.</p>
@@ -476,8 +444,8 @@ document.write(`
 </ul>
 <p>We begin by deriving an integration algorithm particularly suited to the equations of the desired form, and discuss the boundary value and eigenvalue problems in return.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-numerov-algorithm">
-<h1>The Numerov Algorithm<a class="headerlink" href="#the-numerov-algorithm" title="Link to this heading">#</a></h1>
+<section id="the-numerov-algorithm">
+<h2><span class="section-number">9.2. </span>The Numerov Algorithm<a class="headerlink" href="#the-numerov-algorithm" title="Link to this heading">#</a></h2>
 <p>There is a particularly simple and efficient method for integrating the second-order differential equations of the desired form (i.e. without a first-order derivative). This is known as the Numerov (or Cowling’s) method.</p>
 <p>Consider the following expansions of the function <span class="math notranslate nohighlight">\(y\)</span> about <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(y(x+h) = y(x) + h y'(x) + \frac{h^2}{2} y''(x) + \frac{h^3}{6} y'''(x) + \frac{h^4}{4!} y''''(x) + \mathcal{O}(h^5)\)</span>,</p>
@@ -505,15 +473,16 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(y_{n+1} = \frac{ 2(1- \frac{5h^2}{12} k_n^2) y_n - (1+\frac{h^2}{12} k^2_{n-1}) y_{n-1} + \frac{h^2}{12}(S_{n+1} + 10 S_n + S_{n-1}) + \mathcal{O}(h^6) }{ 1 + \frac{h^2}{12} k_{n+1}^2 }\)</span>.</p>
 <p>Note that one can also solve for <span class="math notranslate nohighlight">\(y_{n-1}\)</span> in terms of <span class="math notranslate nohighlight">\(y_n\)</span> and <span class="math notranslate nohighlight">\(y_{n+1}\)</span> to integrate backward in <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <p>We emphasize here that the Numerov method is one more order accurate than the fourth-order Runge-Kutta method, which might be used to integrate the problem as two coupled first-order equations. The Numerov method is also more efficient, as each step requires computation of <span class="math notranslate nohighlight">\(k^2\)</span> and <span class="math notranslate nohighlight">\(S\)</span> at only the “lattice” points.</p>
-<section id="example-9-1-apply-the-numerov-algorithm-to-the-simple-harmonic-oscillator-problem">
-<h2>Example 9.1: Apply the Numerov algorithm to the Simple Harmonic Oscillator problem:<a class="headerlink" href="#example-9-1-apply-the-numerov-algorithm-to-the-simple-harmonic-oscillator-problem" title="Link to this heading">#</a></h2>
+<section id="example-9-1-the-numerov-algorithm-for-simple-harmonic-oscillation">
+<h3><span class="section-number">9.2.1. </span>Example 9.1: The Numerov Algorithm for Simple Harmonic Oscillation<a class="headerlink" href="#example-9-1-the-numerov-algorithm-for-simple-harmonic-oscillation" title="Link to this heading">#</a></h3>
+<p>Apply the Numerov algorithm to the Simple Harmonic Oscillator problem:</p>
 <p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d}^2 y } {\mathrm{d}x^2} = - 4 \pi^2 y\)</span>, with <span class="math notranslate nohighlight">\(y(0)=1\)</span>, <span class="math notranslate nohighlight">\(y'(0)=0\)</span>.</p>
 <p>Integrate from <span class="math notranslate nohighlight">\(x=0\)</span> to <span class="math notranslate nohighlight">\(x=4\)</span>. Note that you will have to use some special procedure to generate the value of <span class="math notranslate nohighlight">\(y_1 \equiv y(h)\)</span>, needed to start the three-term recursion relation.</p>
 <p>Plot the resulting function <span class="math notranslate nohighlight">\(y(x)\)</span>.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="direct-integration-of-boundary-value-problems-the-poisson-equation">
-<h1>Direct Integration of Boundary Value Problems: the Poisson Equation<a class="headerlink" href="#direct-integration-of-boundary-value-problems-the-poisson-equation" title="Link to this heading">#</a></h1>
+<section id="direct-integration-of-boundary-value-problems-the-poisson-equation">
+<h2><span class="section-number">9.3. </span>Direct Integration of Boundary Value Problems: the Poisson Equation<a class="headerlink" href="#direct-integration-of-boundary-value-problems-the-poisson-equation" title="Link to this heading">#</a></h2>
 <p>Consider trying to solve Poisson’s equation for a charge density distribution:</p>
 <p><span class="math notranslate nohighlight">\(\rho(r) = \frac{1}{8 \pi} e^{-r}\)</span>.</p>
 <p>If we integrate the charge density over all space, we obtain the total charge:</p>
@@ -532,8 +501,9 @@ document.write(`
 <p>This is unfortunate, since <span class="math notranslate nohighlight">\(\phi_1\)</span> is nominally part of the function we are trying to find, and we do not know it a priori.</p>
 <p>We will discuss below what to do in the general case, but for now, let’s just take <span class="math notranslate nohighlight">\(\phi_1\)</span> from the analytical solution:</p>
 <p><span class="math notranslate nohighlight">\(\phi_1 = \phi(r=h) = 1 - \frac{1}{2} (h + 2) e^{-h}\)</span>.</p>
-<section id="example-9-2-apply-the-numerov-algorithm-to-solve-poisson-s-equation-with-rho-r-frac-1-8-pi-e-r">
-<h2>Example 9.2: Apply the Numerov algorithm to solve Poisson’s equation with <span class="math notranslate nohighlight">\(\rho(r) = \frac{1}{8 \pi} e^{-r}\)</span>.<a class="headerlink" href="#example-9-2-apply-the-numerov-algorithm-to-solve-poisson-s-equation-with-rho-r-frac-1-8-pi-e-r" title="Link to this heading">#</a></h2>
+<section id="example-9-2-the-numerov-algorithm-for-the-poisson-equation">
+<h3><span class="section-number">9.3.1. </span>Example 9.2: The Numerov Algorithm for the Poisson Equation<a class="headerlink" href="#example-9-2-the-numerov-algorithm-for-the-poisson-equation" title="Link to this heading">#</a></h3>
+<p>Apply the Numerov algorithm to solve Poisson’s equation with <span class="math notranslate nohighlight">\(\rho(r) = \frac{1}{8 \pi} e^{-r}\)</span>.</p>
 <p>Assume the exact solution <span class="math notranslate nohighlight">\(\phi(r) = 1 - \frac{1}{2} (r+2) e^{-r}\)</span> and plot the error up to <span class="math notranslate nohighlight">\(r=20\)</span>.</p>
 <p>To start up the recursion, use <span class="math notranslate nohighlight">\(\phi_1 = \phi(r=h) = 1 - \frac{1}{2} (h + 2) e^{-h}\)</span>.</p>
 <p>After solving Example 9.2, you will have noticed that the error is getting larger at large <span class="math notranslate nohighlight">\(r\)</span>!</p>
@@ -544,8 +514,9 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\Phi(0) = \int \frac{ \rho (|\mathbf{r}'|) }{ |\mathbf{r}'| } \mathrm{d}^3 r' = 4\pi \int_0^\infty r' \rho \mathrm{d} r'\)</span>, where we have assumed a spherically-symmetric <span class="math notranslate nohighlight">\(\rho(r)\)</span>.</p>
 <p>We could achieve this, e.g. by using Simpson’s rule. There will be, however, some error associated with the value obtained. Let’s say this error is 5%. Let’s just impose such an error in our Example 9.2 result and compare the effect to what we had obtained previously.</p>
 </section>
-<section id="example-9-3-apply-a-5-assumed-error-on-the-phi-1-input-of-example-9-2-and-compare-your-error-to-the-previous-one">
-<h2>Example 9.3: Apply a 5% assumed error on the <span class="math notranslate nohighlight">\(\phi_1\)</span> input of Example 9.2 and compare your error to the previous one.<a class="headerlink" href="#example-9-3-apply-a-5-assumed-error-on-the-phi-1-input-of-example-9-2-and-compare-your-error-to-the-previous-one" title="Link to this heading">#</a></h2>
+<section id="example-9-3-numerov-algorithm-error-exploration">
+<h3><span class="section-number">9.3.2. </span>Example 9.3: Numerov Algorithm Error Exploration<a class="headerlink" href="#example-9-3-numerov-algorithm-error-exploration" title="Link to this heading">#</a></h3>
+<p>Apply a 5% assumed error on the <span class="math notranslate nohighlight">\(\phi_1\)</span> input of Example 9.2 and compare your error to the previous one.</p>
 <p>You will have noticed that disaster has struck: A 5% change on the initial conditions has induced a 50% error on the solution at large values of <span class="math notranslate nohighlight">\(r\)</span>!</p>
 <p>What’s going on?</p>
 <p>To understand what has happened, consider solutions to the <em>homogeneous</em> version of our differential equation:</p>
@@ -559,8 +530,9 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\phi = mr + b\)</span>,</p>
 <p>and subtract <span class="math notranslate nohighlight">\(mr\)</span> from the numerical results to reinstate the appropriate large-<span class="math notranslate nohighlight">\(r\)</span> behavior. Let’s do this in the next example.</p>
 </section>
-<section id="example-9-4-correct-the-bad-results-with-the-5-error-of-example-9-3">
-<h2>Example 9.4: Correct the “bad” results with the 5% error of Example 9.3.<a class="headerlink" href="#example-9-4-correct-the-bad-results-with-the-5-error-of-example-9-3" title="Link to this heading">#</a></h2>
+<section id="example-9-4-bad-result-correction">
+<h3><span class="section-number">9.3.3. </span>Example 9.4: Bad Result Correction<a class="headerlink" href="#example-9-4-bad-result-correction" title="Link to this heading">#</a></h3>
+<p>Correct the “bad” results with the 5% error of Example 9.3.</p>
 <p>The “bad” results vary linearly with <span class="math notranslate nohighlight">\(r\)</span> for large <span class="math notranslate nohighlight">\(r\)</span>. Fit the last few points of the numerical solution to the form:</p>
 <p><span class="math notranslate nohighlight">\(\phi = mr + b\)</span>,</p>
 <p>and subtract <span class="math notranslate nohighlight">\(mr\)</span> from the numerical results to reinstate the appropriate large-<span class="math notranslate nohighlight">\(r\)</span> behavior.</p>
@@ -568,8 +540,8 @@ document.write(`
 <p>Alternatively, it is also feasible to integrate inward, starting at large <span class="math notranslate nohighlight">\(r\)</span>, with <span class="math notranslate nohighlight">\(\phi = Q\)</span>, independent of <span class="math notranslate nohighlight">\(r\)</span>. This results in a solution that often satisfies accurately the boundary condition at <span class="math notranslate nohighlight">\(r=0\)</span> and avoids having the perform a quadrature to determine the (approximate) starting value <span class="math notranslate nohighlight">\(\phi_1\)</span>.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="green-s-function-solution-of-boundary-value-problems">
-<h1>Green’s Function Solution of Boundary Value Problems<a class="headerlink" href="#green-s-function-solution-of-boundary-value-problems" title="Link to this heading">#</a></h1>
+<section id="green-s-function-solution-of-boundary-value-problems">
+<h2><span class="section-number">9.4. </span>Green’s Function Solution of Boundary Value Problems<a class="headerlink" href="#green-s-function-solution-of-boundary-value-problems" title="Link to this heading">#</a></h2>
 <p>It’s possible that the two solutions to the homogeneous equation (i.e. with the RHS=0) have very different behaviors. In that case, some extra precautions must be taken.</p>
 <p>For example, consider the equation describing the potential from a charge distribution of multipole order <span class="math notranslate nohighlight">\(\ell &gt;0\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(\left[ \frac{ \mathrm{d^2}}{ \mathrm{d}r^2} - \frac{ \ell(\ell+1)}{r^2} \right] \phi = -4 \pi r \rho\)</span>,</p>
@@ -591,7 +563,7 @@ document.write(`
 <p>Then, to construct the Green function, we first solve the homogeneous equation:</p>
 <p><span class="math notranslate nohighlight">\(\left[ \frac{ \mathrm{d}^2  }  { \mathrm{d} x^2 } + k^2 (x)\right] G(x,x') = 0\)</span> for <span class="math notranslate nohighlight">\(x &gt; x'\)</span> and <span class="math notranslate nohighlight">\(x &lt; x'\)</span> and then impose the appropriate boundary conditions, including the discontinuity in the derivative. Let’s recap the process by considering a simple analytical example.</p>
 <section id="example-9-5-a-simple-analytical-green-s-function-problem">
-<h2>Example 9.5: A Simple Analytical Green’s Function Problem<a class="headerlink" href="#example-9-5-a-simple-analytical-green-s-function-problem" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">9.4.1. </span>Example 9.5: A Simple Analytical Green’s Function Problem<a class="headerlink" href="#example-9-5-a-simple-analytical-green-s-function-problem" title="Link to this heading">#</a></h3>
 <p>Solve the equation:</p>
 <p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d}^2 y }  { \mathrm{d} x^2 } + y = S(x)\)</span>,</p>
 <p>with boundary conditions <span class="math notranslate nohighlight">\(y(0) = y(\pi/2) = 0\)</span>, using the Green’s function method.</p>
@@ -613,15 +585,16 @@ document.write(`
 <p>it can be shown that:</p>
 <p><span class="math notranslate nohighlight">\(\phi_&lt; (r) = r^{\ell+1}\)</span> and <span class="math notranslate nohighlight">\(\phi_&gt; (r) = - \frac{ 1 } { 2\ell + 1 } r^{-\ell}\)</span>, are one possible set of homogeneous solutions satisfying the appropriate boundary conditions and the differential equation.</p>
 </section>
-<section id="example-9-6-solve-the-problem">
-<h2>Example 9.6: Solve the problem:<a class="headerlink" href="#example-9-6-solve-the-problem" title="Link to this heading">#</a></h2>
+<section id="example-9-6-green-s-function-example">
+<h3><span class="section-number">9.4.2. </span>Example 9.6: Green’s Function Example<a class="headerlink" href="#example-9-6-green-s-function-example" title="Link to this heading">#</a></h3>
+<p>Solve the problem:</p>
 <p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d^2} \phi}{ \mathrm{d}r^2} = -4 \pi r \rho\)</span>,</p>
 <p>for <span class="math notranslate nohighlight">\(\rho(r) = \frac{1}{8\pi} e^{-r}\)</span> using the Green’s function method.</p>
 <p>Compare your results to the exact solution by plotting the error as in the previous examples.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="eigenvalues-of-the-wave-equation">
-<h1>Eigenvalues of the Wave Equation<a class="headerlink" href="#eigenvalues-of-the-wave-equation" title="Link to this heading">#</a></h1>
+<section id="eigenvalues-of-the-wave-equation">
+<h2><span class="section-number">9.5. </span>Eigenvalues of the Wave Equation<a class="headerlink" href="#eigenvalues-of-the-wave-equation" title="Link to this heading">#</a></h2>
 <p>Eigenvalue problems involving differential equations often arise in finding normal-mode solutions of wave equations.</p>
 <p>We begin our discussion of eigenvalue problems with a simple example: that of normal modes of a stretched string of uniform mass density.</p>
 <p>After suitable scaling of the physical quantities, the equation and boundary conditions defining these modes can be written as:</p>
@@ -648,13 +621,14 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\delta\)</span> is arbitrary and can be chosen for convenience, since the problem we are solving is a homogeneous one, and the normalization of solutions is not specified.</p>
 <p>Upon integrating to <span class="math notranslate nohighlight">\(x=1\)</span>, we will find, in general, a non-vanishing value of <span class="math notranslate nohighlight">\(\phi\)</span>, since the trial eigenvalue will not be one of the true eigenvalues. We must then readjust <span class="math notranslate nohighlight">\(k\)</span> and integrate again, repeating the process until we find <span class="math notranslate nohighlight">\(\phi(x=1)=0\)</span> to within a specified tolerance.</p>
 <p>The problem of finding a value of <span class="math notranslate nohighlight">\(k\)</span> for which <span class="math notranslate nohighlight">\(\phi(1)\)</span> vanishes is a <em>root-finding problem</em>, such as the ones that we have already discussed (Chapter 6). It is safest to use a simple search to locate an approximate eigenvalue, e.g. the bisection method.</p>
-<section id="example-9-7-find-the-lowest-eigenvalue-of-the-stretched-string-problem-by-employing-the-shooting-method-described-above">
-<h2>Example 9.7: Find the lowest eigenvalue of the stretched string problem by employing the shooting method described above.<a class="headerlink" href="#example-9-7-find-the-lowest-eigenvalue-of-the-stretched-string-problem-by-employing-the-shooting-method-described-above" title="Link to this heading">#</a></h2>
+</section>
+<section id="example-9-7-the-shooting-method">
+<h2><span class="section-number">9.6. </span>Example 9.7: The Shooting Method<a class="headerlink" href="#example-9-7-the-shooting-method" title="Link to this heading">#</a></h2>
+<p>Find the lowest eigenvalue of the stretched string problem by employing the shooting method described above.</p>
 <p>Start your search at <span class="math notranslate nohighlight">\(k=1\)</span> and terminate the search when the eigenvalue is determined within a precision of <span class="math notranslate nohighlight">\(10^{-5}\)</span>.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-one-dimensional-schrodinger-equation">
-<h1>The One-Dimensional Schrödinger Equation<a class="headerlink" href="#the-one-dimensional-schrodinger-equation" title="Link to this heading">#</a></h1>
+<section id="the-one-dimensional-schrodinger-equation">
+<h2><span class="section-number">9.7. </span>The One-Dimensional Schrödinger Equation<a class="headerlink" href="#the-one-dimensional-schrodinger-equation" title="Link to this heading">#</a></h2>
 <p>A rich example of the shooting method for eigenvalue problems is the task of finding the stationary quantum states of a particle of mass <span class="math notranslate nohighlight">\(m\)</span> moving in a one-dimensional potential <span class="math notranslate nohighlight">\(V(x)\)</span>.</p>
 <p>The time-independent Schroödinger equation is given by:</p>
 <p><span class="math notranslate nohighlight">\(\frac{-\hbar^2}{2m} \frac{ \mathrm{d}^2}{\mathrm{d}x^2} \psi(x) + V(x)\psi(x) = E\psi(x)\)</span>.</p>
@@ -698,6 +672,7 @@ V(x)=
 \end{cases}
 \end{split}\]</div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -735,7 +710,7 @@ V(x)=
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>An Introduction to Nonlinear Dynamics and Chaos</p>
       </div>
     </a>
     <a class="right-next"
@@ -743,7 +718,7 @@ V(x)=
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Partial Differential Equations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -763,29 +738,26 @@ V(x)=
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-numerov-algorithm">The Numerov Algorithm</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-1-apply-the-numerov-algorithm-to-the-simple-harmonic-oscillator-problem">Example 9.1: Apply the Numerov algorithm to the Simple Harmonic Oscillator problem:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-numerov-algorithm">9.2. The Numerov Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-1-the-numerov-algorithm-for-simple-harmonic-oscillation">9.2.1. Example 9.1: The Numerov Algorithm for Simple Harmonic Oscillation</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-integration-of-boundary-value-problems-the-poisson-equation">Direct Integration of Boundary Value Problems: the Poisson Equation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-2-apply-the-numerov-algorithm-to-solve-poisson-s-equation-with-rho-r-frac-1-8-pi-e-r">Example 9.2: Apply the Numerov algorithm to solve Poisson’s equation with <span class="math notranslate nohighlight">\(\rho(r) = \frac{1}{8 \pi} e^{-r}\)</span>.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-apply-a-5-assumed-error-on-the-phi-1-input-of-example-9-2-and-compare-your-error-to-the-previous-one">Example 9.3: Apply a 5% assumed error on the <span class="math notranslate nohighlight">\(\phi_1\)</span> input of Example 9.2 and compare your error to the previous one.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-4-correct-the-bad-results-with-the-5-error-of-example-9-3">Example 9.4: Correct the “bad” results with the 5% error of Example 9.3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-integration-of-boundary-value-problems-the-poisson-equation">9.3. Direct Integration of Boundary Value Problems: the Poisson Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-2-the-numerov-algorithm-for-the-poisson-equation">9.3.1. Example 9.2: The Numerov Algorithm for the Poisson Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-3-numerov-algorithm-error-exploration">9.3.2. Example 9.3: Numerov Algorithm Error Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-4-bad-result-correction">9.3.3. Example 9.4: Bad Result Correction</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#green-s-function-solution-of-boundary-value-problems">Green’s Function Solution of Boundary Value Problems</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-5-a-simple-analytical-green-s-function-problem">Example 9.5: A Simple Analytical Green’s Function Problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-6-solve-the-problem">Example 9.6: Solve the problem:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#green-s-function-solution-of-boundary-value-problems">9.4. Green’s Function Solution of Boundary Value Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-5-a-simple-analytical-green-s-function-problem">9.4.1. Example 9.5: A Simple Analytical Green’s Function Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-6-green-s-function-example">9.4.2. Example 9.6: Green’s Function Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-wave-equation">Eigenvalues of the Wave Equation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-7-find-the-lowest-eigenvalue-of-the-stretched-string-problem-by-employing-the-shooting-method-described-above">Example 9.7: Find the lowest eigenvalue of the stretched string problem by employing the shooting method described above.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-wave-equation">9.5. Eigenvalues of the Wave Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-9-7-the-shooting-method">9.6. Example 9.7: The Shooting Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-dimensional-schrodinger-equation">9.7. The One-Dimensional Schrödinger Equation</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-dimensional-schrodinger-equation">The One-Dimensional Schrödinger Equation</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
@@ -809,7 +781,7 @@ By Andreas Papaefstathiou
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; Computational Physics I (PHYS 3500K)</title>
+    <title>10. Partial Differential Equations &#8212; Computational Physics I (PHYS 3500K)</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter10/Chapter10';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Introduction" href="../Chapter9/Chapter9.html" />
+    <link rel="prev" title="9. Boundary Value and Eigenvalue Problems" href="../Chapter9/Chapter9.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,51 +173,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    Computational Physics I - PHYS 3500K
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">Making Computers Obey</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">Computer Number Representations</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">Deterministic Randomness</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">Numerical Differentiation</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">Introduction</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">Trial-and-Error Root Finding</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">Introduction</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">Introduction</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">Introduction</a></li>
-
-
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">1. Hello Whimsical World of Pythonic Physics!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">2. To err is human, to really foul things up requires a computer!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">3. Randomness and Random Walks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">4. Numerical Differentiation and Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">5. Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">6. Matrix Computing, Trial-and-Error Searching and Data Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">7. Ordinary Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">8. An Introduction to Nonlinear Dynamics and Chaos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">9. Boundary Value and Eigenvalue Problems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Partial Differential Equations</a></li>
 </ul>
 
     </div>
@@ -403,7 +373,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Partial Differential Equations</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,26 +383,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elliptic-partial-differential-equations">Elliptic Partial Differential Equations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization">Discretization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-principle-approach">Variational Principle Approach</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-iterative-method-for-boundary-value-problems">An Iterative Method for Boundary Value Problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-1-the-relaxation-method-for-partial-differential-equations-in-one-dimension">Example 10.1: The relaxation method for partial differential equations in one dimension.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relaxation-method-in-higher-dimensions">The Relaxation Method in Higher Dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elliptic-partial-differential-equations">10.2. Elliptic Partial Differential Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization">10.2.1. Discretization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-principle-approach">10.2.2. Variational Principle Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-iterative-method-for-boundary-value-problems">10.2.3. An Iterative Method for Boundary Value Problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-1-the-relaxation-method-for-partial-differential-equations-in-one-dimension">10.2.4. Example 10.1: The relaxation method for partial differential equations in one dimension.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relaxation-method-in-higher-dimensions">10.2.5. The Relaxation Method in Higher Dimensions</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#parabolic-partial-differential-equations">Parabolic Partial Differential Equations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-discretization-and-instabilities">Naive Discretization and Instabilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-2-parabolic-pdes-a-first-example">Example 10.2: Parabolic PDEs: a first example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-schemes">Implicit Schemes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-3-application-of-the-implicit-scheme-for-parabolic-pdes">Example 10.3: Application of the Implicit Scheme for Parabolic PDEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-by-direct-matrix-multiplication">Solution by Direct Matrix Multiplication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-4-direct-inversion-of-the-matrix-and-the-full-evolution">Example 10.4: Direct inversion of the matrix and the full evolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabolic-partial-differential-equations">10.3. Parabolic Partial Differential Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-discretization-and-instabilities">10.3.1. Naive Discretization and Instabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-2-parabolic-pdes-a-first-example">10.3.2. Example 10.2: Parabolic PDEs: a first example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-schemes">10.3.3. Implicit Schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-3-application-of-the-implicit-scheme-for-parabolic-pdes">10.3.4. Example 10.3: Application of the Implicit Scheme for Parabolic PDEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-by-direct-matrix-multiplication">10.3.5. Solution by Direct Matrix Multiplication</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -443,9 +411,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><font size="6"> <strong>Chapter 10: Partial Differential Equations</strong> </font></p>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="partial-differential-equations">
+<h1><span class="section-number">10. </span>Partial Differential Equations<a class="headerlink" href="#partial-differential-equations" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">10.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Partial differential equations (PDEs) are involved in the description of virtually every physical situation where quantities vary in space, or in space and time.</p>
 <p>Examples are diffusion, electromagnetic waves, hydrodynamics, quantum mechanics.</p>
 <p>In all but the simplest cases, equations cannot be solved analytically, and so numerical methods must be employed for quantitative results.</p>
@@ -462,8 +431,8 @@ document.write(`
 </ol>
 <p>In this chapter, we will discuss some numerical methods appropriate for <em>elliptic</em> equations and then focus on <em>parabolic</em> equations. Hyperbolic equations often can be treated by similar methods, with some unique differences (we won’t discuss these here).</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="elliptic-partial-differential-equations">
-<h1>Elliptic Partial Differential Equations<a class="headerlink" href="#elliptic-partial-differential-equations" title="Link to this heading">#</a></h1>
+<section id="elliptic-partial-differential-equations">
+<h2><span class="section-number">10.2. </span>Elliptic Partial Differential Equations<a class="headerlink" href="#elliptic-partial-differential-equations" title="Link to this heading">#</a></h2>
 <p>For concreteness, we will consider particular forms of elliptic boundary value and eigenvalue problems for a field <span class="math notranslate nohighlight">\(\phi\)</span> in two spatial dimensions, <span class="math notranslate nohighlight">\((x,y)\)</span>.</p>
 <p>Specifically, we will tackle the boundary value problem:</p>
 <p><span class="math notranslate nohighlight">\(-\left[ \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right] \phi = S(x,y)\)</span>.</p>
@@ -478,7 +447,7 @@ document.write(`
 <p>As an example, the above could be the time-independent Schrödinger equation, with <span class="math notranslate nohighlight">\(\phi\)</span> being the wave function, <span class="math notranslate nohighlight">\(V(x,y)\)</span> is related to the potential and <span class="math notranslate nohighlight">\(\varepsilon\)</span> is related to the energy eigenvalue.</p>
 <p>The eigenvalue problem is then to find the values <span class="math notranslate nohighlight">\(\varepsilon_\lambda\)</span> and the associated eigenfunctions <span class="math notranslate nohighlight">\(\phi_\lambda\)</span>, for which the equation and the b.c.’s are satisfied.</p>
 <section id="discretization">
-<h2>Discretization<a class="headerlink" href="#discretization" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.1. </span>Discretization<a class="headerlink" href="#discretization" title="Link to this heading">#</a></h3>
 <p>Let’s first cast the equation:</p>
 <p><span class="math notranslate nohighlight">\(-\left[ \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right] \phi = S(x,y)\)</span>.</p>
 <p>in a form suitable for numerical treatment.</p>
@@ -491,7 +460,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(-\left[\frac{ \phi_{i+1j} + \phi_{i-1j} - 2 \phi_{ij}}{h^2} + \frac{ \phi_{ij+1} + \phi_{ij-1} - 2 \phi_{ij}}{h^2}\right] = S_{ij}\)</span>.</p>
 </section>
 <section id="variational-principle-approach">
-<h2>Variational Principle Approach<a class="headerlink" href="#variational-principle-approach" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.2. </span>Variational Principle Approach<a class="headerlink" href="#variational-principle-approach" title="Link to this heading">#</a></h3>
 <p>We will be solving this equation shortly, but first let’s derive it in an alternate way, based on a <em>variational  principle</em>.</p>
 <p>This approach is handy in cases where the coordinates are not Cartesian, or when more accurate formulas are needed.</p>
 <p>The variational principle also provides some insnight into how the solution algorithm works.</p>
@@ -561,7 +530,7 @@ document.write(`
 <p>We begin their discussion by considering an analogous, but simpler one-dimensional boundary value problem, and then return to the two-dimensional case.</p>
 </section>
 <section id="an-iterative-method-for-boundary-value-problems">
-<h2>An Iterative Method for Boundary Value Problems<a class="headerlink" href="#an-iterative-method-for-boundary-value-problems" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.3. </span>An Iterative Method for Boundary Value Problems<a class="headerlink" href="#an-iterative-method-for-boundary-value-problems" title="Link to this heading">#</a></h3>
 <p>The one-dimensional boundary value problem analogous to the two-dimensional problem we have been discussing can be written as:</p>
 <p><span class="math notranslate nohighlight">\( -\frac{ \mathrm{d}^2 \phi }{\mathrm{d} x^2} = S(x)\)</span>,</p>
 <p>with <span class="math notranslate nohighlight">\(\phi(0)\)</span> and <span class="math notranslate nohighlight">\(\phi(1)\)</span> specified.</p>
@@ -587,7 +556,7 @@ document.write(`
 <p>so that, as long as <span class="math notranslate nohighlight">\(0 &lt; \omega &lt; 2\)</span>, the energy never increases, and should thus converge to the required minimum value as the sweeps proceed.</p>
 </section>
 <section id="example-10-1-the-relaxation-method-for-partial-differential-equations-in-one-dimension">
-<h2>Example 10.1: The relaxation method for partial differential equations in one dimension.<a class="headerlink" href="#example-10-1-the-relaxation-method-for-partial-differential-equations-in-one-dimension" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.4. </span>Example 10.1: The relaxation method for partial differential equations in one dimension.<a class="headerlink" href="#example-10-1-the-relaxation-method-for-partial-differential-equations-in-one-dimension" title="Link to this heading">#</a></h3>
 <p>(a) Use the relaxation method in one dimension to solve the boundary value problem defined by the differential equation:</p>
 <p><span class="math notranslate nohighlight">\(-\frac{ \mathrm{d}^2 \phi }{\mathrm{d} x^2} = S(x)\)</span>,</p>
 <p>with source term <span class="math notranslate nohighlight">\(S(x) = 12 x^2\)</span> and boundary conditions <span class="math notranslate nohighlight">\(\phi(0) = \phi(1) = 0\)</span>. Start with <span class="math notranslate nohighlight">\(\phi_i=0\)</span> as your initial guess. Use <span class="math notranslate nohighlight">\(N=40\)</span> lattice steps and perform a few hundred iterations (e.g. 1000) to reach your solution. Perform all calculations for the values of the relaxation parameter <span class="math notranslate nohighlight">\(\omega = 0.5, 1.0, 1.5\)</span>.</p>
@@ -604,7 +573,7 @@ document.write(`
 <p>Despite the rather poor initial guess for <span class="math notranslate nohighlight">\(\phi\)</span> in Example 10.1, the iterations converge and the converged energy is independent of the relaxation parameter, <span class="math notranslate nohighlight">\(\omega\)</span>. The rate of convergence clearly depends on <span class="math notranslate nohighlight">\(\omega\)</span>. A general analysis shows that the best choice for the relaxation parameter depends upon the lattice size and on the geometry of the problem, and it is found to be usually <span class="math notranslate nohighlight">\(\omega &gt; 1\)</span>. The optimal value can be determined empirically by examining the convergence of the solution for only a few iterations, before choosing a value to be used for many iterations.</p>
 </section>
 <section id="the-relaxation-method-in-higher-dimensions">
-<h2>The Relaxation Method in Higher Dimensions<a class="headerlink" href="#the-relaxation-method-in-higher-dimensions" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.5. </span>The Relaxation Method in Higher Dimensions<a class="headerlink" href="#the-relaxation-method-in-higher-dimensions" title="Link to this heading">#</a></h3>
 <p>The generalization of the relaxation method to two-dimensional problems is straightforward.</p>
 <p>For the differential equation:</p>
 <p><span class="math notranslate nohighlight">\(-\left[ \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right] \phi = S(x,y)\)</span>,</p>
@@ -622,8 +591,8 @@ document.write(`
 </ol>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="parabolic-partial-differential-equations">
-<h1>Parabolic Partial Differential Equations<a class="headerlink" href="#parabolic-partial-differential-equations" title="Link to this heading">#</a></h1>
+<section id="parabolic-partial-differential-equations">
+<h2><span class="section-number">10.3. </span>Parabolic Partial Differential Equations<a class="headerlink" href="#parabolic-partial-differential-equations" title="Link to this heading">#</a></h2>
 <p>Typical parabolic PDEs one encounters in physical situations are the diffusion equation:</p>
 <p><span class="math notranslate nohighlight">\(\frac{\partial \phi}{\partial t} = \mathbf{\nabla} \cdot ( D \mathbf{\nabla} \phi ) + S\)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(D\)</span> is the diffusion constant (possibly space-dependent) and <span class="math notranslate nohighlight">\(S\)</span> is a source function.</p>
@@ -632,7 +601,7 @@ document.write(`
 <p>In contrast to the boundary value problems, these are generally of the initial value type: we are given the field <span class="math notranslate nohighlight">\(\phi\)</span> at an initial time, and seek to find it at a later time. The evolution is subject to certain spatial boundary conditions, e.g. the Schrödinger wave function vanishes at very large distances, or the temperature or heat flux is specified on some surfaces.</p>
 <p>Methods by which such problems are solved on a computer are straightforward, although a few subtleties are involved.</p>
 <section id="naive-discretization-and-instabilities">
-<h2>Naive Discretization and Instabilities<a class="headerlink" href="#naive-discretization-and-instabilities" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.3.1. </span>Naive Discretization and Instabilities<a class="headerlink" href="#naive-discretization-and-instabilities" title="Link to this heading">#</a></h3>
 <p>We begin by treating diffusion in one dimension, with a uniform diffusion constant <span class="math notranslate nohighlight">\(D=1\)</span>.</p>
 <p>We take <span class="math notranslate nohighlight">\(x \in [0,1]\)</span> and assume Dirichlet boundary conditions that specify the value of the field at the end points of the interval.</p>
 <p>We will focus on the rescaled equation:</p>
@@ -651,7 +620,7 @@ document.write(`
 <p>where we have suppressed the index <span class="math notranslate nohighlight">\(i\)</span>, essentially turning the above equation to a matrix equation.</p>
 </section>
 <section id="example-10-2-parabolic-pdes-a-first-example">
-<h2>Example 10.2: Parabolic PDEs: a first example<a class="headerlink" href="#example-10-2-parabolic-pdes-a-first-example" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.3.2. </span>Example 10.2: Parabolic PDEs: a first example<a class="headerlink" href="#example-10-2-parabolic-pdes-a-first-example" title="Link to this heading">#</a></h3>
 <p>Solve the differential equation (i.e. find <span class="math notranslate nohighlight">\(\phi\)</span> for later times):</p>
 <p><span class="math notranslate nohighlight">\(\frac{\partial \phi}{\partial t} = \frac{ \partial^2 \phi}{\partial x^2} + S(x,t)\)</span>,</p>
 <p>for <span class="math notranslate nohighlight">\(S=0\)</span> and <span class="math notranslate nohighlight">\(\phi(0,t) = \phi(1,t) = 0\)</span>, satisfied by the initial condition of a Gaussian centered about <span class="math notranslate nohighlight">\(x=1/2\)</span>:</p>
@@ -723,7 +692,7 @@ document.write(`
 <p>Although the restriction on <span class="math notranslate nohighlight">\(\Delta t\)</span> that we have derived is rigorous only for the simple case we have considered, it does provide a useful guide for more complicated situations, as the eigenvector of <span class="math notranslate nohighlight">\(\hat{H}\)</span> with the largest eigenvalue will always oscillate from one lattice point to the next. Its eigenvalue is therefore quite insensitive to the global features of the problem.</p>
 </section>
 <section id="implicit-schemes">
-<h2>Implicit Schemes<a class="headerlink" href="#implicit-schemes" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.3.3. </span>Implicit Schemes<a class="headerlink" href="#implicit-schemes" title="Link to this heading">#</a></h3>
 <p>One way around the instability of the explicit algorithm discussed above, is to retain the general form:</p>
 <p><span class="math notranslate nohighlight">\(\frac{ \phi_i^{n+1} - \phi_i^n }{\Delta t} = \frac{\phi^n_{i+1} + \phi^n_{i-1} - 2 \phi^n_i }{h^2} + S_i^n\)</span>,</p>
 <p>but to replace the second space derivative by that of the solution, <em>at the new time</em>, i.e.:</p>
@@ -771,12 +740,12 @@ document.write(`
 <p><em>Note that</em>: the <span class="math notranslate nohighlight">\(\alpha_i\)</span> and <span class="math notranslate nohighlight">\(\gamma_i\)</span> are independent of <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>, so that it is more efficient to compute these coefficients only once and store them at the beginning of the calculation. Only the <span class="math notranslate nohighlight">\(\beta_i\)</span> are then needed to be computed for each time step.</p>
 </section>
 <section id="example-10-3-application-of-the-implicit-scheme-for-parabolic-pdes">
-<h2>Example 10.3: Application of the Implicit Scheme for Parabolic PDEs<a class="headerlink" href="#example-10-3-application-of-the-implicit-scheme-for-parabolic-pdes" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.3.4. </span>Example 10.3: Application of the Implicit Scheme for Parabolic PDEs<a class="headerlink" href="#example-10-3-application-of-the-implicit-scheme-for-parabolic-pdes" title="Link to this heading">#</a></h3>
 <p>Use the implicit scheme to solve the problem of Example 10.2. Use a lattice with <span class="math notranslate nohighlight">\(N=25\)</span> intervals. Try time steps of <span class="math notranslate nohighlight">\(\Delta t = 0.00075\)</span> and <span class="math notranslate nohighlight">\(\Delta t=0.005\)</span>.</p>
 <p>Compare to the exact solution by graphing the results at <span class="math notranslate nohighlight">\(t=0.045\)</span>.</p>
 </section>
 <section id="solution-by-direct-matrix-multiplication">
-<h2>Solution by Direct Matrix Multiplication<a class="headerlink" href="#solution-by-direct-matrix-multiplication" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.3.5. </span>Solution by Direct Matrix Multiplication<a class="headerlink" href="#solution-by-direct-matrix-multiplication" title="Link to this heading">#</a></h3>
 <p>Modern computers are efficient at matrix manipulations. The number of operations for the solution of parabolic PDEs will be higher than what has been discussed in the previous sections, but nevertheless, for small problems, it should be efficient enough.</p>
 <p>Let’s write down the form of the <span class="math notranslate nohighlight">\(\hat{H}\)</span> operator in the matrix representation. This is easy, since we know its action (up to a factor of <span class="math notranslate nohighlight">\(1/h^2\)</span>:</p>
 <p><span class="math notranslate nohighlight">\((\hat{H}\phi)_i \propto \phi_{i+1} + \phi_{i-1} - 2\phi_i\)</span>.</p>
@@ -815,9 +784,7 @@ document.write(`
 <p>The matrix exponential can be calculated in SciPy (via a Padé approximant, see <a class="reference external" href="https://epubs.siam.org/doi/10.1137/09074721X">https://epubs.siam.org/doi/10.1137/09074721X</a>):</p>
 <p><code class="docutils literal notranslate"><span class="pre">scipy.linalg.expm()</span></code>,</p>
 <p>allowing us to perform the direct time step evolution in the simple case we are considering.</p>
-</section>
-<section id="example-10-4-direct-inversion-of-the-matrix-and-the-full-evolution">
-<h2>Example 10.4: Direct inversion of the matrix and the full evolution<a class="headerlink" href="#example-10-4-direct-inversion-of-the-matrix-and-the-full-evolution" title="Link to this heading">#</a></h2>
+<p>##3 Example 10.4: Direct inversion of the matrix and the full evolution</p>
 <p>Use direct inversion of the tri-diagonal matrix to calculate the evolution in the problem of Examples 10.3 and 10.4.</p>
 <p>(a) Use the implicit formula as the starting point:</p>
 <p><span class="math notranslate nohighlight">\(\phi^{n+1} = \frac{1}{1 + \hat{H} \Delta t} \left[ \phi^n + S^n \Delta t \right]\)</span>,</p>
@@ -829,6 +796,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\phi^{n+1} = e^{-\Delta t \hat{H}} \phi^n\)</span>.</p>
 <p>You may use the matrix SciPy exponential:</p>
 <p><code class="docutils literal notranslate"><span class="pre">scipy.linalg.expm</span></code></p>
+</section>
 </section>
 </section>
 
@@ -868,7 +836,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Boundary Value and Eigenvalue Problems</p>
       </div>
     </a>
 </div>
@@ -887,26 +855,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elliptic-partial-differential-equations">Elliptic Partial Differential Equations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization">Discretization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-principle-approach">Variational Principle Approach</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-iterative-method-for-boundary-value-problems">An Iterative Method for Boundary Value Problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-1-the-relaxation-method-for-partial-differential-equations-in-one-dimension">Example 10.1: The relaxation method for partial differential equations in one dimension.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relaxation-method-in-higher-dimensions">The Relaxation Method in Higher Dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elliptic-partial-differential-equations">10.2. Elliptic Partial Differential Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization">10.2.1. Discretization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-principle-approach">10.2.2. Variational Principle Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-iterative-method-for-boundary-value-problems">10.2.3. An Iterative Method for Boundary Value Problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-1-the-relaxation-method-for-partial-differential-equations-in-one-dimension">10.2.4. Example 10.1: The relaxation method for partial differential equations in one dimension.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relaxation-method-in-higher-dimensions">10.2.5. The Relaxation Method in Higher Dimensions</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#parabolic-partial-differential-equations">Parabolic Partial Differential Equations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-discretization-and-instabilities">Naive Discretization and Instabilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-2-parabolic-pdes-a-first-example">Example 10.2: Parabolic PDEs: a first example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-schemes">Implicit Schemes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-3-application-of-the-implicit-scheme-for-parabolic-pdes">Example 10.3: Application of the Implicit Scheme for Parabolic PDEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-by-direct-matrix-multiplication">Solution by Direct Matrix Multiplication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-4-direct-inversion-of-the-matrix-and-the-full-evolution">Example 10.4: Direct inversion of the matrix and the full evolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabolic-partial-differential-equations">10.3. Parabolic Partial Differential Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-discretization-and-instabilities">10.3.1. Naive Discretization and Instabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-2-parabolic-pdes-a-first-example">10.3.2. Example 10.2: Parabolic PDEs: a first example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-schemes">10.3.3. Implicit Schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10-3-application-of-the-implicit-scheme-for-parabolic-pdes">10.3.4. Example 10.3: Application of the Implicit Scheme for Parabolic PDEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-by-direct-matrix-multiplication">10.3.5. Solution by Direct Matrix Multiplication</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -930,7 +896,7 @@ By Andreas Papaefstathiou
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

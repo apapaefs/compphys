@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Computer Number Representations &#8212; Computational Physics I (PHYS 3500K)</title>
+    <title>2. To err is human, to really foul things up requires a computer! &#8212; Computational Physics I (PHYS 3500K)</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter2/Chapter2';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Deterministic Randomness" href="../Chapter3/Chapter3.html" />
-    <link rel="prev" title="Making Computers Obey" href="../Chapter1/Chapter1.html" />
+    <link rel="next" title="3. Randomness and Random Walks" href="../Chapter3/Chapter3.html" />
+    <link rel="prev" title="1. Hello Whimsical World of Pythonic Physics!" href="../Chapter1/Chapter1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,51 +174,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    Computational Physics I - PHYS 3500K
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">Making Computers Obey</a></li>
-
-
-
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Computer Number Representations</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">Deterministic Randomness</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">Numerical Differentiation</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">Introduction</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">Trial-and-Error Root Finding</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">Introduction</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">Introduction</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">Introduction</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">Introduction</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">1. Hello Whimsical World of Pythonic Physics!</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. To err is human, to really foul things up requires a computer!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">3. Randomness and Random Walks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">4. Numerical Differentiation and Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">5. Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">6. Matrix Computing, Trial-and-Error Searching and Data Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">7. Ordinary Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">8. An Introduction to Nonlinear Dynamics and Chaos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">9. Boundary Value and Eigenvalue Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">10. Partial Differential Equations</a></li>
 </ul>
 
     </div>
@@ -404,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Computer Number Representations</h1>
+    <h1>To err is human, to really foul things up requires a computer!</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,20 +384,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computer Number Representations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-computer-number-representations">Introduction to Computer Number Representations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-numbers">Floating-Point Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-number-representations">2.1. Computer Number Representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-computer-number-representations">2.1.1. Introduction to Computer Number Representations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-numbers">2.1.2. Floating-Point Numbers</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-uncertainties-in-computations">Errors and Uncertainties in Computations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">Types of Errors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtractive-cancelation">Subtractive Cancelation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-errors">Round-off Errors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-error-accumulation">Round-off Error Accumulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-uncertainties-in-computations">2.2. Errors and Uncertainties in Computations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">2.2.1. Types of Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtractive-cancelation">2.2.2. Subtractive Cancelation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-errors">2.2.3. Round-off Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-error-accumulation">2.2.4. Round-off Error Accumulation</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -438,11 +407,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><font size="6"> <strong>Chapter 2: To err is human, to really foul things up requires a computer!</strong> </font></p>
-<section class="tex2jax_ignore mathjax_ignore" id="computer-number-representations">
-<h1>Computer Number Representations<a class="headerlink" href="#computer-number-representations" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="to-err-is-human-to-really-foul-things-up-requires-a-computer">
+<h1><span class="section-number">2. </span>To err is human, to really foul things up requires a computer!<a class="headerlink" href="#to-err-is-human-to-really-foul-things-up-requires-a-computer" title="Link to this heading">#</a></h1>
+<section id="computer-number-representations">
+<h2><span class="section-number">2.1. </span>Computer Number Representations<a class="headerlink" href="#computer-number-representations" title="Link to this heading">#</a></h2>
 <section id="introduction-to-computer-number-representations">
-<h2>Introduction to Computer Number Representations<a class="headerlink" href="#introduction-to-computer-number-representations" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.1.1. </span>Introduction to Computer Number Representations<a class="headerlink" href="#introduction-to-computer-number-representations" title="Link to this heading">#</a></h3>
 <p>Computers are powerful, but they are <em>finite</em>.</p>
 <p>A problem in computer design is how to represent an arbitrary number using a finite amount of memory space, and then how to deal with the limitations arising from this representation.</p>
 <p>Computer memories are based on magnetic or electronic realizations of a spin pointing up or down. Therefore, the most elementary units of computer memory are two binary integers (bits) 0 and 1.</p>
@@ -459,7 +429,7 @@ document.write(`
 <p>Trying to store a number larger than the hardware/software was designed for (overflow) was common in older machines!</p>
 </section>
 <section id="floating-point-numbers">
-<h2>Floating-Point Numbers<a class="headerlink" href="#floating-point-numbers" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.1.2. </span>Floating-Point Numbers<a class="headerlink" href="#floating-point-numbers" title="Link to this heading">#</a></h3>
 <p>Real numbers are represented on computers in either fixed-point or floating-point notations.</p>
 <p>In fixed-point notation, numbers are represented with a fixed number of places beyond the decimal point (e.g. integers).</p>
 <p>Most scientific computations use double-precision floating-point numbers with 64 bits = 8 B. (Note that in particle physics, quadruple precision is necessary for some calculations! There are specialized libraries for this purpose).</p>
@@ -542,10 +512,10 @@ document.write(`
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="errors-and-uncertainties-in-computations">
-<h1>Errors and Uncertainties in Computations<a class="headerlink" href="#errors-and-uncertainties-in-computations" title="Link to this heading">#</a></h1>
+<section id="errors-and-uncertainties-in-computations">
+<h2><span class="section-number">2.2. </span>Errors and Uncertainties in Computations<a class="headerlink" href="#errors-and-uncertainties-in-computations" title="Link to this heading">#</a></h2>
 <section id="types-of-errors">
-<h2>Types of Errors<a class="headerlink" href="#types-of-errors" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.1. </span>Types of Errors<a class="headerlink" href="#types-of-errors" title="Link to this heading">#</a></h3>
 <p>Four general types of errors exist to plague your computations:</p>
 <ol class="arabic simple">
 <li><p><strong>Blunders or bad theory</strong>: typos in program or data, fault in reasoning (i.e. in the theoretical description), using the wrong data files, etc..</p></li>
@@ -563,7 +533,7 @@ document.write(`
 <p>e.g. if a computer stores 1/3 as 0.3333 and 2/3 as 0.6667, if we ask the computer to do 2*(1/3) - 2/3 = 0.6666 - 0.6667 = -0.0001. Although small, this error is non-zero. If this is repeated millions of times, the final answer might not even be small!</p>
 </section>
 <section id="subtractive-cancelation">
-<h2>Subtractive Cancelation<a class="headerlink" href="#subtractive-cancelation" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.2. </span>Subtractive Cancelation<a class="headerlink" href="#subtractive-cancelation" title="Link to this heading">#</a></h3>
 <p>Calculations employing numbers that are stored only approximately on the computer can only be expected to yield approximate answers.</p>
 <p>We model the computer representation, <span class="math notranslate nohighlight">\(x_c\)</span>, of the exact number <span class="math notranslate nohighlight">\(x\)</span>, as:</p>
 <p><span class="math notranslate nohighlight">\(x_c \simeq x ( 1 + \epsilon_x )\)</span>,</p>
@@ -583,7 +553,7 @@ document.write(`
 <p>This subtractive cancelation can be eliminated by considering <span class="math notranslate nohighlight">\(e^{-x} = 1/e^x\)</span> instead, but round-off errors still remain.</p>
 </section>
 <section id="round-off-errors">
-<h2>Round-off Errors<a class="headerlink" href="#round-off-errors" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.3. </span>Round-off Errors<a class="headerlink" href="#round-off-errors" title="Link to this heading">#</a></h3>
 <p>Error arises from a single division of the computer representations of two numbers:</p>
 <p><span class="math notranslate nohighlight">\(a = \frac{b}{c} \rightarrow a_c = \frac{b_c}{c_c} = \frac{b}{c} \left( \frac{1+\epsilon_b}{1+\epsilon_c} \right)\)</span>,</p>
 <p>so:</p>
@@ -598,7 +568,7 @@ document.write(`
 <p>e.g. Evaluate at <span class="math notranslate nohighlight">\(x=\pi/4\)</span> and assume an error in the 4th decimal place of <span class="math notranslate nohighlight">\(x\)</span>, then we obtain a similar error of <span class="math notranslate nohighlight">\(1.5\times 10^{-4}\)</span> on <span class="math notranslate nohighlight">\(f(x) = \sqrt{1+x}\)</span>.</p>
 </section>
 <section id="round-off-error-accumulation">
-<h2>Round-off Error Accumulation<a class="headerlink" href="#round-off-error-accumulation" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.4. </span>Round-off Error Accumulation<a class="headerlink" href="#round-off-error-accumulation" title="Link to this heading">#</a></h3>
 <p>If a calculation has a large number of steps, we can view the error as a step in a random walk.</p>
 <p>For a random walk (see later), the total distance <span class="math notranslate nohighlight">\(R\)</span>, covered in <span class="math notranslate nohighlight">\(N\)</span> steps of length <span class="math notranslate nohighlight">\(r\)</span> is:</p>
 <p><span class="math notranslate nohighlight">\(R = \sqrt{N} r\)</span></p>
@@ -606,6 +576,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\epsilon_\mathrm{ro} = \sqrt{N} \epsilon_m\)</span></p>
 <p>If the round-off error does not accumulate in a random manner: a more detailed analysis is needed.</p>
 <p>In some cases there may be no cancelation, and the error may increase as <span class="math notranslate nohighlight">\(N \epsilon_m\)</span> instead. Even worse, in some recursive algorithms, error generation can be coherent, leading to a <span class="math notranslate nohighlight">\(N!\)</span> increase in error.</p>
+</section>
 </section>
 </section>
 
@@ -645,7 +616,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Making Computers Obey</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Hello Whimsical World of Pythonic Physics!</p>
       </div>
     </a>
     <a class="right-next"
@@ -653,7 +624,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deterministic Randomness</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Randomness and Random Walks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -673,20 +644,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computer Number Representations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-computer-number-representations">Introduction to Computer Number Representations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-numbers">Floating-Point Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-number-representations">2.1. Computer Number Representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-computer-number-representations">2.1.1. Introduction to Computer Number Representations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-numbers">2.1.2. Floating-Point Numbers</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-uncertainties-in-computations">Errors and Uncertainties in Computations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">Types of Errors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtractive-cancelation">Subtractive Cancelation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-errors">Round-off Errors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-error-accumulation">Round-off Error Accumulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-uncertainties-in-computations">2.2. Errors and Uncertainties in Computations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-errors">2.2.1. Types of Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtractive-cancelation">2.2.2. Subtractive Cancelation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-errors">2.2.3. Round-off Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#round-off-error-accumulation">2.2.4. Round-off Error Accumulation</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -710,7 +680,7 @@ By Andreas Papaefstathiou
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

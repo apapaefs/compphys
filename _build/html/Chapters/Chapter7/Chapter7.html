@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; Computational Physics I (PHYS 3500K)</title>
+    <title>7. Ordinary Differential Equations &#8212; Computational Physics I (PHYS 3500K)</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter7/Chapter7';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction" href="../Chapter8/Chapter8.html" />
-    <link rel="prev" title="Trial-and-Error Root Finding" href="../Chapter6/Chapter6.html" />
+    <link rel="next" title="8. An Introduction to Nonlinear Dynamics and Chaos" href="../Chapter8/Chapter8.html" />
+    <link rel="prev" title="6. Matrix Computing, Trial-and-Error Searching and Data Fitting" href="../Chapter6/Chapter6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,51 +174,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    Computational Physics I - PHYS 3500K
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">Making Computers Obey</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">Computer Number Representations</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">Deterministic Randomness</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">Numerical Differentiation</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">Introduction</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">Trial-and-Error Root Finding</a></li>
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">Introduction</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">Introduction</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">Introduction</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">1. Hello Whimsical World of Pythonic Physics!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">2. To err is human, to really foul things up requires a computer!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">3. Randomness and Random Walks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">4. Numerical Differentiation and Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">5. Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">6. Matrix Computing, Trial-and-Error Searching and Data Fitting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Ordinary Differential Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter8/Chapter8.html">8. An Introduction to Nonlinear Dynamics and Chaos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">9. Boundary Value and Eigenvalue Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">10. Partial Differential Equations</a></li>
 </ul>
 
     </div>
@@ -404,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Ordinary Differential Equations</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,28 +384,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-preliminaries">Mathematical Preliminaries</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-form-for-odes">Dynamic form for ODEs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-algorithms">ODE Algorithms</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-method">Euler’s Method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-1-an-application-of-euler-s-method">Example 7.1: An Application of Euler’s Method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-evaluation-of-the-integration-algorithm">Example 7.2: Evaluation of the Integration Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-preliminaries">7.2. Mathematical Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-form-for-odes">7.3. Dynamic form for ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-algorithms">7.4. ODE Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-method">7.4.1. Euler’s Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-1-an-application-of-euler-s-method">7.4.1.1. Example 7.1: An Application of Euler’s Method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-evaluation-of-the-integration-algorithm">7.4.1.2. Example 7.2: Evaluation of the Integration Algorithm</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runge-kutta-methods">Runge-Kutta Methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runge-kutta-methods">7.4.2. Runge-Kutta Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">7.4.2.1. Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-nonlinear-oscillators">Application: Nonlinear Oscillators</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-4-oscillator-warmup-simple-harmonic-motion">Example 7.4: Oscillator warmup: Simple Harmonic Motion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-5-nonlinear-oscillator-models">Example 7.5: Nonlinear Oscillator Models</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-nonlinear-oscillators">7.4.3. Application: Nonlinear Oscillators</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-4-oscillator-warmup-simple-harmonic-motion">7.4.3.1. Example 7.4: Oscillator warmup: Simple Harmonic Motion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-5-nonlinear-oscillator-models">7.4.3.2. Example 7.5: Nonlinear Oscillator Models</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -446,15 +415,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><font size="6"> <strong>Chapter 7: Ordinary Differential Equations</strong> </font></p>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ordinary-differential-equations">
+<h1><span class="section-number">7. </span>Ordinary Differential Equations<a class="headerlink" href="#ordinary-differential-equations" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">7.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Many of the laws of physics are formulated in terms of differential equations.</p>
 <p>Part of the power of computational tools is that it is easy to solve almost every differential equation. E.g. one can go beyond the small displacement in the description of oscillations, and explore interesting nonlinear phenomena.</p>
 <p>Let’s begin with a recap of some mathematical preliminaries that pertain to differential equations, and then move on, in this chapter, to to discuss algorithms for solving the ordinary differential equations.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="mathematical-preliminaries">
-<h1>Mathematical Preliminaries<a class="headerlink" href="#mathematical-preliminaries" title="Link to this heading">#</a></h1>
+<section id="mathematical-preliminaries">
+<h2><span class="section-number">7.2. </span>Mathematical Preliminaries<a class="headerlink" href="#mathematical-preliminaries" title="Link to this heading">#</a></h2>
 <p><strong>ORDER</strong>: The order of a differential equation refers to the degree of the derivative.</p>
 <p>e.g. the most general form for a <em>first-order</em> differential equation is:</p>
 <p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} y } { \mathrm{d} x } = f(x,y)\)</span>.</p>
@@ -485,8 +455,8 @@ document.write(`
 <p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d}^2 y } { \mathrm{d} t^2 } = \frac{1}{m} F(y,t)\)</span>.</p>
 <p>In addition to the initial conditions, it is possible to further restrict the solutions of differential equations, e.g. through <em>boundary conditions</em> that constrain one solution to have fixed values at the boundaries of the solution space.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="dynamic-form-for-odes">
-<h1>Dynamic form for ODEs<a class="headerlink" href="#dynamic-form-for-odes" title="Link to this heading">#</a></h1>
+<section id="dynamic-form-for-odes">
+<h2><span class="section-number">7.3. </span>Dynamic form for ODEs<a class="headerlink" href="#dynamic-form-for-odes" title="Link to this heading">#</a></h2>
 <p>The most general form of an ODE is a <em>set</em> of <span class="math notranslate nohighlight">\(M\)</span> <em>coupled first-order</em> differential equations:</p>
 <p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} \vec{y} } { \mathrm{d} x } = \vec{f}(x,\vec{y})\)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> is the independent variable and <span class="math notranslate nohighlight">\(\vec{y}\)</span> is a vector of <span class="math notranslate nohighlight">\(M\)</span> dependent variables. The vector of functions <span class="math notranslate nohighlight">\(f\)</span> is an <span class="math notranslate nohighlight">\(M\)</span>-component vector as well.</p>
@@ -507,10 +477,10 @@ document.write(`
 <p>This is the kind of problem that occurs, e.g. when we are given the initial position and momentum of a particle and we wish to find its subsequent motion.</p>
 <p>Later on, we will discuss the equally important boundary value and eigenvalue problems.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ode-algorithms">
-<h1>ODE Algorithms<a class="headerlink" href="#ode-algorithms" title="Link to this heading">#</a></h1>
+<section id="ode-algorithms">
+<h2><span class="section-number">7.4. </span>ODE Algorithms<a class="headerlink" href="#ode-algorithms" title="Link to this heading">#</a></h2>
 <section id="euler-s-method">
-<h2>Euler’s Method<a class="headerlink" href="#euler-s-method" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">7.4.1. </span>Euler’s Method<a class="headerlink" href="#euler-s-method" title="Link to this heading">#</a></h3>
 <p>We are interested in the solution of <span class="math notranslate nohighlight">\(\frac{ \mathrm{d} y } { \mathrm{d} x } = f(x,y)\)</span>, with the initial condition <span class="math notranslate nohighlight">\(y(x=0) = y_0\)</span>.</p>
 <p>More specifically, we are usually interested in the value of <span class="math notranslate nohighlight">\(y\)</span> at particular vlaue of <span class="math notranslate nohighlight">\(x\)</span>, say <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
 <p>The general strategy is to divide the interval <span class="math notranslate nohighlight">\([0,1]\)</span> into a large number, <span class="math notranslate nohighlight">\(N\)</span>, of equally spaced subintervals of length <span class="math notranslate nohighlight">\(h=1/N\)</span> and then to develop a recursion formula relating <span class="math notranslate nohighlight">\(y_n\)</span> to <span class="math notranslate nohighlight">\(\{y_{n-1}, y_{n-2},...\}\)</span>, where <span class="math notranslate nohighlight">\(y_n\)</span> is our approximation to <span class="math notranslate nohighlight">\(y(x_n = nh)\)</span>. Such a recursion formula would then allow a step-by-step integration of the differential equation from <span class="math notranslate nohighlight">\(x=0\)</span> to <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
@@ -522,14 +492,14 @@ document.write(`
 <p>Evidently, this error decreases only linearly with decreasing step size, so that if we halve <span class="math notranslate nohighlight">\(h\)</span> (and perform twice as many steps), we halve the error of the final answer.</p>
 <p>Let’s apply this method to a simple problem.</p>
 <section id="example-7-1-an-application-of-euler-s-method">
-<h3>Example 7.1: An Application of Euler’s Method<a class="headerlink" href="#example-7-1-an-application-of-euler-s-method" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">7.4.1.1. </span>Example 7.1: An Application of Euler’s Method<a class="headerlink" href="#example-7-1-an-application-of-euler-s-method" title="Link to this heading">#</a></h4>
 <p>Apply Euler’s method to solve:</p>
 <p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d} y } { \mathrm{d} x } = -xy\)</span> with initial condition <span class="math notranslate nohighlight">\(y(0) = 1\)</span> from <span class="math notranslate nohighlight">\(x=0\)</span> to <span class="math notranslate nohighlight">\(x=3\)</span>.</p>
 <p>Use various step sizes: <span class="math notranslate nohighlight">\(h=0.500, 0.200, 0.100, 0.050, 0.020, 0.010, 0.005, 0.002, 0.001\)</span> and calculate the error relative to the analytical solution <span class="math notranslate nohighlight">\(y(x) = \exp{-x^2/2}\)</span> at the points <span class="math notranslate nohighlight">\(x=1\)</span> and <span class="math notranslate nohighlight">\(x=3\)</span>. Does it scale as you expect with <span class="math notranslate nohighlight">\(h\)</span>?</p>
 <p>Plot the <span class="math notranslate nohighlight">\(y(x)\)</span> for a few step sizes, e.g. <span class="math notranslate nohighlight">\(h=0.500, 0.050, 0.001\)</span>, as well as the analytical function.</p>
 </section>
 <section id="example-7-2-evaluation-of-the-integration-algorithm">
-<h3>Example 7.2: Evaluation of the Integration Algorithm<a class="headerlink" href="#example-7-2-evaluation-of-the-integration-algorithm" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">7.4.1.2. </span>Example 7.2: Evaluation of the Integration Algorithm<a class="headerlink" href="#example-7-2-evaluation-of-the-integration-algorithm" title="Link to this heading">#</a></h4>
 <p>A simple and often stringent test of an accurate numerical integration is to use the final value of <span class="math notranslate nohighlight">\(y\)</span> obtained as the initial condition to integrate backward from the final value of <span class="math notranslate nohighlight">\(x\)</span> to the starting point. The extent to which the resulting value of <span class="math notranslate nohighlight">\(y\)</span> differs from the original initial condition is then a measure of the inaccuracy.</p>
 <p>Apply this test to Example 7.1.</p>
 <p>Although Euler’s method seems to work quite well, it is generally unsatisfactory due to its lower-order accuracy.</p>
@@ -537,7 +507,7 @@ document.write(`
 </section>
 </section>
 <section id="runge-kutta-methods">
-<h2>Runge-Kutta Methods<a class="headerlink" href="#runge-kutta-methods" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">7.4.2. </span>Runge-Kutta Methods<a class="headerlink" href="#runge-kutta-methods" title="Link to this heading">#</a></h3>
 <p>There is a lot of freedom in writing down algorithms for integrating differential equations. There exists a large number of them, each having their own pecularities and advantages.</p>
 <p>One very convenient and widely used class of methods are the Runge-Kutta algorithms, which come in varying orders of accuracy.</p>
 <p>Here, we derive the second-order version (<code class="docutils literal notranslate"><span class="pre">rk2</span></code>) to give the spirit of the approach and then state the equations for the fourth-order method.</p>
@@ -567,12 +537,12 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(k_4 = h f(x_n + h, y_n + k_3)\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(y_{n+1} = y_n + \frac{1}{6} (k_1 + 2 k_2 + 2 k_3 + k_4) + \mathcal{O}(h^5)\)</span>.</p>
 <section id="example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">
-<h3>Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.<a class="headerlink" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">7.4.2.1. </span>Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.<a class="headerlink" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1" title="Link to this heading">#</a></h4>
 <p>Compare the accuracy of the methods.</p>
 </section>
 </section>
 <section id="application-nonlinear-oscillators">
-<h2>Application: Nonlinear Oscillators<a class="headerlink" href="#application-nonlinear-oscillators" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">7.4.3. </span>Application: Nonlinear Oscillators<a class="headerlink" href="#application-nonlinear-oscillators" title="Link to this heading">#</a></h3>
 <p>With several algorithms for solving ODEs in our possession, we can now examine the behavior of oscillators beyond the harmonic approximation.</p>
 <p>Newton’s second law provides the equation of motion for an oscillator, which could be, e.g. a mass attached to a spring moving in one dimension, <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(F_k(x) + F_\mathrm{ext}(x,t) = m \frac{ \mathrm{d}^2 x}{\mathrm{d}t^2}\)</span>,</p>
@@ -598,13 +568,13 @@ document.write(`
 <p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d}p}{\mathrm{d}t} = F_k(x)\)</span>.</p>
 <p>Let’s begin by examining simple harmonic motion, that we already know a lot about, before we consider the nonlinear cases.</p>
 <section id="example-7-4-oscillator-warmup-simple-harmonic-motion">
-<h3>Example 7.4: Oscillator warmup: Simple Harmonic Motion<a class="headerlink" href="#example-7-4-oscillator-warmup-simple-harmonic-motion" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">7.4.3.1. </span>Example 7.4: Oscillator warmup: Simple Harmonic Motion<a class="headerlink" href="#example-7-4-oscillator-warmup-simple-harmonic-motion" title="Link to this heading">#</a></h4>
 <p>(a) Generalize the single-variable methods that we have derived to the two-variable case relevant for oscillatory motion.</p>
 <p>(b) Integrate the equations of motion for single harmonic motion, i.e. with <span class="math notranslate nohighlight">\(F_k(x) = -kx\)</span>, for values of <span class="math notranslate nohighlight">\(k=4\pi^2\)</span> and <span class="math notranslate nohighlight">\(m=1\)</span> and verify that the period <span class="math notranslate nohighlight">\(T\)</span> is what you expect from your Physics I course (recall: <span class="math notranslate nohighlight">\(T=2\pi \sqrt{m/k}\)</span>). You may choose the initial conditions (e.g. <span class="math notranslate nohighlight">\(p=0\)</span> and <span class="math notranslate nohighlight">\(x=x_0\)</span> at <span class="math notranslate nohighlight">\(t=t_0\)</span>, where <span class="math notranslate nohighlight">\(x_0\)</span> would be the amplitude).</p>
 <p>We are now in a position to investigate nonlinear oscillations. Let’s consider our two models in the next example.</p>
 </section>
 <section id="example-7-5-nonlinear-oscillator-models">
-<h3>Example 7.5: Nonlinear Oscillator Models<a class="headerlink" href="#example-7-5-nonlinear-oscillator-models" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">7.4.3.2. </span>Example 7.5: Nonlinear Oscillator Models<a class="headerlink" href="#example-7-5-nonlinear-oscillator-models" title="Link to this heading">#</a></h4>
 <p>For this example, we will use our generalized <code class="docutils literal notranslate"><span class="pre">rk4</span></code> function from Example 7.4.</p>
 <p>Consider the restoring forces arising from both potentials:</p>
 <p><span class="math notranslate nohighlight">\(F_k(x) = - kx ( 1 - \alpha x)\)</span>,</p>
@@ -615,6 +585,7 @@ document.write(`
 <p>(b) Verify that nonharmonic oscillators are <em>nonisosynchronous</em>, i.e. that vibrations with different amplitudes have different periods.</p>
 <p>(c) Devise an algorithm to determinet he period <span class="math notranslate nohighlight">\(T\)</span> of the oscillation, by recording times at which the mass passes through the origin. Note that because the motion may be asymmetric, you must record at least three times to deduce the period.</p>
 <p>(d) Construct a graph of the deduced period as a function of initial amplitude.</p>
+</section>
 </section>
 </section>
 </section>
@@ -655,7 +626,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Trial-and-Error Root Finding</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Matrix Computing, Trial-and-Error Searching and Data Fitting</p>
       </div>
     </a>
     <a class="right-next"
@@ -663,7 +634,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>An Introduction to Nonlinear Dynamics and Chaos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -683,28 +654,27 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-preliminaries">Mathematical Preliminaries</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-form-for-odes">Dynamic form for ODEs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-algorithms">ODE Algorithms</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-method">Euler’s Method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-1-an-application-of-euler-s-method">Example 7.1: An Application of Euler’s Method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-evaluation-of-the-integration-algorithm">Example 7.2: Evaluation of the Integration Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-preliminaries">7.2. Mathematical Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-form-for-odes">7.3. Dynamic form for ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-algorithms">7.4. ODE Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-method">7.4.1. Euler’s Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-1-an-application-of-euler-s-method">7.4.1.1. Example 7.1: An Application of Euler’s Method</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-evaluation-of-the-integration-algorithm">7.4.1.2. Example 7.2: Evaluation of the Integration Algorithm</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runge-kutta-methods">Runge-Kutta Methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runge-kutta-methods">7.4.2. Runge-Kutta Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">7.4.2.1. Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-nonlinear-oscillators">Application: Nonlinear Oscillators</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-4-oscillator-warmup-simple-harmonic-motion">Example 7.4: Oscillator warmup: Simple Harmonic Motion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-5-nonlinear-oscillator-models">Example 7.5: Nonlinear Oscillator Models</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-nonlinear-oscillators">7.4.3. Application: Nonlinear Oscillators</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-4-oscillator-warmup-simple-harmonic-motion">7.4.3.1. Example 7.4: Oscillator warmup: Simple Harmonic Motion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-5-nonlinear-oscillator-models">7.4.3.2. Example 7.5: Nonlinear Oscillator Models</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+</ul>
   </nav></div>
 
 </div></div>
@@ -728,7 +698,7 @@ By Andreas Papaefstathiou
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

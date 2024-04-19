@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; Computational Physics I (PHYS 3500K)</title>
+    <title>8. An Introduction to Nonlinear Dynamics and Chaos &#8212; Computational Physics I (PHYS 3500K)</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter8/Chapter8';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction" href="../Chapter9/Chapter9.html" />
-    <link rel="prev" title="Introduction" href="../Chapter7/Chapter7.html" />
+    <link rel="next" title="9. Boundary Value and Eigenvalue Problems" href="../Chapter9/Chapter9.html" />
+    <link rel="prev" title="7. Ordinary Differential Equations" href="../Chapter7/Chapter7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,51 +174,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    Computational Physics I - PHYS 3500K
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">Making Computers Obey</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">Computer Number Representations</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">Deterministic Randomness</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">Numerical Differentiation</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">Introduction</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">Trial-and-Error Root Finding</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">Introduction</a></li>
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">Introduction</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">Introduction</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../Chapter1/Chapter1.html">1. Hello Whimsical World of Pythonic Physics!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter2/Chapter2.html">2. To err is human, to really foul things up requires a computer!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter3/Chapter3.html">3. Randomness and Random Walks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter4/Chapter4.html">4. Numerical Differentiation and Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter5/Chapter5.html">5. Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter6/Chapter6.html">6. Matrix Computing, Trial-and-Error Searching and Data Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter7/Chapter7.html">7. Ordinary Differential Equations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. An Introduction to Nonlinear Dynamics and Chaos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter9/Chapter9.html">9. Boundary Value and Eigenvalue Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter10/Chapter10.html">10. Partial Differential Equations</a></li>
 </ul>
 
     </div>
@@ -404,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>An Introduction to Nonlinear Dynamics and Chaos</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,37 +384,38 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-being-nonlinear">The Importance of being Nonlinear</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flows-on-the-line">Flows on the Line</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-stability">Fixed Points and Stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-1-find-all-the-fixed-points-for-dot-x-x-2-1-and-classify-their-stability">Example 8.1: Find all the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = x^2 -1\)</span>, and classify their stability.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-analysis">Linear Stability Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-2-use-linearization-to-determine-the-stability-of-the-fixed-points-for-dot-x-sin-x">Example 8.2: Use linearization to determine the stability of the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = \sin x\)</span>.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-being-nonlinear">8.2. The Importance of being Nonlinear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flows-on-the-line">8.3. Flows on the Line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-stability">8.3.1. Fixed Points and Stability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-1-fixed-points-in-one-dimension">8.3.2. Example 8.1: Fixed Points in One-Dimension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-analysis">8.3.3. Linear Stability Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensional-systems">Two-Dimensional Systems</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-linear-systems">2D Linear Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-3-analysis-of-the-simple-harmonic-oscillator">Example 8.3: Analysis of the Simple Harmonic Oscillator.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-linear-systems">Classification of Linear Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-4-solve-the-initial-value-problem-dot-x-x-y-dot-y-4-x-2y-with-initial-condition-x-0-y-0-2-3">Example 8.4: Solve the initial value problem <span class="math notranslate nohighlight">\(\dot{x} = x + y\)</span>, <span class="math notranslate nohighlight">\(\dot{y} = 4 x - 2y\)</span> with initial condition <span class="math notranslate nohighlight">\((x_0, y_0) = (2,-3)\)</span>.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-phase-plane-and-phase-portraits">The Phase Plane and Phase Portraits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-linearization">Fixed Points and Linearization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-5-consider-the-system-dot-x-x-e-y-and-dot-y-y-first-use-qualitative-arguments-to-obtain-information-about-the-phase-portrait-then-use-the-runge-kutta-method-to-compute-several-trajectories-and-plot-them-on-the-phase-plane">Example 8.5: Consider the system <span class="math notranslate nohighlight">\(\dot{x} = x + e^{-y}\)</span> and <span class="math notranslate nohighlight">\(\dot{y} = -y\)</span>. First use qualitative arguments to obtain information about the phase portrait. Then, use the Runge-Kutta method to compute several trajectories, and plot them on the phase plane.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-2-use-linearization-to-determine-the-stability-of-the-fixed-points-for-dot-x-sin-x">8.4. Example 8.2: Use linearization to determine the stability of the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = \sin x\)</span>.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensional-systems">8.5. Two-Dimensional Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-linear-systems">8.5.1. 2D Linear Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-3-analysis-of-the-simple-harmonic-oscillator">8.5.2. Example 8.3: Analysis of the Simple Harmonic Oscillator.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-linear-systems">8.5.3. Classification of Linear Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-4-an-initial-value-problem">8.5.4. Example 8.4: An Initial Value Problem</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lorenz-equations-and-chaos">The Lorenz Equations and Chaos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-properties-of-the-lorenz-equations">Simple Properties of the Lorenz Equations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-of-the-origin">Linear Stability of the Origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-phase-plane-and-phase-portraits">8.6. The Phase Plane and Phase Portraits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-linearization">8.6.1. Fixed Points and Linearization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-5-qualitative-arguments-vs-runge-kutta">8.6.2. Example 8.5: Qualitative Arguments vs. Runge-Kutta</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-1-chaos-on-a-strange-attractor">Exercise 8.1: Chaos on a Strange Attractor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definition-of-chaos">The Definition of Chaos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-attractor-animation">Lorenz Attractor Animation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lorenz-equations-and-chaos">8.7. The Lorenz Equations and Chaos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-properties-of-the-lorenz-equations">8.7.1. Simple Properties of the Lorenz Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-of-the-origin">8.7.1.1. Linear Stability of the Origin</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-1-chaos-on-a-strange-attractor">8.7.2. Exercise 8.1: Chaos on a Strange Attractor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definition-of-chaos">8.7.3. The Definition of Chaos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-attractor-animation">8.7.4. Lorenz Attractor Animation</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -455,15 +426,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><font size="6"> <strong>Chapter 8: An Introduction to Nonlinear Dynamics and Chaos</strong> </font></p>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="an-introduction-to-nonlinear-dynamics-and-chaos">
+<h1><span class="section-number">8. </span>An Introduction to Nonlinear Dynamics and Chaos<a class="headerlink" href="#an-introduction-to-nonlinear-dynamics-and-chaos" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">8.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>We have already had a glimpse at nonlinear systems, e.g. in the case of the pendulum without the small-angle approximation. The aim of this chapter is to provide a brief foray into some of the formal aspects of the analysis of dynamical nonlinear systems, while introducing concepts such as flows in phase space, fixed points, linearization, and chaotic systems.</p>
 <p>All of these concepts are part of the subject of dynamics, i.e. the study of systems that evolve in time.</p>
 <p>We will use the computational knowledge we have gained thus far to obtain a quantitative understanding of some simple systems.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-importance-of-being-nonlinear">
-<h1>The Importance of being Nonlinear<a class="headerlink" href="#the-importance-of-being-nonlinear" title="Link to this heading">#</a></h1>
+<section id="the-importance-of-being-nonlinear">
+<h2><span class="section-number">8.2. </span>The Importance of being Nonlinear<a class="headerlink" href="#the-importance-of-being-nonlinear" title="Link to this heading">#</a></h2>
 <p>There are two types of dynamical systems: differential equations and iterated maps (or difference equations). Here we will study differential equations, since we already have the machinery developed to solve them, even in their nonlinear form.</p>
 <p>Why are nonlinear problems harder to solve than linear ones?</p>
 <p>The answer lies in the fact that linear systems can be broken down into parts. Each part can be solved sparately and finally recombined to get an answer. This allows for fantastic simplification of complex problems, and underlies methods such as normal modes, Laplace transforms, superposition arguments, and Fourier analysis.</p>
@@ -472,10 +444,10 @@ document.write(`
 <p>Most of everyday life is nonlinear and the principle of superposition fails spectacularly!</p>
 <p>Within the realm of physics, nonlinearity is vital to the operation of a laser, the formation of turbulence in a fluid, and the superconductivity of Josephson junctions.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="flows-on-the-line">
-<h1>Flows on the Line<a class="headerlink" href="#flows-on-the-line" title="Link to this heading">#</a></h1>
+<section id="flows-on-the-line">
+<h2><span class="section-number">8.3. </span>Flows on the Line<a class="headerlink" href="#flows-on-the-line" title="Link to this heading">#</a></h2>
 <section id="fixed-points-and-stability">
-<h2>Fixed Points and Stability<a class="headerlink" href="#fixed-points-and-stability" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.3.1. </span>Fixed Points and Stability<a class="headerlink" href="#fixed-points-and-stability" title="Link to this heading">#</a></h3>
 <p>Let’s start by examining a one-dimensional, or first-order system, described by a differential equation of the form:</p>
 <p><span class="math notranslate nohighlight">\(\dot{x} = f(x)\)</span>,</p>
 <p>where, as usual, <span class="math notranslate nohighlight">\(\dot{~} \equiv \mathrm{d}/\mathrm{d}t\)</span>.</p>
@@ -657,12 +629,13 @@ document.write(`
 <p>The appearance of the phase portrait is controlled by the fixed points <span class="math notranslate nohighlight">\(x^*\)</span>, defined by <span class="math notranslate nohighlight">\(f(x^*)=0\)</span>. These are stagnation points of the flow. Solid dots are stable fixed points (the local flow is towards them), and open dots are unstable fixed points (the flow is away from them).</p>
 <p>In terms of the differential equation, the fixed points represent equilibrium solutions. An equlibrium is defined to be stable if all sufficiently small disturbances away from it damp out in time. Conversely, unstable equilibria, which disturbances grow in time, are represented by unstable fixed points.</p>
 </section>
-<section id="example-8-1-find-all-the-fixed-points-for-dot-x-x-2-1-and-classify-their-stability">
-<h2>Example 8.1: Find all the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = x^2 -1\)</span>, and classify their stability.<a class="headerlink" href="#example-8-1-find-all-the-fixed-points-for-dot-x-x-2-1-and-classify-their-stability" title="Link to this heading">#</a></h2>
+<section id="example-8-1-fixed-points-in-one-dimension">
+<h3><span class="section-number">8.3.2. </span>Example 8.1: Fixed Points in One-Dimension<a class="headerlink" href="#example-8-1-fixed-points-in-one-dimension" title="Link to this heading">#</a></h3>
+<p>Find all the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = x^2 -1\)</span>, and classify their stability.</p>
 <p>We note here that the definition of stable equilibrium is based on <em>small</em> disturbances: large disturbances may fail to decay. To emphasize this aspect of stability, we may characterize a fixed point as <em>locally stable</em> and not globally stable.</p>
 </section>
 <section id="linear-stability-analysis">
-<h2>Linear Stability Analysis<a class="headerlink" href="#linear-stability-analysis" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.3.3. </span>Linear Stability Analysis<a class="headerlink" href="#linear-stability-analysis" title="Link to this heading">#</a></h3>
 <p>We would like to have a more quantitative measure of stability, such as the rate of decay to a stable fixed point. To achieve this, we <em>linearize</em> about a fixed point.</p>
 <p>Let <span class="math notranslate nohighlight">\(x^*\)</span> be a fixed point and consider a small perturbation <span class="math notranslate nohighlight">\(\eta(t)\)</span> away from <span class="math notranslate nohighlight">\(x^*\)</span>: <span class="math notranslate nohighlight">\(x(t) = x^* + \eta(t)\)</span>. Evidently, since <span class="math notranslate nohighlight">\(x^*\)</span> is a constant:</p>
 <p><span class="math notranslate nohighlight">\(\dot{\eta} = \dot{x}\)</span>, and so: <span class="math notranslate nohighlight">\(\dot{\eta} = f(x) = f(x^* + \eta)\)</span>.</p>
@@ -676,15 +649,15 @@ document.write(`
 <p>Therefore, the slope, <span class="math notranslate nohighlight">\(f'(x^*)\)</span> at the fixed point determines its stability.</p>
 <p>The value <span class="math notranslate nohighlight">\(|1/f'(x^*)|\)</span> is a characteristic time scale, and determines the time required for <span class="math notranslate nohighlight">\(x(t)\)</span> to vary significantly in the neighborhood of <span class="math notranslate nohighlight">\(x^*\)</span>.</p>
 </section>
+</section>
 <section id="example-8-2-use-linearization-to-determine-the-stability-of-the-fixed-points-for-dot-x-sin-x">
-<h2>Example 8.2: Use linearization to determine the stability of the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = \sin x\)</span>.<a class="headerlink" href="#example-8-2-use-linearization-to-determine-the-stability-of-the-fixed-points-for-dot-x-sin-x" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4. </span>Example 8.2: Use linearization to determine the stability of the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = \sin x\)</span>.<a class="headerlink" href="#example-8-2-use-linearization-to-determine-the-stability-of-the-fixed-points-for-dot-x-sin-x" title="Link to this heading">#</a></h2>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="two-dimensional-systems">
-<h1>Two-Dimensional Systems<a class="headerlink" href="#two-dimensional-systems" title="Link to this heading">#</a></h1>
+<section id="two-dimensional-systems">
+<h2><span class="section-number">8.5. </span>Two-Dimensional Systems<a class="headerlink" href="#two-dimensional-systems" title="Link to this heading">#</a></h2>
 <p>Let’s now consider the simplest class of a higher-dimensional system, one in two dimensions (2D). We will start with <em>linear</em> systems, which are interesting in their own right, but play an important role in the classification of fixed points of nonlinear systems.</p>
 <section id="d-linear-systems">
-<h2>2D Linear Systems<a class="headerlink" href="#d-linear-systems" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.5.1. </span>2D Linear Systems<a class="headerlink" href="#d-linear-systems" title="Link to this heading">#</a></h3>
 <p>A 2D linear system is defined by:</p>
 <p><span class="math notranslate nohighlight">\(\dot{x} = a x + b y\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(\dot{y} = c x + d y\)</span>.</p>
@@ -695,13 +668,13 @@ document.write(`
 <p>The solutions of <span class="math notranslate nohighlight">\(\mathbf{\dot{x}} = A \mathbf{x}\)</span> can be visualized as trajectories moving on the <span class="math notranslate nohighlight">\((x,y)\)</span> plane, in this context called the <em>phase plane</em>.</p>
 </section>
 <section id="example-8-3-analysis-of-the-simple-harmonic-oscillator">
-<h2>Example 8.3: Analysis of the Simple Harmonic Oscillator.<a class="headerlink" href="#example-8-3-analysis-of-the-simple-harmonic-oscillator" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.5.2. </span>Example 8.3: Analysis of the Simple Harmonic Oscillator.<a class="headerlink" href="#example-8-3-analysis-of-the-simple-harmonic-oscillator" title="Link to this heading">#</a></h3>
 <p>Vibrations of a mass hanging from a linear spring are governed by the linear differential equation:</p>
 <p><span class="math notranslate nohighlight">\(m \ddot{x} + kx = 0\)</span>, where <span class="math notranslate nohighlight">\(m\)</span> is the mass, <span class="math notranslate nohighlight">\(k\)</span> is the spring constant, and <span class="math notranslate nohighlight">\(x\)</span> is the displacement of the mass from equilibrium.</p>
 <p>Give a phase plane analysis of this simple harmonic oscillator.</p>
 </section>
 <section id="classification-of-linear-systems">
-<h2>Classification of Linear Systems<a class="headerlink" href="#classification-of-linear-systems" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.5.3. </span>Classification of Linear Systems<a class="headerlink" href="#classification-of-linear-systems" title="Link to this heading">#</a></h3>
 <p>Let’s discuss a more general approach of the classification of linear systems, by examining an example system:</p>
 <p><span class="math notranslate nohighlight">\(\mathbf{\dot{x}} = A \mathbf{x}\)</span>,</p>
 <p>where: <span class="math notranslate nohighlight">\(A = \left(\matrix{a &amp; 0\\ 0 &amp; -1}\right)\)</span>.</p>
@@ -1099,16 +1072,18 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\mathbf{x}(t) = c_1 e^{\lambda_1 t} \mathbf{v_1} + c_2 e^{\lambda_2 t}\mathbf{v_2}\)</span>.</p>
 <p>(It satisfies the initial condition and it is a linear combination of solutions, hence it is itself a solution.)</p>
 </section>
-<section id="example-8-4-solve-the-initial-value-problem-dot-x-x-y-dot-y-4-x-2y-with-initial-condition-x-0-y-0-2-3">
-<h2>Example 8.4: Solve the initial value problem <span class="math notranslate nohighlight">\(\dot{x} = x + y\)</span>, <span class="math notranslate nohighlight">\(\dot{y} = 4 x - 2y\)</span> with initial condition <span class="math notranslate nohighlight">\((x_0, y_0) = (2,-3)\)</span>.<a class="headerlink" href="#example-8-4-solve-the-initial-value-problem-dot-x-x-y-dot-y-4-x-2y-with-initial-condition-x-0-y-0-2-3" title="Link to this heading">#</a></h2>
+<section id="example-8-4-an-initial-value-problem">
+<h3><span class="section-number">8.5.4. </span>Example 8.4: An Initial Value Problem<a class="headerlink" href="#example-8-4-an-initial-value-problem" title="Link to this heading">#</a></h3>
+<p>Solve the initial value problem <span class="math notranslate nohighlight">\(\dot{x} = x + y\)</span>, <span class="math notranslate nohighlight">\(\dot{y} = 4 x - 2y\)</span> with initial condition <span class="math notranslate nohighlight">\((x_0, y_0) = (2,-3)\)</span>.</p>
 <p>Fortunately, we don’t need to go through the procedure of Example 8.4 to draw the phase portraot of a linear system: all we need to know are the eigenvalues and eigenvectors:</p>
 <p>If <span class="math notranslate nohighlight">\(\lambda_1, \lambda_2 &lt; 0\)</span>, there exists a stable fixed point at the origin. If on the other hand <span class="math notranslate nohighlight">\(\lambda_1, \lambda_2 &gt; 0\)</span>, the node is unstable. If one of the eigenvalues is positive and the other negative, the node is a saddle point.</p>
 <p>What if the eigenvalues are complex? Then the solution is a <em>center</em> or a (stable or unstable) <em>spiral</em>.</p>
 <p>if the eigenvalues are equal, then we have a <em>star node</em>.</p>
 <p>(And if there’s only one eigenvalue, the fixed point is a <em>degenerate node</em>).</p>
 </section>
+</section>
 <section id="the-phase-plane-and-phase-portraits">
-<h2>The Phase Plane and Phase Portraits<a class="headerlink" href="#the-phase-plane-and-phase-portraits" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.6. </span>The Phase Plane and Phase Portraits<a class="headerlink" href="#the-phase-plane-and-phase-portraits" title="Link to this heading">#</a></h2>
 <p>Our goal here of course is to study nonlinear systems. In 2D, the general form of a vector field on the phase plane is given by:</p>
 <p><span class="math notranslate nohighlight">\(\dot{x}_1 = f_1(x_1, x_2)\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(\dot{x}_2 = f_2(x_1, x_2)\)</span>,</p>
@@ -1118,9 +1093,8 @@ document.write(`
 <p>Here, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> represents a point on the phase plane and <span class="math notranslate nohighlight">\(\mathbf{\dot{x}}\)</span> is the velocity vector at that point. By flowing along the vector field, a phase point traces out a solution <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>, corresponding to a trajectory winding through the phase plane.</p>
 <p>Furthermore, the entire phase plane is filled with trajectories, since each point can play the role of an initial conditions.</p>
 <p>For nonlinear systems, there’s typically no hope of finding the trajectories analytically. Even when explicit formulas are available, they are often too complicated to provide much insight. Instead, we wish to determine first the qualitative behavior of the solutions by analytical considerations, and to probe the quantitative aspects numerically.</p>
-</section>
 <section id="fixed-points-and-linearization">
-<h2>Fixed Points and Linearization<a class="headerlink" href="#fixed-points-and-linearization" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.6.1. </span>Fixed Points and Linearization<a class="headerlink" href="#fixed-points-and-linearization" title="Link to this heading">#</a></h3>
 <p>To examine the nature of fixed points of nonlinear systems, we can apply the <em>linearization</em> technique in two dimensions.</p>
 <p>Consider the system:</p>
 <p><span class="math notranslate nohighlight">\(\dot{x} = f(x,y)\)</span>,</p>
@@ -1146,12 +1120,13 @@ document.write(`
 <p>Is it really safe to neglect the quadratic terms? The answer is yes, as long as the fixed point for the linearized system is not a borderline case (center, degenerate node, star or non-isolated fixed point).</p>
 <p>If the linearized system predicts a saddle, node, or a spiral, then the fixed point <em>really</em> is a saddle, node or spiral for the original nonlinear system.</p>
 </section>
-<section id="example-8-5-consider-the-system-dot-x-x-e-y-and-dot-y-y-first-use-qualitative-arguments-to-obtain-information-about-the-phase-portrait-then-use-the-runge-kutta-method-to-compute-several-trajectories-and-plot-them-on-the-phase-plane">
-<h2>Example 8.5: Consider the system <span class="math notranslate nohighlight">\(\dot{x} = x + e^{-y}\)</span> and <span class="math notranslate nohighlight">\(\dot{y} = -y\)</span>. First use qualitative arguments to obtain information about the phase portrait. Then, use the Runge-Kutta method to compute several trajectories, and plot them on the phase plane.<a class="headerlink" href="#example-8-5-consider-the-system-dot-x-x-e-y-and-dot-y-y-first-use-qualitative-arguments-to-obtain-information-about-the-phase-portrait-then-use-the-runge-kutta-method-to-compute-several-trajectories-and-plot-them-on-the-phase-plane" title="Link to this heading">#</a></h2>
+<section id="example-8-5-qualitative-arguments-vs-runge-kutta">
+<h3><span class="section-number">8.6.2. </span>Example 8.5: Qualitative Arguments vs. Runge-Kutta<a class="headerlink" href="#example-8-5-qualitative-arguments-vs-runge-kutta" title="Link to this heading">#</a></h3>
+<p>Consider the system <span class="math notranslate nohighlight">\(\dot{x} = x + e^{-y}\)</span> and <span class="math notranslate nohighlight">\(\dot{y} = -y\)</span>. First use qualitative arguments to obtain information about the phase portrait. Then, use the Runge-Kutta method to compute several trajectories, and plot them on the phase plane.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-lorenz-equations-and-chaos">
-<h1>The Lorenz Equations and Chaos<a class="headerlink" href="#the-lorenz-equations-and-chaos" title="Link to this heading">#</a></h1>
+<section id="the-lorenz-equations-and-chaos">
+<h2><span class="section-number">8.7. </span>The Lorenz Equations and Chaos<a class="headerlink" href="#the-lorenz-equations-and-chaos" title="Link to this heading">#</a></h2>
 <p>We begin our brief introduction to the concept of chaos with the Lorenz equations:</p>
 <p><span class="math notranslate nohighlight">\(\dot{x} = \sigma( y - x)\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(\dot{y} = rx - y - xz\)</span>,</p>
@@ -1164,7 +1139,7 @@ document.write(`
 <p>Lorenz discovered that this simple-looking, deterministic system could have extremely erratic dynamics. In particular, over a wide range of parameters, the solutions oscillate irregularly, never exactly repeating, but always remaining in a bounded region of phase space.</p>
 <p>When he plotted the trajectories in 3D, he discovered that they settled onto a complicated set, now known as a <em>strange attractor</em>, a fractal with dimension between 2 and 3.</p>
 <section id="simple-properties-of-the-lorenz-equations">
-<h2>Simple Properties of the Lorenz Equations<a class="headerlink" href="#simple-properties-of-the-lorenz-equations" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.7.1. </span>Simple Properties of the Lorenz Equations<a class="headerlink" href="#simple-properties-of-the-lorenz-equations" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(\dot{x} = \sigma( y - x)\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(\dot{y} = rx - y - xz\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(\dot{z} = xy - bz\)</span>.</p>
@@ -1173,7 +1148,7 @@ document.write(`
 <p>The point <span class="math notranslate nohighlight">\((x^*, y^*, z^*) = (0,0,0)\)</span> is a fixed point for all values of the parameters. For <span class="math notranslate nohighlight">\(r&gt;1\)</span>, there’s also a symmetric pair of fixed points at:</p>
 <p><span class="math notranslate nohighlight">\(x^* = y^* = \pm \sqrt{b(r-1)}\)</span>, <span class="math notranslate nohighlight">\(z^* = r-1\)</span>, called <span class="math notranslate nohighlight">\(C^+\)</span> and <span class="math notranslate nohighlight">\(C^-\)</span>, respectively. As <span class="math notranslate nohighlight">\(r \rightarrow 1^+\)</span>, <span class="math notranslate nohighlight">\(C^+\)</span> and <span class="math notranslate nohighlight">\(C^-\)</span> coalesce with the origin.</p>
 <section id="linear-stability-of-the-origin">
-<h3>Linear Stability of the Origin<a class="headerlink" href="#linear-stability-of-the-origin" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">8.7.1.1. </span>Linear Stability of the Origin<a class="headerlink" href="#linear-stability-of-the-origin" title="Link to this heading">#</a></h4>
 <p>Linearizing the Lorenz equations at the origin, we get:</p>
 <p><span class="math notranslate nohighlight">\(\dot{x} = \sigma(y-x)\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(\dot{y} = rx -y\)</span>,</p>
@@ -1187,11 +1162,11 @@ document.write(`
 </section>
 </section>
 <section id="exercise-8-1-chaos-on-a-strange-attractor">
-<h2>Exercise 8.1: Chaos on a Strange Attractor<a class="headerlink" href="#exercise-8-1-chaos-on-a-strange-attractor" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.7.2. </span>Exercise 8.1: Chaos on a Strange Attractor<a class="headerlink" href="#exercise-8-1-chaos-on-a-strange-attractor" title="Link to this heading">#</a></h3>
 <p>(See file Exercise8.1.ipynb)</p>
 </section>
 <section id="the-definition-of-chaos">
-<h2>The Definition of Chaos<a class="headerlink" href="#the-definition-of-chaos" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.7.3. </span>The Definition of Chaos<a class="headerlink" href="#the-definition-of-chaos" title="Link to this heading">#</a></h3>
 <p>No definition of “chaos” is universally accepted, but almost everyone would agree on three ingredients used in the following working definition:</p>
 <p>“Chaos is aperiodic long-term behavior in a deterministic system that exhibits sensitive dependence on initial conditions.”</p>
 <ol class="arabic simple">
@@ -1201,7 +1176,7 @@ document.write(`
 </ol>
 </section>
 <section id="lorenz-attractor-animation">
-<h2>Lorenz Attractor Animation<a class="headerlink" href="#lorenz-attractor-animation" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">8.7.4. </span>Lorenz Attractor Animation<a class="headerlink" href="#lorenz-attractor-animation" title="Link to this heading">#</a></h3>
 <p>We end this chapter with an animation of the Lorenz Attractor, demonstrating the exponential deviation of two trajectories with similar initial conditions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1264,7 +1239,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/393dad68c92fd68a5cce860e2c5abaad2b3abc4fad8cf9149491462b3373d4a7.png" src="../../_images/393dad68c92fd68a5cce860e2c5abaad2b3abc4fad8cf9149491462b3373d4a7.png" />
+<img alt="../../_images/da2eeaa3884f569b5da08e195aef70708a8eb57a7a96beb49b7b9fac59a91117.png" src="../../_images/da2eeaa3884f569b5da08e195aef70708a8eb57a7a96beb49b7b9fac59a91117.png" />
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">55</span>
@@ -1489,36 +1464,13 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">134</span>         <span class="n">cant_chunk</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
-<span class="nn">File /opt/homebrew/lib/python3.10/site-packages/matplotlib/transforms.py:240,</span> in <span class="ni">BboxBase.__array__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="k">def</span> <span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">240</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_points</span><span class="p">()</span>
-
-<span class="nn">File /opt/homebrew/lib/python3.10/site-packages/matplotlib/transforms.py:1113,</span> in <span class="ni">TransformedBbox.get_points</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1109</span> <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbox</span><span class="o">.</span><span class="n">get_points</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1110</span> <span class="c1"># Transform all four points, then make a new bounding box</span>
-<span class="g g-Whitespace">   </span><span class="mi">1111</span> <span class="c1"># from the result, taking care to make the orientation the</span>
-<span class="g g-Whitespace">   </span><span class="mi">1112</span> <span class="c1"># same.</span>
-<span class="ne">-&gt; </span><span class="mi">1113</span> <span class="n">points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1114</span>     <span class="p">[[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1115</span>      <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1116</span>      <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1117</span>      <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]])</span>
-<span class="g g-Whitespace">   </span><span class="mi">1118</span> <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1120</span> <span class="n">xs</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
-
-<span class="nn">File /opt/homebrew/lib/python3.10/site-packages/matplotlib/transforms.py:1492,</span> in <span class="ni">Transform.transform</span><span class="nt">(self, values)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1490</span> <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1491</span> <span class="n">ndim</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">ndim</span>
-<span class="ne">-&gt; </span><span class="mi">1492</span> <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_dims</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="c1"># Transform the values</span>
-<span class="g g-Whitespace">   </span><span class="mi">1495</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_affine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transform_non_affine</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
-
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
-<img alt="../../_images/272e5d69aee45f0c14a69e1e5aeb406d1543da32b2fcefe0e1d16571319d9b8b.png" src="../../_images/272e5d69aee45f0c14a69e1e5aeb406d1543da32b2fcefe0e1d16571319d9b8b.png" />
+<img alt="../../_images/b4ab5527cb29b30e3737555053950e7354d56b1376dfe63275d802be64987d8a.png" src="../../_images/b4ab5527cb29b30e3737555053950e7354d56b1376dfe63275d802be64987d8a.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1558,7 +1510,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Ordinary Differential Equations</p>
       </div>
     </a>
     <a class="right-next"
@@ -1566,7 +1518,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Boundary Value and Eigenvalue Problems</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1586,37 +1538,38 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-being-nonlinear">The Importance of being Nonlinear</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#flows-on-the-line">Flows on the Line</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-stability">Fixed Points and Stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-1-find-all-the-fixed-points-for-dot-x-x-2-1-and-classify-their-stability">Example 8.1: Find all the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = x^2 -1\)</span>, and classify their stability.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-analysis">Linear Stability Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-2-use-linearization-to-determine-the-stability-of-the-fixed-points-for-dot-x-sin-x">Example 8.2: Use linearization to determine the stability of the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = \sin x\)</span>.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-being-nonlinear">8.2. The Importance of being Nonlinear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flows-on-the-line">8.3. Flows on the Line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-stability">8.3.1. Fixed Points and Stability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-1-fixed-points-in-one-dimension">8.3.2. Example 8.1: Fixed Points in One-Dimension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-analysis">8.3.3. Linear Stability Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensional-systems">Two-Dimensional Systems</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-linear-systems">2D Linear Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-3-analysis-of-the-simple-harmonic-oscillator">Example 8.3: Analysis of the Simple Harmonic Oscillator.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-linear-systems">Classification of Linear Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-4-solve-the-initial-value-problem-dot-x-x-y-dot-y-4-x-2y-with-initial-condition-x-0-y-0-2-3">Example 8.4: Solve the initial value problem <span class="math notranslate nohighlight">\(\dot{x} = x + y\)</span>, <span class="math notranslate nohighlight">\(\dot{y} = 4 x - 2y\)</span> with initial condition <span class="math notranslate nohighlight">\((x_0, y_0) = (2,-3)\)</span>.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-phase-plane-and-phase-portraits">The Phase Plane and Phase Portraits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-linearization">Fixed Points and Linearization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-5-consider-the-system-dot-x-x-e-y-and-dot-y-y-first-use-qualitative-arguments-to-obtain-information-about-the-phase-portrait-then-use-the-runge-kutta-method-to-compute-several-trajectories-and-plot-them-on-the-phase-plane">Example 8.5: Consider the system <span class="math notranslate nohighlight">\(\dot{x} = x + e^{-y}\)</span> and <span class="math notranslate nohighlight">\(\dot{y} = -y\)</span>. First use qualitative arguments to obtain information about the phase portrait. Then, use the Runge-Kutta method to compute several trajectories, and plot them on the phase plane.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-2-use-linearization-to-determine-the-stability-of-the-fixed-points-for-dot-x-sin-x">8.4. Example 8.2: Use linearization to determine the stability of the fixed points for <span class="math notranslate nohighlight">\(\dot{x} = \sin x\)</span>.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensional-systems">8.5. Two-Dimensional Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-linear-systems">8.5.1. 2D Linear Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-3-analysis-of-the-simple-harmonic-oscillator">8.5.2. Example 8.3: Analysis of the Simple Harmonic Oscillator.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-linear-systems">8.5.3. Classification of Linear Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-4-an-initial-value-problem">8.5.4. Example 8.4: An Initial Value Problem</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lorenz-equations-and-chaos">The Lorenz Equations and Chaos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-properties-of-the-lorenz-equations">Simple Properties of the Lorenz Equations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-of-the-origin">Linear Stability of the Origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-phase-plane-and-phase-portraits">8.6. The Phase Plane and Phase Portraits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-linearization">8.6.1. Fixed Points and Linearization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-5-qualitative-arguments-vs-runge-kutta">8.6.2. Example 8.5: Qualitative Arguments vs. Runge-Kutta</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-1-chaos-on-a-strange-attractor">Exercise 8.1: Chaos on a Strange Attractor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definition-of-chaos">The Definition of Chaos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-attractor-animation">Lorenz Attractor Animation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lorenz-equations-and-chaos">8.7. The Lorenz Equations and Chaos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-properties-of-the-lorenz-equations">8.7.1. Simple Properties of the Lorenz Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-of-the-origin">8.7.1.1. Linear Stability of the Origin</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-1-chaos-on-a-strange-attractor">8.7.2. Exercise 8.1: Chaos on a Strange Attractor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definition-of-chaos">8.7.3. The Definition of Chaos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-attractor-animation">8.7.4. Lorenz Attractor Animation</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -1640,7 +1593,7 @@ By Andreas Papaefstathiou
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>
