@@ -6,5 +6,5 @@ pandas
 tqdm
 PrettyTable
 sympy
-pytorch
+torch
 numba
