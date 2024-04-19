@@ -1,0 +1,1585 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Numerical Differentiation &#8212; Computational Physics  I (PHYS 3500K)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter4';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="Chapter5.html" />
+    <link rel="prev" title="Deterministic Randomness" href="Chapter3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Computational Physics  I (PHYS 3500K)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Making Computers Obey</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Computer Number Representations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Deterministic Randomness</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical Differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter5.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter6.html">Trial-and-Error Root Finding</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter7.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter8.html">Introduction</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter9.html">Introduction</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter10.html">Introduction</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapters/Chapter4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chapters/Chapter4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numerical Differentiation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Differentiation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-forward-difference-derivative">The Forward-Difference Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-1-calculate-the-forward-difference-derivative-for-the-above-data-points-and-plot-it-in-a-numpy-array-called-y">Example 4.1: Calculate the forward-difference derivative for the above data points and plot it (in a NumPy array called <code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-2-calculate-the-forward-difference-derivatives-for-f-t-cos-t-and-g-t-exp-t-at-t-0-1-1-100-for-h-10-6-compare-to-the-analytic-results">Example 4.2: Calculate the forward-difference derivatives for <span class="math notranslate nohighlight">\(f(t) = \cos t\)</span> and <span class="math notranslate nohighlight">\(g(t) = \exp(t)\)</span> at <span class="math notranslate nohighlight">\(t=0.1, 1., 100\)</span>, for <span class="math notranslate nohighlight">\(h=10^{-6}\)</span>. Compare to the analytic results.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-difference-derivative">The Central-Difference Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-3-calculate-as-in-example-4-2-but-with-the-central-difference-derivative">Example 4.3: Calculate as in Example 4.2, but with the central-difference derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrapolated-difference-derivative">Extrapolated-Difference Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#error-assessment-in-numerical-differentiation">Error Assessment in Numerical Differentiation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-use-the-sweet-spot-values-of-the-step-size-to-calculate-the-derivatives-of-cos-t-and-exp-t-at-the-same-points-as-the-previous-examples">Example 4.4: Use the sweet-spot values of the step size to calculate the derivatives of <span class="math notranslate nohighlight">\(\cos (t)\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span> at the same points as the previous examples.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-5-using-the-known-analytical-results-calculate-the-relative-error-varepsilon-obtained-by-both-methods-for-the-cos-t-and-exp-t-functions-at-t-0-1-for-varying-step-size-h-down-to-h-simeq-epsilon-m-simeq-10-15-and-plot-log-10-varepsilon-vs-log-10-h-comment-on-the-behavior-at-small-and-large-h">Example 4.5: Using the known analytical results calculate the <em>relative error</em>, <span class="math notranslate nohighlight">\(\varepsilon\)</span>, obtained by both methods for the <span class="math notranslate nohighlight">\(\cos(t)\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span> functions at <span class="math notranslate nohighlight">\(t=0.1\)</span>, for varying step size <span class="math notranslate nohighlight">\(h\)</span> down to <span class="math notranslate nohighlight">\(h\simeq \epsilon_m \simeq 10^{-15}\)</span> and plot <span class="math notranslate nohighlight">\(\log_{10}|\varepsilon|\)</span> vs. <span class="math notranslate nohighlight">\(\log_{10} h\)</span>. Comment on the behavior at small and large <span class="math notranslate nohighlight">\(h\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-6-take-the-numerical-derivative-of-the-function-f-t-exp-t-cos-t-at-t-0-1-and-following-example-4-5-perform-an-error-assessment">Example 4.6: Take the numerical derivative of the function <span class="math notranslate nohighlight">\(f(t) = \exp(t) \cos(t)\)</span> at <span class="math notranslate nohighlight">\(t=0.1\)</span>, and following Example 4.5, perform an error assessment.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">Numerical Integration</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trapezoid-rule">The Trapezoid Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-7-construct-a-function-that-implements-the-trapezoid-rule-on-an-interval-a-b-using-n-points-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-compare-to-the-analytic-value-for-n-10-6-intervals">Example 4.7: Construct a function that implements the trapezoid rule on an interval <span class="math notranslate nohighlight">\([a,b]\)</span> using <span class="math notranslate nohighlight">\(N\)</span> points, and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>. Compare to the analytic value for <span class="math notranslate nohighlight">\(N=10^6\)</span> intervals.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-rule">Simpson’s Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-8-construct-a-function-that-implements-simpson-s-rule-on-an-interval-a-b-using-n-points-n-is-odd-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1">Example 4.8: Construct a function that implements Simpson’s rule on an interval <span class="math notranslate nohighlight">\([a,b]\)</span> using <span class="math notranslate nohighlight">\(N\)</span> points (<span class="math notranslate nohighlight">\(N\)</span> is odd!), and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-quadrature">Gaussian Quadrature</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-9-use-special-functions-to-get-the-gauss-legendre-points-and-weights-for-n-2-to-n-8-points">Example 4.9: Use special functions to get the Gauss-Legendre points and weights for <span class="math notranslate nohighlight">\(N=2\)</span> to <span class="math notranslate nohighlight">\(N=8\)</span> points.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-10-construct-a-function-that-implements-n-th-order-gaussian-quadrature-in-the-interval-a-b-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-for-n-8">Example 4.10: Construct a function that implements N-th order Gaussian quadrature in the interval <span class="math notranslate nohighlight">\([a,b]\)</span>, and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span> for <span class="math notranslate nohighlight">\(N=8\)</span>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-rules-3-8-and-milne-rules">Higher Order Rules (3/8 and Milne Rules)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-error-assessment">Integration Error Assessment</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#minor-digression-python-functools-and-partial-functions">Minor Digression: Python functools and partial functions</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><font size="6"> <strong>Chapter 4: Numerical Differentiation and Integration</strong> </font></p>
+<section class="tex2jax_ignore mathjax_ignore" id="numerical-differentiation">
+<h1>Numerical Differentiation<a class="headerlink" href="#numerical-differentiation" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Suppose we have the trajectory of a projectile moving in the vertical direction as a function of time, <span class="math notranslate nohighlight">\(y(t)\)</span>.</p>
+<p>If we wish to determine its speed, we would need to take the derivative of the position with respect to time, i.e. <span class="math notranslate nohighlight">\(v(t) = \mathrm{d}y/\mathrm{d}t\)</span>.</p>
+<p>e.g. suppose the trajectory, <em>measured experimentally</em>, looks like the following plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># import matplotlib, a conventional module name is plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># creates a NumPy array for time</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.9</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># the function</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. </span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t$ [s]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y(t)$ [m]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;The trajectory of a particle moving vertically&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># make a one-dimensional plot using the above arrays, add a custom label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="c1"># set the y limit</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/115a276010b30fa73ae3e593a1e28ad9834d57c26ebf8845726b4c05ebe741f5.png" src="../_images/115a276010b30fa73ae3e593a1e28ad9834d57c26ebf8845726b4c05ebe741f5.png" />
+</div>
+</div>
+<p>Assuming we don’t know the analytic form of the function that generated the above, we would like to calculate the speed <span class="math notranslate nohighlight">\(v(t)\)</span> numerically.</p>
+<p>The starting point is the mathematical definition of the derivative:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} y(t) } {\mathrm{d} t } \equiv \lim_{h\rightarrow 0} \frac{ y(t+h) - y(t) } { h} \)</span>.</p>
+<p>Note that a computer would run into errors with this kind of limit:</p>
+<ul class="simple">
+<li><p>as <span class="math notranslate nohighlight">\(h\)</span> is made smaller, the numerator would fluctuate between 0 and machine precision, <span class="math notranslate nohighlight">\(\epsilon_m\)</span>.</p></li>
+<li><p>as the denominator, <span class="math notranslate nohighlight">\(h\)</span>, approaches zero, overflow would occur.</p></li>
+</ul>
+</section>
+<section id="the-forward-difference-derivative">
+<h2>The Forward-Difference Derivative<a class="headerlink" href="#the-forward-difference-derivative" title="Link to this heading">#</a></h2>
+<p>The simplest algorithm for numerical differentiation is called the forward-difference derivative, and it is obtained by simply removing the limit, still taking <span class="math notranslate nohighlight">\(h\)</span> reasonably small, i.e.:</p>
+<p><span class="math notranslate nohighlight">\( \left.\frac{ \mathrm{d} y(t) } {\mathrm{d} t } \right|_\mathrm{fd} \equiv \frac{ y(t+h) - y(t) } { h} \)</span>.</p>
+<p>What is the algorithmic (or approximation) error induced by this procedure?</p>
+<p>To find out, let’s look at the Taylor series of <span class="math notranslate nohighlight">\(y(t)\)</span> a small step <span class="math notranslate nohighlight">\(h\)</span> away from <span class="math notranslate nohighlight">\(y(t)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(y(t+h) = y(t) + h \frac{\mathrm{d} y(t) } {\mathrm{d} t } + \frac{h^2}{2!} \frac{\mathrm{d}^2 y(t) } {\mathrm{d} t^2 } + \frac{h^3}{3!} \frac{\mathrm{d}^3 y(t) } {\mathrm{d} t^3 } + ...\)</span>.</p>
+<p>Solving for <span class="math notranslate nohighlight">\(\frac{ y(t+h) - y(t) } { h }\)</span>, which is nothing but the forward-difference derivative:</p>
+<p><span class="math notranslate nohighlight">\(\left.\frac{ \mathrm{d} y(t) } {\mathrm{d} t } \right|_\mathrm{fd}   \frac{ y(t+h) - y(t) } { h } =   \frac{ \mathrm{d} y(t) } {\mathrm{d} t } - \frac{h}{2} \frac{\mathrm{d}^2 y(t) } {\mathrm{d} t^2 } + ...\)</span></p>
+<p>Therefore, the algorithmic error for the forward-difference derivative can be written as:</p>
+<p><span class="math notranslate nohighlight">\(\epsilon^\mathrm{fd}_\mathrm{alg} \simeq \frac{h y''}{2}\)</span>, where <span class="math notranslate nohighlight">\(y''\)</span> is short-hand for the second derivative.</p>
+<p>You can think of the approximation as using two points to represent the function by a straight line in the interval <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t+h\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># import matplotlib, a conventional module name is plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># creates a NumPy array for time</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.9</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># take the NumPy array and create another one</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. </span>
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t$ [s]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$y(t)$ [m]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;The forward-difference derivative&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="c1"># set the y limit</span>
+
+<span class="c1"># make a one-dimensional plot using the above arrays, add a custom label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span> 
+
+<span class="c1"># plot a segment of the line and the corresponding t values:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">ymin</span><span class="o">=-</span><span class="mi">40</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">ymin</span><span class="o">=-</span><span class="mi">40</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;$t+h$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4cb11f40cfc587166dad340b302a97b268f0a085e7fbbe9a5a07467c41876dcd.png" src="../_images/4cb11f40cfc587166dad340b302a97b268f0a085e7fbbe9a5a07467c41876dcd.png" />
+</div>
+</div>
+</section>
+<section id="example-4-1-calculate-the-forward-difference-derivative-for-the-above-data-points-and-plot-it-in-a-numpy-array-called-y">
+<h2>Example 4.1: Calculate the forward-difference derivative for the above data points and plot it (in a NumPy array called <code class="docutils literal notranslate"><span class="pre">y</span></code>)<a class="headerlink" href="#example-4-1-calculate-the-forward-difference-derivative-for-the-above-data-points-and-plot-it-in-a-numpy-array-called-y" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The forward difference for the points &quot;measured&quot; in our pseudo-experiment:</span>
+
+<span class="c1"># the forward difference: </span>
+<span class="n">dydt_FD</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. </span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t$ [s]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\left. \frac{\mathrm</span><span class="si">{d}</span><span class="s1"> y(t)}{\mathrm</span><span class="si">{d}</span><span class="s1">t} \right|_\mathrm</span><span class="si">{fd}</span><span class="s1">$ [m/s]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;The forward-difference derivative&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span> <span class="c1"># set the y limit</span>
+
+<span class="c1"># make a one-dimensional plot using the above arrays, add a custom label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dydt_FD</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/473f328026f0d760d919300f067e58e1f9d955ac447dd18e151a779b8d741365.png" src="../_images/473f328026f0d760d919300f067e58e1f9d955ac447dd18e151a779b8d741365.png" />
+</div>
+</div>
+</section>
+<section id="example-4-2-calculate-the-forward-difference-derivatives-for-f-t-cos-t-and-g-t-exp-t-at-t-0-1-1-100-for-h-10-6-compare-to-the-analytic-results">
+<h2>Example 4.2: Calculate the forward-difference derivatives for <span class="math notranslate nohighlight">\(f(t) = \cos t\)</span> and <span class="math notranslate nohighlight">\(g(t) = \exp(t)\)</span> at <span class="math notranslate nohighlight">\(t=0.1, 1., 100\)</span>, for <span class="math notranslate nohighlight">\(h=10^{-6}\)</span>. Compare to the analytic results.<a class="headerlink" href="#example-4-2-calculate-the-forward-difference-derivatives-for-f-t-cos-t-and-g-t-exp-t-at-t-0-1-1-100-for-h-10-6-compare-to-the-analytic-results" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># define a function for the forward-difference derivative.</span>
+<span class="c1"># In Python, you can pass a function as an argument to another function. This is known as a higher-order function.</span>
+<span class="k">def</span> <span class="nf">dfdt_FD</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the forward-difference derivative of a function func at t, with step size h&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">func</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+
+<span class="c1"># calculate the derivatives at various points in an array t:</span>
+<span class="n">tarray</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">]</span>
+
+<span class="c1"># the step h is taken to be 1E-6:</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">1E-6</span>
+
+<span class="c1"># for the cos function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(cos(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+
+<span class="c1"># for the exp function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(exp(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d(cos(t))/dt at t= 0.1 = -0.09983391424661647 vs analytic= -0.09983341664682815 with error= 4.975997883183148e-07
+d(cos(t))/dt at t= 1.0 = -0.8414712548976411 vs analytic= -0.8414709848078965 with error= 2.7008974456954604e-07
+d(cos(t))/dt at t= 100.0 = 0.5063652087633486 vs analytic= 0.5063656411097588 with error= 4.323464102284902e-07
+d(exp(t))/dt at t= 0.1 = 1.105171470561217 vs analytic= 1.1051709180756477 with error= 5.524855692939923e-07
+d(exp(t))/dt at t= 1.0 = 2.7182831874306146 vs analytic= 2.718281828459045 with error= 1.3589715694983795e-06
+d(exp(t))/dt at t= 100.0 = 2.6881184788443713e+43 vs analytic= 2.6881171418161356e+43 with error= 1.3370282356702364e+37
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will discuss errors in a bit! First let’s consider more algorithms for differentiation!</p>
+</section>
+<section id="the-central-difference-derivative">
+<h2>The Central-Difference Derivative<a class="headerlink" href="#the-central-difference-derivative" title="Link to this heading">#</a></h2>
+<p>Rather than making a single step <span class="math notranslate nohighlight">\(h\)</span> forward, we can make half a step forward and half a step backward to get the central-difference derivative:</p>
+<p><span class="math notranslate nohighlight">\( \left.\frac{ \mathrm{d} y(t) } {\mathrm{d} t } \right|_\mathrm{cd} \equiv \frac{ y(t+h/2) - y(t-h/2) } { h} \)</span>.</p>
+<p>To get an estimate of the algorithmic error, we first write down the Taylor series for <span class="math notranslate nohighlight">\(y(t+h/2)\)</span> and <span class="math notranslate nohighlight">\(y(t-h/2)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(y(t+h/2) = y(t) + \frac{h}{2} y'(t) + \frac{h^2}{8} y''(t) + \frac{h^3}{48} y'''(t) + \mathcal{O}(h^4)\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(t-h/2) = y(t) - \frac{h}{2} y'(t) + \frac{h^2}{8} y''(t) - \frac{h^3}{48} y'''(t) + \mathcal{O}(h^4)\)</span></p>
+<p>and we subtract them to get:</p>
+<p><span class="math notranslate nohighlight">\(y(t+h/2) - y(t-h/2) = h y'(t) + \frac{h^3}{24} y'''(t)+ \mathcal{O}(h^5)\)</span></p>
+<p>All terms with an even power of <span class="math notranslate nohighlight">\(h\)</span> vanish!</p>
+<p>so:</p>
+<p><span class="math notranslate nohighlight">\( \left.\frac{ \mathrm{d} y(t) } {\mathrm{d} t } \right|_\mathrm{cd} = y'(t) + \frac{1}{24} h^2 y'''(t) + \mathcal{O}(h^5)\)</span>.</p>
+<p>The central-difference algorithm is accurate to order <span class="math notranslate nohighlight">\(h^2\)</span> instead of <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p>Therefore, if the function is smooth, then one would expect <span class="math notranslate nohighlight">\(y''' h^2 / 24 \ll y'' h / 2\)</span>, and we would expect the central-difference error to be much smaller than that with the forward-difference.</p>
+<p>Let’s compare the results of Example 4.2, calculated with the forward-difference algorithm, now with the central-difference algorithm:</p>
+</section>
+<section id="example-4-3-calculate-as-in-example-4-2-but-with-the-central-difference-derivative">
+<h2>Example 4.3: Calculate as in Example 4.2, but with the central-difference derivative<a class="headerlink" href="#example-4-3-calculate-as-in-example-4-2-but-with-the-central-difference-derivative" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a function for the central-difference derivative.</span>
+<span class="k">def</span> <span class="nf">dfdt_CD</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the central-difference derivative of a function func at t, with step size h&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">func</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+
+<span class="c1"># calculate the derivatives at various points in an array t:</span>
+<span class="n">tarray</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">]</span>
+
+<span class="c1"># the step h is taken to be 1E-8:</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">1E-6</span>
+
+<span class="c1"># for the cos function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(cos(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+
+<span class="c1"># for the exp function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(exp(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d(cos(t))/dt at t= 0.1 = -0.09983341664465684 vs analytic= -0.09983341664682815 with error= 2.17131868041065e-12
+d(cos(t))/dt at t= 1.0 = -0.8414709847803792 vs analytic= -0.8414709848078965 with error= 2.7517321754544355e-11
+d(cos(t))/dt at t= 100.0 = 0.5063656397519267 vs analytic= 0.5063656411097588 with error= 1.3578320690044166e-09
+d(exp(t))/dt at t= 0.1 = 1.10517091811424 vs analytic= 1.1051709180756477 with error= 3.859224051439014e-11
+d(exp(t))/dt at t= 1.0 = 2.7182818285176324 vs analytic= 2.718281828459045 with error= 5.858735718788921e-11
+d(exp(t))/dt at t= 100.0 = 2.6881171349366646e+43 vs analytic= 2.6881171418161356e+43 with error= 6.879470977972417e+34
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the specific choice of <span class="math notranslate nohighlight">\(h\)</span>, the central-difference algorithm is clearly better! (But see below for an analysis of errors in each).</p>
+</section>
+<section id="extrapolated-difference-derivative">
+<h2>Extrapolated-Difference Derivative<a class="headerlink" href="#extrapolated-difference-derivative" title="Link to this heading">#</a></h2>
+<p>We can extend the central-difference approximation to use quarter steps insetead of half steps, i.e., calculate:</p>
+<p><span class="math notranslate nohighlight">\( \left.\frac{ \mathrm{d} y(t,h/2) } {\mathrm{d} t } \right|_\mathrm{cd} \equiv \frac{ y(t+h/4) - y(t-h/4) } { h/2 } \)</span>.</p>
+<p>As before, expanding via Taylor series <span class="math notranslate nohighlight">\(y(t+h/4)\)</span> and <span class="math notranslate nohighlight">\(y(t-h/4)\)</span> yields an estimate of the approximation error:</p>
+<p><span class="math notranslate nohighlight">\( \left.\frac{ \mathrm{d} y(t,h/2) } {\mathrm{d} t } \right|_\mathrm{cd} \simeq y'(t) + \frac{h^2}{96} y'''(t) + \mathcal{O}(h^4)\)</span></p>
+<p>If we define <span class="math notranslate nohighlight">\(D_\mathrm{cd} y(t,h) \equiv \left.\frac{ \mathrm{d} y(t,h) } {\mathrm{d} t } \right|_\mathrm{cd}\)</span>, we can combine two central-difference approximations to get the <em>extended-difference algorithm</em> as follows:</p>
+<p><span class="math notranslate nohighlight">\(\left.\frac{ \mathrm{d} y(t,h/2) } {\mathrm{d} t } \right|_\mathrm{ed} \equiv \frac{ 4 D_\mathrm{cd} y(t, h/2) - D_\mathrm{cd} y (t,h) }{3}\)</span>.</p>
+<p>And it can be shown (again via Taylor series expansions) that this algorithm has an error of <span class="math notranslate nohighlight">\(\mathcal{O}(h^4)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\left.\frac{ \mathrm{d} y(t,h/2) } {\mathrm{d} t } \right|_\mathrm{ed} \simeq y'(t) - \frac{h^4}{4 \cdot 16 \cdot 120}y^{(5)}(t) + ... \)</span>.</p>
+<p>Finally, when working with the aproximations, it is important to remember that they may work for well-behaved functions, they may fail badly for functions containing noise, which will most likely be the case if they are coming from measurements or other computations. In that case, it may be necessary to “smooth” the data or fit them with some analytic function (see later chapter) and then differentiate.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="error-assessment-in-numerical-differentiation">
+<h1>Error Assessment in Numerical Differentiation<a class="headerlink" href="#error-assessment-in-numerical-differentiation" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>Introduction<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Numerical algorithms play a vital role in computational physics. When you encounter/invent and implement an algorith, you must assess the following:</p>
+<ol class="arabic simple">
+<li><p>Does it converge?</p></li>
+<li><p>How precise are the converged results?</p></li>
+<li><p>How fast does it run?</p></li>
+</ol>
+<p>You may think that all algorithms converge if enough terms are used, and that if you want more precision you just use more terms!</p>
+<p>But this is not always possible: some algorithms are asymptotic expansions that approximate a function in certain regions of parameter space, and converge only up to a point.</p>
+<p>However, even if the series that underlies an algorithm is uniformly convergent, including more terms will decrease the algorithmic error, but will also <em>increase</em> the round-off errors that we previously discussed. And because round-off errors eventually diverge to infinity, we newed to find the “sweet-spot” approximation.</p>
+<p>Good algorithms require fewer steps and thus incur less round-off error!</p>
+<p>The algorithmic (or approximation) errors, <span class="math notranslate nohighlight">\(\epsilon_\mathrm{alg}\)</span> in numerical differentiation decrease with decreasing step size, <span class="math notranslate nohighlight">\(h\)</span>. In turn, round-off errors, <span class="math notranslate nohighlight">\(\epsilon_\mathrm{ro}\)</span>, increase with decreasing step size.</p>
+<p>The best value of <span class="math notranslate nohighlight">\(h\)</span> has to minimize the total error:</p>
+<p><span class="math notranslate nohighlight">\(\epsilon_\mathrm{tot} = \epsilon_\mathrm{alg} + \epsilon_\mathrm{ro}\)</span>.</p>
+<p>This “sweet spot” occurs when both errors are of the same order, i.e.:</p>
+<p><span class="math notranslate nohighlight">\(\epsilon_\mathrm{alg} \simeq \epsilon_\mathrm{ro}\)</span>.</p>
+<p>In the case of numerical differentiation, e.g. via the forward-difference algorithm, <span class="math notranslate nohighlight">\(\left. \frac{ \mathrm{d} y(t) } {\mathrm{d} t }\right|_\mathrm{fd} =  \frac{ y(t+h) - y(t) } { h} \)</span>, as <span class="math notranslate nohighlight">\(h\)</span> is made continually smaller, we will eventually reach the worst-case round-off error where <span class="math notranslate nohighlight">\(y(t+h)\)</span> and <span class="math notranslate nohighlight">\(y(t)\)</span> differ by the machine precision <span class="math notranslate nohighlight">\(\epsilon_m\)</span>. In that worst-case scenarion, the round-off error is:</p>
+<p><span class="math notranslate nohighlight">\(\epsilon_\mathrm{ro} \simeq \frac{\epsilon_m}{h}\)</span>.</p>
+<p>Therefore, for the forward-difference algorithm, the sweet-spot <span class="math notranslate nohighlight">\(h\)</span> occurs when:</p>
+<p><span class="math notranslate nohighlight">\(\frac{\epsilon_m}{h} \simeq \epsilon_\mathrm{alg}^\mathrm{fd} = \frac{h y''}{2}\)</span> or <span class="math notranslate nohighlight">\(h_\mathrm{fd} = \sqrt{ \frac{2 \epsilon_m}{y''}}\)</span>.</p>
+<p>For the central-difference algorithm:</p>
+<p><span class="math notranslate nohighlight">\(\frac{\epsilon_m}{h} \simeq \epsilon_\mathrm{alg}^\mathrm{cd} = \frac{h^2 y'''}{24}\)</span> or <span class="math notranslate nohighlight">\(h_\mathrm{cd} = \sqrt[3]{ \frac{24 \epsilon_m}{y'''}}\)</span>.</p>
+<p>Let’s assume that we have a function for which <span class="math notranslate nohighlight">\(y' \simeq y'' \simeq y'''\)</span> at the point of interest <span class="math notranslate nohighlight">\(t\)</span>, which may be crude in general, but works reasonably for <span class="math notranslate nohighlight">\(\cos t\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span>. For double precision floats, <span class="math notranslate nohighlight">\(\epsilon_m \simeq 10^{-15}\)</span>, and then:</p>
+<p><span class="math notranslate nohighlight">\(h_\mathrm{fd} \simeq 4 \times 10^{-8}\)</span> which leads to <span class="math notranslate nohighlight">\(\epsilon_\mathrm{fd} \simeq \frac{\epsilon_m}{h_\mathrm{fd}} \simeq 3\times 10^{-8}\)</span>,</p>
+<p>and:</p>
+<p><span class="math notranslate nohighlight">\(h_\mathrm{cd} \simeq 3 \times 10^{-5}\)</span> which leads to <span class="math notranslate nohighlight">\(\epsilon_\mathrm{cd} \simeq \frac{\epsilon_m}{h_\mathrm{cd}}\simeq 3\times 10^{-11}\)</span>,</p>
+<p>One can observe that in this case, the central-difference algorithm achieves smaller error for a larger <span class="math notranslate nohighlight">\(h\)</span> value! Let’s now re-calculate the values of the derivatives of <span class="math notranslate nohighlight">\(\cos t\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span> using the “sweet-spot” step sizes in the next example.</p>
+</section>
+<section id="example-4-4-use-the-sweet-spot-values-of-the-step-size-to-calculate-the-derivatives-of-cos-t-and-exp-t-at-the-same-points-as-the-previous-examples">
+<h2>Example 4.4: Use the sweet-spot values of the step size to calculate the derivatives of <span class="math notranslate nohighlight">\(\cos (t)\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span> at the same points as the previous examples.<a class="headerlink" href="#example-4-4-use-the-sweet-spot-values-of-the-step-size-to-calculate-the-derivatives-of-cos-t-and-exp-t-at-the-same-points-as-the-previous-examples" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use the functions already defined in this notebook for the forward difference and central difference. </span>
+
+<span class="c1"># Forward difference: </span>
+<span class="c1"># the step h is taken to be 4E-8:</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">4E-8</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Forward difference:&#39;</span><span class="p">)</span>
+<span class="c1"># for the cos function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(cos(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+
+<span class="c1"># for the exp function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(exp(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+
+<span class="c1"># Central difference: </span>
+<span class="c1"># the step h is taken to be 3E-5:</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">3E-5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Central difference:&#39;</span><span class="p">)</span>
+<span class="c1"># for the cos function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(cos(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+
+<span class="c1"># for the exp function:</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tarray</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;d(exp(t))/dt at t=&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">),</span> <span class="s1">&#39;vs analytic=&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;with error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Forward difference:
+d(cos(t))/dt at t= 0.1 = -0.09983343873809503 vs analytic= -0.09983341664682815 with error= 2.2091266871360205e-08
+d(cos(t))/dt at t= 1.0 = -0.8414709956605648 vs analytic= -0.8414709848078965 with error= 1.085266831957199e-08
+d(cos(t))/dt at t= 100.0 = 0.5063656660642124 vs analytic= 0.5063656411097588 with error= 2.4954453614611793e-08
+d(exp(t))/dt at t= 0.1 = 1.1051709380982544 vs analytic= 1.1051709180756477 with error= 2.0022606683767208e-08
+d(exp(t))/dt at t= 1.0 = 2.7182818884696758 vs analytic= 2.718281828459045 with error= 6.001063068694634e-08
+d(exp(t))/dt at t= 100.0 = 2.6881174087690013e+43 vs analytic= 2.6881171418161356e+43 with error= 2.669528657119537e+36
+
+Central difference:
+d(cos(t))/dt at t= 0.1 = -0.09983341664465684 vs analytic= -0.09983341664682815 with error= 2.17131868041065e-12
+d(cos(t))/dt at t= 1.0 = -0.8414709847766784 vs analytic= -0.8414709848078965 with error= 3.121813918482985e-11
+d(cos(t))/dt at t= 100.0 = 0.5063656412507278 vs analytic= 0.5063656411097588 with error= 1.4096901423954478e-10
+d(exp(t))/dt at t= 0.1 = 1.10517091811424 vs analytic= 1.1051709180756477 with error= 3.859224051439014e-11
+d(exp(t))/dt at t= 1.0 = 2.718281828576844 vs analytic= 2.718281828459045 with error= 1.177991038048276e-10
+d(exp(t))/dt at t= 100.0 = 2.6881171427769514e+43 vs analytic= 2.6881171418161356e+43 with error= 9.608157724429865e+33
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are of the same order as we expected from our considerations!</p>
+<p>Let’s now dig deeper into the errors to get a visual representation of what’s happening.</p>
+</section>
+<section id="example-4-5-using-the-known-analytical-results-calculate-the-relative-error-varepsilon-obtained-by-both-methods-for-the-cos-t-and-exp-t-functions-at-t-0-1-for-varying-step-size-h-down-to-h-simeq-epsilon-m-simeq-10-15-and-plot-log-10-varepsilon-vs-log-10-h-comment-on-the-behavior-at-small-and-large-h">
+<h2>Example 4.5: Using the known analytical results calculate the <em>relative error</em>, <span class="math notranslate nohighlight">\(\varepsilon\)</span>, obtained by both methods for the <span class="math notranslate nohighlight">\(\cos(t)\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span> functions at <span class="math notranslate nohighlight">\(t=0.1\)</span>, for varying step size <span class="math notranslate nohighlight">\(h\)</span> down to <span class="math notranslate nohighlight">\(h\simeq \epsilon_m \simeq 10^{-15}\)</span> and plot <span class="math notranslate nohighlight">\(\log_{10}|\varepsilon|\)</span> vs. <span class="math notranslate nohighlight">\(\log_{10} h\)</span>. Comment on the behavior at small and large <span class="math notranslate nohighlight">\(h\)</span><a class="headerlink" href="#example-4-5-using-the-known-analytical-results-calculate-the-relative-error-varepsilon-obtained-by-both-methods-for-the-cos-t-and-exp-t-functions-at-t-0-1-for-varying-step-size-h-down-to-h-simeq-epsilon-m-simeq-10-15-and-plot-log-10-varepsilon-vs-log-10-h-comment-on-the-behavior-at-small-and-large-h" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># First, let&#39;s create the array of h:</span>
+<span class="n">harray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># the NumPy logspace returns numbers spaced evenly on a log scale.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Then let&#39;s calculate the relative error and take the log (base 10) for each of the two algorithms:</span>
+
+<span class="c1"># fix the point we are examining: </span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Let&#39;s use list comprehension!</span>
+<span class="c1"># cosine: </span>
+<span class="n">log10_rel_error_cos_FD</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span> <span class="p">(</span><span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span> <span class="o">/</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">harray</span><span class="p">]</span> <span class="c1"># Forward-difference </span>
+<span class="n">log10_rel_error_cos_CD</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span> <span class="p">(</span><span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span> <span class="o">/</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">harray</span><span class="p">]</span> <span class="c1"># Centra-Difference</span>
+
+<span class="c1"># exp: </span>
+<span class="n">log10_rel_error_exp_FD</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span> <span class="p">(</span><span class="n">dfdt_FD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">harray</span><span class="p">]</span> <span class="c1"># Forward-difference </span>
+<span class="n">log10_rel_error_exp_CD</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span> <span class="p">(</span><span class="n">dfdt_CD</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">harray</span><span class="p">]</span> <span class="c1"># Centra-Difference</span>
+
+
+<span class="c1"># get the log10 of h:</span>
+<span class="n">log10_h</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">harray</span><span class="p">]</span>
+    
+<span class="c1"># Now plot! Don&#39;t forget the different labels! </span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. This creates a figure containing a single axes.</span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\log_</span><span class="si">{10}</span><span class="s1">(h)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\log_</span><span class="si">{10}</span><span class="s1">(\varepsilon)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. Note that the &#39;r&#39; is necessary to remove the need for double slashes. You can use LaTeX! </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Error assessment in numerical derivatives&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># make a one-dimensional plot using the arrays relevant to the cosine:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log10_h</span><span class="p">,</span> <span class="n">log10_rel_error_cos_FD</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\cos(t)$, FD&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log10_h</span><span class="p">,</span> <span class="n">log10_rel_error_cos_CD</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\cos(t)$, CD&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> 
+<span class="c1"># make a one-dimensional plot using the arrays relevant to the exponential:</span>
+<span class="c1"># change the linestyle!</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log10_h</span><span class="p">,</span> <span class="n">log10_rel_error_exp_FD</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\exp(t)$, FD&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log10_h</span><span class="p">,</span> <span class="n">log10_rel_error_exp_CD</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\exp(t)$, CD&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> 
+
+<span class="c1"># ivnert the axes to show smaller values of h to the right:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+
+<span class="c1"># construct the legend:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>  <span class="c1"># Add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2ae03ae658b38cbf36c3673697a7b5a633d12bbdc03cb94da3462fd3729673a3.png" src="../_images/2ae03ae658b38cbf36c3673697a7b5a633d12bbdc03cb94da3462fd3729673a3.png" />
+</div>
+</div>
+<p>Now let’s do the same exercise in class, with <span class="math notranslate nohighlight">\(f(t) = \exp(t) \cos(t)\)</span>!</p>
+</section>
+<section id="example-4-6-take-the-numerical-derivative-of-the-function-f-t-exp-t-cos-t-at-t-0-1-and-following-example-4-5-perform-an-error-assessment">
+<h2>Example 4.6: Take the numerical derivative of the function <span class="math notranslate nohighlight">\(f(t) = \exp(t) \cos(t)\)</span> at <span class="math notranslate nohighlight">\(t=0.1\)</span>, and following Example 4.5, perform an error assessment.<a class="headerlink" href="#example-4-6-take-the-numerical-derivative-of-the-function-f-t-exp-t-cos-t-at-t-0-1-and-following-example-4-5-perform-an-error-assessment" title="Link to this heading">#</a></h2>
+<p>(Solution in a separate notebook, Example4.6)</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="numerical-integration">
+<h1>Numerical Integration<a class="headerlink" href="#numerical-integration" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>Introduction<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>A traditional way to perform integration by hand is to take a piece of graph paper and count the number of boxes, or <em>quadrilaterals</em> lying below the curve.</p>
+<p>This is why numerical integration is also known as numerical <em>quadrature</em>, even when the method employed is much more sophisticated than simple box counting.</p>
+<p>We start of our discussion of numerical integration with the Riemann definition of an integral, as the limit of the sum over boxes under a curve, as the box width <span class="math notranslate nohighlight">\(h\)</span> approaches zero:</p>
+<p><span class="math notranslate nohighlight">\(\int_a^b f(x) \mathrm{d} x = \lim_{h\rightarrow 0} \left[ h \sum_{i=1}^{(b-a)/h} f(x_i) \right]\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\((b-a)/h = N\)</span> counts the number of boxes.</p>
+<p>The figure below is a graphical representation of the quadrature procedure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span> <span class="c1"># </span>
+
+<span class="c1"># define the x array and calculate over it the function to display </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. </span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$f(x)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;The area under the curve $f(x)$ from $a$ to $b$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># put the ticks closer together:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.02</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.008</span><span class="p">))</span>
+
+<span class="c1"># set the axis limits:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.520</span><span class="p">)</span>
+
+<span class="c1"># make a one-dimensional plot using the above arrays, add a custom label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+
+<span class="c1"># fill the area under the curve:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># put a grid on the graph:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># hide x and y axes label marks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># put text at the right points on the x-axis:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.035</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.98</span><span class="p">,</span><span class="o">-</span><span class="mf">0.035</span><span class="p">,</span> <span class="s1">&#39;$b$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># put the integral in the shaded region:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\int_a^b f(x) \mathrm</span><span class="si">{d}</span><span class="s1"> x $&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0aa5b3d570116f26b7e8f5c762039033b592077202b7d63167a719911688bff0.png" src="../_images/0aa5b3d570116f26b7e8f5c762039033b592077202b7d63167a719911688bff0.png" />
+</div>
+</div>
+<p>The numerical integral of a function <span class="math notranslate nohighlight">\(f(x)\)</span> is approximated as a finite sum over boxes of height <span class="math notranslate nohighlight">\(f(x)\)</span> and width <span class="math notranslate nohighlight">\(w_i\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\int_a^b f(x) \mathrm{d} x \simeq \sum_{i=1}^N f(x_i) w_i\)</span>.</p>
+<p>In this case the box width is finite. The above formula represents the standard form for all integration algorithms: the function <span class="math notranslate nohighlight">\(f(x)\)</span> is evaluated at <span class="math notranslate nohighlight">\(N\)</span> points in the interval <span class="math notranslate nohighlight">\([a,b]\)</span>, and the function values <span class="math notranslate nohighlight">\(f_i \equiv f(x_i)\)</span> are summed with each term in the sum weighted by <span class="math notranslate nohighlight">\(w_i\)</span>.</p>
+<p>Generally, the precision increases as the number of points <span class="math notranslate nohighlight">\(N\)</span> gets larger, with the round-off error eventually limiting the increase. This is similar to what we observed in the case of differentiation.</p>
+<p>A word of warning: in general, you should not attempt a numerical integration of an integrand that contains a singularity, without first removing the singularity by hand. You may be able to do this very simply by breaking the intervals down into several subintervals so that the singularity is at an endpoint where an integration point is not placed, or by change of variable.</p>
+<p>Also, if the integrand has a very slow variation in some region, you can speed up the integration by changing to a variable that compresses that region and places few points there, or divides up the integral and performs several integrations.
+|
+Conversely, if your integrand has a very rapid variation in some region, you may want to change to variables that expand that region, to ensure that no oscillations (e.g.) are missed.</p>
+</section>
+<section id="the-trapezoid-rule">
+<h2>The Trapezoid Rule<a class="headerlink" href="#the-trapezoid-rule" title="Link to this heading">#</a></h2>
+<p>The trapezoid rule uses <em>evenly-spaced values</em> of <span class="math notranslate nohighlight">\(x\)</span>, i.e. <span class="math notranslate nohighlight">\(N\)</span> points <span class="math notranslate nohighlight">\(x_i\)</span> (<span class="math notranslate nohighlight">\(i=1,...N\)</span>), spaced at a distance <span class="math notranslate nohighlight">\(h\)</span> apart throughout the integration region <span class="math notranslate nohighlight">\([a,b]\)</span> and includes the endpoints of the integration region.</p>
+<p>This means that there are <span class="math notranslate nohighlight">\((N-1)\)</span> intervals of length <span class="math notranslate nohighlight">\(h\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(h = \frac{b-a}{N-1}\)</span>, <span class="math notranslate nohighlight">\(x_i = a + (i-1) h\)</span>, <span class="math notranslate nohighlight">\(i=1,...,N\)</span>,</p>
+<p>where we note that counting starts at <span class="math notranslate nohighlight">\(i=1\)</span> in the above formulae.</p>
+<p>The trapezoid rule takes each integration interval <span class="math notranslate nohighlight">\(i\)</span> and constructs a trapezoid of width <span class="math notranslate nohighlight">\(h\)</span> in it. This approximates <span class="math notranslate nohighlight">\(f(x)\)</span> by a straight line in each interval <span class="math notranslate nohighlight">\(i\)</span> and uses the average height of the function at the edges of the straight line as the value for <span class="math notranslate nohighlight">\(f\)</span>, i.e. <span class="math notranslate nohighlight">\((f_i + f_{i+1})/2\)</span>.</p>
+<p>The area of each such trapzoid is then:</p>
+<p><span class="math notranslate nohighlight">\(\int_{x_i}^{x_i + h} f(x) \mathrm{d}x \simeq h \frac{ (f_i + f_{i+1}) } {2}  = \frac{1}{2} h f_i + \frac{1}{2}  hf_{i+1}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span> <span class="c1"># </span>
+
+<span class="c1"># define the x array and calculate over it the function to display </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. </span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$f(x)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;The Trapezoid Rule&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># put the ticks closer together:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># set the axis limits:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.520</span><span class="p">)</span>
+
+<span class="c1"># make a one-dimensional plot using the above arrays, add a custom label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+
+<span class="c1"># draw vertical lines to denote the limits of the trapezoids:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">59</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">59</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">79</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">79</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">99</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">99</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># show the trapezoid edges: </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">19</span><span class="p">]],</span> <span class="p">[</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">f</span><span class="p">[</span><span class="mi">19</span><span class="p">]],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">39</span><span class="p">]],</span> <span class="p">[</span><span class="n">f</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span><span class="n">f</span><span class="p">[</span><span class="mi">39</span><span class="p">]],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">59</span><span class="p">]],</span> <span class="p">[</span><span class="n">f</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span><span class="n">f</span><span class="p">[</span><span class="mi">59</span><span class="p">]],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">59</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">79</span><span class="p">]],</span> <span class="p">[</span><span class="n">f</span><span class="p">[</span><span class="mi">59</span><span class="p">],</span><span class="n">f</span><span class="p">[</span><span class="mi">79</span><span class="p">]],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">79</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">99</span><span class="p">]],</span> <span class="p">[</span><span class="n">f</span><span class="p">[</span><span class="mi">79</span><span class="p">],</span><span class="n">f</span><span class="p">[</span><span class="mi">99</span><span class="p">]],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># label the trapezoids:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s1">&#39;trap. 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.22</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s1">&#39;trap. 2&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s1">&#39;trap. 3&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.62</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s1">&#39;trap. 4&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s1">&#39;trap. 5&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+
+<span class="c1"># fill the area under the curve:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># hide x and y axes label marks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># put text at the right points on the x-axis:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.035</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.98</span><span class="p">,</span><span class="o">-</span><span class="mf">0.035</span><span class="p">,</span> <span class="s1">&#39;$b$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3b942b702d67486b2a5ab7c0cff7221f5a1147328c5e94723259e4936b95cb83.png" src="../_images/3b942b702d67486b2a5ab7c0cff7221f5a1147328c5e94723259e4936b95cb83.png" />
+</div>
+</div>
+<p>In order to apply the trapezoid rule to the entire region <span class="math notranslate nohighlight">\([a,b]\)</span>, we add the contributions from each subinterval:</p>
+<p><span class="math notranslate nohighlight">\(\int_a^b f(x) \mathrm{d} x \simeq \frac{h}{2} f_1 + h f_2 + h f_3 + ... + h f_{N-1} + \frac{h}{2} f_N\)</span>.</p>
+<p>Note that the “internal” points are counted twice: the end of one interval is the beginning of the next.</p>
+<p>The trapezoid rule can be written in terms of the “weight” formula as follows:</p>
+<p><span class="math notranslate nohighlight">\(\int_a^b f(x) \mathrm{d} x \simeq \sum_{i=1}^N f(x_i) w_i\)</span>, <span class="math notranslate nohighlight">\(w_i = \left\{ \frac{h}{2}, h, ..., h, \frac{h}{2} \right\}\)</span>.</p>
+<p>Let’s write a function that implements the trapezoid rule!</p>
+<section id="example-4-7-construct-a-function-that-implements-the-trapezoid-rule-on-an-interval-a-b-using-n-points-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-compare-to-the-analytic-value-for-n-10-6-intervals">
+<h3>Example 4.7: Construct a function that implements the trapezoid rule on an interval <span class="math notranslate nohighlight">\([a,b]\)</span> using <span class="math notranslate nohighlight">\(N\)</span> points, and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>. Compare to the analytic value for <span class="math notranslate nohighlight">\(N=10^6\)</span> intervals.<a class="headerlink" href="#example-4-7-construct-a-function-that-implements-the-trapezoid-rule-on-an-interval-a-b-using-n-points-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-compare-to-the-analytic-value-for-n-10-6-intervals" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Let&#39;s write a higher-order function that implements the trapezoid rule:</span>
+<span class="k">def</span> <span class="nf">trapezium</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the numerical integral of a function in the interval a,b using the trapezoid rule for N points&quot;&quot;&quot;</span>
+    <span class="c1"># calculate the width:</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># apply the trapezoid rule: </span>
+    <span class="c1"># the contributions from the first and last points: </span>
+    <span class="n">integral</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">func</span><span class="p">(</span><span class="n">b</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span> 
+    <span class="c1"># the contributions from the remaining points: </span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="n">integral</span> <span class="o">=</span> <span class="n">integral</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">func</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">integral</span>
+
+
+<span class="c1"># test the function for exp(-t) in [0,1]:</span>
+<span class="c1"># first define the function we wish to integrate: </span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mf">1E6</span> <span class="c1"># the number of points</span>
+<span class="n">trap_int</span> <span class="o">=</span> <span class="n">trapezium</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Integral of exp(-t) in [0,1] via the trapezoid rule=&#39;</span><span class="p">,</span> <span class="n">trap_int</span><span class="p">)</span>
+
+<span class="c1"># the analytic integral is simply 1 - exp(-1):</span>
+<span class="n">analytic_int</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analytic integral=&#39;</span><span class="p">,</span> <span class="n">analytic_int</span><span class="p">)</span>
+
+<span class="c1"># compare by calculating the fractional error:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fractional error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span> <span class="p">(</span><span class="n">trap_int</span><span class="o">-</span><span class="n">analytic_int</span><span class="p">)</span><span class="o">/</span><span class="n">analytic_int</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral of exp(-t) in [0,1] via the trapezoid rule= 0.632120558828617
+Analytic integral= 0.6321205588285577
+Fractional error= 9.378892789826624e-14
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="simpson-s-rule">
+<h2>Simpson’s Rule<a class="headerlink" href="#simpson-s-rule" title="Link to this heading">#</a></h2>
+<p>Simpson’s rule approximates the integrand, <span class="math notranslate nohighlight">\(f(x)\)</span>, by a parabola for each interval:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># import matplotlib, a conventional module name is plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span> <span class="c1"># </span>
+
+<span class="c1"># define a function to plot the Simpson rule parabolas:</span>
+<span class="k">def</span> <span class="nf">SimpsonParabola</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">xinterval</span><span class="p">):</span>
+    <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xinterval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xinterval</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c1"># calculate the coefficients of the quadratic:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">xinterval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">xinterval</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">fa</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">fb</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">fm</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">)</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">fa</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">fb</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">fm</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">fa</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">fb</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">fm</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">fa</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">fb</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">fm</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">fb</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">fa</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">fb</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">fm</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">fa</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xx</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">xx</span> <span class="o">+</span> <span class="n">gamma</span>
+    
+<span class="c1"># the &quot;lambda&quot; method allows you to define a function on a single line:</span>
+<span class="n">integrand</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.5</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># define the x array and calculate over it the function to display </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">integrand</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. </span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$f(x)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Simpson&#39;s Rule&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># put the ticks closer together:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+
+<span class="c1"># set the axis limits:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.520</span><span class="p">)</span>
+
+<span class="c1"># make a one-dimensional plot using the above arrays, add a custom label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+
+<span class="c1"># draw vertical lines to denote the limits of the intervals:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">49</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">49</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">74</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">74</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">99</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">99</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the Simpson rule parabolas:</span>
+<span class="n">xxp</span><span class="p">,</span> <span class="n">yyp</span> <span class="o">=</span> <span class="n">SimpsonParabola</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="mi">49</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xxp</span><span class="p">,</span> <span class="n">yyp</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">xxp</span><span class="p">,</span> <span class="n">yyp</span> <span class="o">=</span> <span class="n">SimpsonParabola</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">49</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">99</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xxp</span><span class="p">,</span> <span class="n">yyp</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">)</span>
+
+<span class="c1"># fill the area under the curve:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># hide x and y axes label marks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># put text at the right points on the x-axis:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.035</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.98</span><span class="p">,</span><span class="o">-</span><span class="mf">0.035</span><span class="p">,</span> <span class="s1">&#39;$b$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d5776e01631cfa37c30f68426b925c38034ff5168fad550e8ae86409c7d8d047.png" src="../_images/d5776e01631cfa37c30f68426b925c38034ff5168fad550e8ae86409c7d8d047.png" />
+</div>
+</div>
+<p>i.e.: <span class="math notranslate nohighlight">\(f(x) \simeq \alpha x^2 + \beta x + \gamma\)</span></p>
+<p>The intervals are equally spaced (red and grey dashes separate them). The area under the parabola for each interval is:</p>
+<p><span class="math notranslate nohighlight">\(\int_{x_i}^{x_i + h} (\alpha x^2 + \beta x + \gamma)\mathrm{d} x = \left. \frac{ \alpha x^3 }{3} + \frac{ \beta x^2 }{2} + \gamma x \right|_{x_i}^{x_i + h}\)</span></p>
+<p>For simplicity, consider an interval from -1 to 1:</p>
+<p><span class="math notranslate nohighlight">\(\int_{-1}^{1} (\alpha x^2 + \beta x + \gamma)\mathrm{d} x = \frac{2 \alpha}{3} + 2\gamma\)</span></p>
+<p>But also notice that:</p>
+<p><span class="math notranslate nohighlight">\(f(-1) = \alpha - \beta + \gamma\)</span>, <span class="math notranslate nohighlight">\(f(0) = \gamma\)</span> and <span class="math notranslate nohighlight">\(f(1) = \alpha + \beta + \gamma\)</span>.</p>
+<p>Solving these for <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\alpha= \frac{f(1) + f(-1)}{2} - f(0)\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(\beta = \frac{ f(1) - f(-1) } { 2 } \)</span>,</p>
+<p><span class="math notranslate nohighlight">\(\gamma = f(0)\)</span>.</p>
+<p>We can substitute for <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span> to express the integral as the weighted sum over the values of the function at these three points:</p>
+<p><span class="math notranslate nohighlight">\(\int_{-1}^{1} (\alpha x^2 + \beta x + \gamma)\mathrm{d} x = \frac{f(-1)}{3} +  \frac{4f(0)}{3} + \frac{ f(1)}{3}\)</span>.</p>
+<p>Three values of the function are needed in each interval!</p>
+<p>However, if we combine two intervals, we only need to evaluate the function at the two endpoints and in the middle:</p>
+<p><span class="math notranslate nohighlight">\(\int_{x_i-h}^{x_i + h } f(x) \mathrm{d} x = \int_{x_i-h}^{x_i} f(x) \mathrm{d} x + \int_{x_i}^{x_i + h } f(x) \mathrm{d} x \simeq \frac{h}{3} f_{i-1} + \frac{ 4 h } {3} f_i + \frac{h}{3} f_{i+1}\)</span>.</p>
+<p>Therefore, Simpson’s rule requires integration to be over pairs of intervals (i.e. separated by the grey lines in the figure above).</p>
+<p>This implies that the total number of intervals must be even, and the total number of points must be odd!</p>
+<p>In order to apply Simpson’s rule to the entire interval, we add up the contributions from each <em>pair of subintervals</em>, counting all all but the first and last endpoints twice, i.e.:</p>
+<p><span class="math notranslate nohighlight">\(\int_{a}^{b} f(x) \mathrm{d} x \simeq \frac{h}{3} f_1 + \frac{4h}{3} f_2 + \frac{2h}{3} f_3 + \frac{4h}{3} f_4 + ... + \frac{4h}{3} f_{N-1} + \frac{h}{3} f_N\)</span>.</p>
+<p>In terms of the standard integration rule with weights:</p>
+<p><span class="math notranslate nohighlight">\(\int_a^b f(x) \mathrm{d} x \simeq \sum_{i=1}^N f(x_i) w_i\)</span>, <span class="math notranslate nohighlight">\(w_i = \left\{ \frac{h}{3}, \frac{4h}{3}, \frac{2h}{3}, \frac{4h}{3}, ..., \frac{4h}{3}, \frac{h}{3} \right\}\)</span>.</p>
+<p>The sum of the weights themselves provides a useful check on your implementation:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{i=1}^N w_i = (N-1)h\)</span>.</p>
+<p>And remember that the number of points <span class="math notranslate nohighlight">\(N\)</span> must be odd for Simpson’s rule!</p>
+<section id="example-4-8-construct-a-function-that-implements-simpson-s-rule-on-an-interval-a-b-using-n-points-n-is-odd-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1">
+<h3>Example 4.8: Construct a function that implements Simpson’s rule on an interval <span class="math notranslate nohighlight">\([a,b]\)</span> using <span class="math notranslate nohighlight">\(N\)</span> points (<span class="math notranslate nohighlight">\(N\)</span> is odd!), and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>.<a class="headerlink" href="#example-4-8-construct-a-function-that-implements-simpson-s-rule-on-an-interval-a-b-using-n-points-n-is-odd-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Check that your sum of weights agrees with <span class="math notranslate nohighlight">\(\sum_{i=1}^N w_i = (N-1)h\)</span>.</p></li>
+<li><p>Compare to the analytic value for <span class="math notranslate nohighlight">\(N=2001\)</span> points.</p></li>
+<li><p>Also compare to the result obtained in Example 4.7 using the trapezoid rule and <span class="math notranslate nohighlight">\(N=10^6\)</span> points.</p></li>
+</ul>
+<p>You should find that Simpson’s rule with <span class="math notranslate nohighlight">\(N=2001\)</span> points performs better than the trapezium rule with <span class="math notranslate nohighlight">\(N=10^6\)</span> points!</p>
+</section>
+</section>
+<section id="gaussian-quadrature">
+<h2>Gaussian Quadrature<a class="headerlink" href="#gaussian-quadrature" title="Link to this heading">#</a></h2>
+<p>In a similar manner as we did before, let’s rewrite the basic integration formula as follows:</p>
+<p><span class="math notranslate nohighlight">\(\int_{-1}^1 f(x) \mathrm{d} x \simeq \sum_{i=1}^N f(x_i) w_i\)</span>.</p>
+<p>Gaussian quadrature consists of <span class="math notranslate nohighlight">\(N\)</span> points and weights that are chosen to make the integration <em>exact</em> if <span class="math notranslate nohighlight">\(f(x)\)</span> is a <span class="math notranslate nohighlight">\((2N-1)\)</span>-degree polynomial!</p>
+<p>In contrast to the equally-spaced rules (trapezoid/Simpson’s) that we have already seen, there is never an integration point at the extremes of intervals. The values of the points and weights change as the number of points <span class="math notranslate nohighlight">\(N\)</span> changes, and the points are <em>not equally spaced</em>.</p>
+<p>For ordinary (also known as Gauss-Legendre) Gaussian integration, the points, <span class="math notranslate nohighlight">\(x_i\)</span> turn out to be the <span class="math notranslate nohighlight">\(N\)</span> zeros of the degree <span class="math notranslate nohighlight">\(N\)</span> Legendre polynomial <span class="math notranslate nohighlight">\(P_N(x)\)</span> on <span class="math notranslate nohighlight">\([-1,1]\)</span>. The weights are:</p>
+<p><span class="math notranslate nohighlight">\(w_i = \frac{ - 2 } { (N+1) P_N'(x_i) P_{N+1} (x_i) }\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(P_N'(x)\)</span> is the derivative of the Legendre polynomial. [See the course textbook for more details].</p>
+<p>Note that for integrals on a finite interval, the following change of variables is used to reduce the <span class="math notranslate nohighlight">\([a,b]\)</span> interval to the standard interval:</p>
+<p><span class="math notranslate nohighlight">\(\int_{a}^b f(x) \mathrm{d} x = \frac{b-a}{2} \int_{-1}^1 f\left( \frac{(b-a)x + a + b}{2} \right) \mathrm{d}x\)</span>.</p>
+<p>Let’s use Python special functions to calculate the first few Gauss-Legendre “nodes” and weights.</p>
+<section id="example-4-9-use-special-functions-to-get-the-gauss-legendre-points-and-weights-for-n-2-to-n-8-points">
+<h3>Example 4.9: Use special functions to get the Gauss-Legendre points and weights for <span class="math notranslate nohighlight">\(N=2\)</span> to <span class="math notranslate nohighlight">\(N=8\)</span> points.<a class="headerlink" href="#example-4-9-use-special-functions-to-get-the-gauss-legendre-points-and-weights-for-n-2-to-n-8-points" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="c1"># set the number of points</span>
+<span class="n">N</span><span class="o">=</span><span class="mi">2</span>
+<span class="c1"># we can access special functions using scipy.special.</span>
+<span class="c1"># The roots of Legendre polynomials can be accessed via:</span>
+<span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">roots_legendre</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># the first array is the array of points and the second is the array pf weights:</span>
+<span class="n">xi</span><span class="p">,</span> <span class="n">wi</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">roots_legendre</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># print them separately for N=2:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;N=2 Gaussian quadrature, evaluated at:&#39;</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;with weights&#39;</span><span class="p">,</span> <span class="n">wi</span><span class="p">)</span>
+
+<span class="c1"># Now let&#39;s also print N=2 to N=8:</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">xi</span><span class="p">,</span> <span class="n">wi</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">roots_legendre</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;n=&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s1">&#39;Gaussian quadrature, evaluated at:&#39;</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;with weights&#39;</span><span class="p">,</span> <span class="n">wi</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N=2 Gaussian quadrature, evaluated at: [-0.57735027  0.57735027]
+with weights [1. 1.]
+n= 3 Gaussian quadrature, evaluated at: [-0.77459667  0.          0.77459667]
+with weights [0.55555556 0.88888889 0.55555556] 
+
+n= 4 Gaussian quadrature, evaluated at: [-0.86113631 -0.33998104  0.33998104  0.86113631]
+with weights [0.34785485 0.65214515 0.65214515 0.34785485] 
+
+n= 5 Gaussian quadrature, evaluated at: [-0.90617985 -0.53846931  0.          0.53846931  0.90617985]
+with weights [0.23692689 0.47862867 0.56888889 0.47862867 0.23692689] 
+
+n= 6 Gaussian quadrature, evaluated at: [-0.93246951 -0.66120939 -0.23861919  0.23861919  0.66120939  0.93246951]
+with weights [0.17132449 0.36076157 0.46791393 0.46791393 0.36076157 0.17132449] 
+
+n= 7 Gaussian quadrature, evaluated at: [-0.94910791 -0.74153119 -0.40584515  0.          0.40584515  0.74153119
+  0.94910791]
+with weights [0.12948497 0.27970539 0.38183005 0.41795918 0.38183005 0.27970539
+ 0.12948497] 
+
+n= 8 Gaussian quadrature, evaluated at: [-0.96028986 -0.79666648 -0.52553241 -0.18343464  0.18343464  0.52553241
+  0.79666648  0.96028986]
+with weights [0.10122854 0.22238103 0.31370665 0.36268378 0.36268378 0.31370665
+ 0.22238103 0.10122854] 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now use this to evaluate an integral!</p>
+</section>
+<section id="example-4-10-construct-a-function-that-implements-n-th-order-gaussian-quadrature-in-the-interval-a-b-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-for-n-8">
+<h3>Example 4.10: Construct a function that implements N-th order Gaussian quadrature in the interval <span class="math notranslate nohighlight">\([a,b]\)</span>, and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span> for <span class="math notranslate nohighlight">\(N=8\)</span>.<a class="headerlink" href="#example-4-10-construct-a-function-that-implements-n-th-order-gaussian-quadrature-in-the-interval-a-b-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-for-n-8" title="Link to this heading">#</a></h3>
+<p>Compare to the results obtained through the trapezium rule with <span class="math notranslate nohighlight">\(N=10^6\)</span> points, and Simpson’s rule with <span class="math notranslate nohighlight">\(N=2001\)</span> points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="c1"># we need scipy for the N-th order Legendre polynomials. </span>
+
+<span class="c1"># Let&#39;s write a higher-order function that implements N-th order Gaussian quadrature:</span>
+<span class="k">def</span> <span class="nf">gauss</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the numerical integral of a function in the interval a,b using N-th order Gaussian quadrature&quot;&quot;&quot;</span>
+    <span class="c1"># N-th order Gaussian quadrature </span>
+    <span class="c1"># get the weights and points from the scipy special function:</span>
+    <span class="n">xi</span><span class="p">,</span> <span class="n">wi</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">special</span><span class="o">.</span><span class="n">roots_legendre</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="c1"># now use the general formula to get the integral:</span>
+    <span class="n">integral</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">wj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">wi</span><span class="p">):</span>
+        <span class="c1"># calculate the x value using the xi array:</span>
+        <span class="n">xj</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">xi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span> <span class="c1"># transform the xi[j] to the function argument, xj</span>
+        <span class="n">integral</span> <span class="o">=</span> <span class="n">integral</span> <span class="o">+</span> <span class="n">wj</span> <span class="o">*</span> <span class="n">func</span><span class="p">(</span><span class="n">xj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">integral</span>
+
+<span class="c1"># test the function for exp(-t) in [0,1]:</span>
+<span class="c1"># first define the function we wish to integrate: </span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1"># the order of the Gaussian quadrature</span>
+<span class="n">gauss_int</span> <span class="o">=</span> <span class="n">gauss</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Integral of exp(-t) in [0,1] via N=&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;Gaussian quadrature&quot;</span><span class="p">,</span> <span class="n">gauss_int</span><span class="p">)</span>
+
+<span class="c1"># the analytic integral is simply 1 - exp(-1):</span>
+<span class="n">analytic_int</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Analytic integral=&#39;</span><span class="p">,</span> <span class="n">analytic_int</span><span class="p">)</span>
+
+<span class="c1"># compare by calculating the fractional error:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fractional error=&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span> <span class="p">(</span><span class="n">gauss_int</span><span class="o">-</span><span class="n">analytic_int</span><span class="p">)</span><span class="o">/</span><span class="n">analytic_int</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral of exp(-t) in [0,1] via N= 8 Gaussian quadrature 0.6321205588285576
+Analytic integral= 0.6321205588285577
+Fractional error= 1.7563469643870083e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have reached extraordinary precision (essentially machine precision) with just 8 points!</p>
+<p>We couldn’t reach this precision with <span class="math notranslate nohighlight">\(N=10^6\)</span> points and the Trapezium rule, and we needed <span class="math notranslate nohighlight">\(N=2001\)</span> points to reach this preecision with Simpson’s rule!</p>
+</section>
+</section>
+<section id="higher-order-rules-3-8-and-milne-rules">
+<h2>Higher Order Rules (3/8 and Milne Rules)<a class="headerlink" href="#higher-order-rules-3-8-and-milne-rules" title="Link to this heading">#</a></h2>
+<p>There exist other interesting “equal intrerval” rules that use higher-order approximations, such as the “3/8” rule and the Milne rule.</p>
+<p>In terms of the formula: <span class="math notranslate nohighlight">\(\int_a^b f(x) \mathrm{d} x \simeq \sum_{i=1}^N f(x_i) w_i\)</span>, the weights for the 3/8 rule (third-degree approximation) are:</p>
+<p><span class="math notranslate nohighlight">\(w_i = (1,3,3,1)\frac{3}{8} h\)</span>.</p>
+<p>and for the Milne rule (fourth-degree approximation):</p>
+<p><span class="math notranslate nohighlight">\(w_i = (14, 64, 24, 64, 14) \frac{h}{45}\)</span>.</p>
+<p>A useful check in these cases as well:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{i=1}^N w_i = b -a\)</span>.</p>
+</section>
+<section id="integration-error-assessment">
+<h2>Integration Error Assessment<a class="headerlink" href="#integration-error-assessment" title="Link to this heading">#</a></h2>
+<p>Let’s now use the functions for the trapezium rule, Simpson’s rule, and N-th order Gaussian integration to evaluate the behavior of the relative error in each case, for the same function as before, <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span>, integrated over the interval <span class="math notranslate nohighlight">\([0,1]\)</span>, for which we know the analytic form.</p>
+<p>As before, we will make a plot of the <span class="math notranslate nohighlight">\(\log_{10}\)</span> of the relative error, versus <span class="math notranslate nohighlight">\(\log_{10}\)</span> of the number of points used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> 
+
+<span class="n">Narray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">)])</span> <span class="c1"># the NumPy logspace returns numbers spaced evenly on a log scale.</span>
+
+<span class="c1"># test the function for exp(-t) in [0,1]:</span>
+<span class="c1"># first define the function we wish to integrate: </span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Trapezium rule result:</span>
+<span class="n">I_trapezium</span> <span class="o">=</span> <span class="p">[</span><span class="n">trapezium</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Narray</span><span class="p">]</span>
+
+<span class="c1"># Simpson&#39;s rule result:</span>
+<span class="c1"># reinstate after we have written the function:</span>
+<span class="c1">#I_simpson = [simpson(f,0,1,N) for N in Narray]</span>
+
+<span class="c1"># Gaussian Quadrature result:</span>
+<span class="n">I_gaussian</span> <span class="o">=</span> <span class="p">[</span><span class="n">gauss</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Narray</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s get the relative errors:</span>
+<span class="n">I_analytic</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># use the analytic result</span>
+
+<span class="c1"># get the relative errors:</span>
+<span class="c1"># trapezium:</span>
+<span class="n">eps_trapezium</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">I_trapezium</span><span class="p">,</span><span class="n">I_analytic</span><span class="p">)</span><span class="o">/</span><span class="n">I_analytic</span> <span class="p">)</span>
+<span class="c1"># simpson: (uncomment)</span>
+<span class="c1"># eps_simpson = np.abs( np.subtract(I_simpson,I_analytic)/I_analytic )</span>
+
+<span class="n">eps_gaussian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">I_gaussian</span><span class="p">,</span><span class="n">I_analytic</span><span class="p">)</span><span class="o">/</span><span class="n">I_analytic</span> <span class="p">)</span>
+<span class="c1"># if a zero has been found, set it to machine precision:</span>
+<span class="n">eps_gaussian</span><span class="p">[</span><span class="n">eps_gaussian</span><span class="p">[:]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+
+<span class="c1"># get the log10:</span>
+<span class="n">log10_eps_trapezium</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">eps_trapezium</span><span class="p">)</span>
+<span class="c1"># log10_eps_simpson = np.log10(eps_simpson) # UNCOMMENT!</span>
+<span class="n">log10_eps_gaussian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">eps_gaussian</span><span class="p">)</span>
+
+<span class="c1"># and of the array: </span>
+<span class="n">log10_N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">Narray</span><span class="p">)</span>
+
+<span class="c1"># Now let&#39;s plot them! </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># import matplotlib, a conventional module name is plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Now plot! Don&#39;t forget the different labels! </span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span> <span class="c1"># create the elements required for matplotlib. This creates a figure containing a single axes.</span>
+
+<span class="c1"># set the labels and titles:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\log_</span><span class="si">{10}</span><span class="s1">(N)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the x label</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\log_</span><span class="si">{10}</span><span class="s1">(\varepsilon)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># set the y label. Note that the &#39;r&#39; is necessary to remove the need for double slashes. You can use LaTeX! </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Error assessment in numerical integration of $f(x)=\exp(x)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># set the title </span>
+
+<span class="c1"># make a one-dimensional plot using the arrays relevant to the cosine:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log10_N</span><span class="p">,</span> <span class="n">log10_eps_trapezium</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Trapezium&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> 
+<span class="c1">#ax.plot(log10_N, log10_eps_simpson, label=&#39;Simpson&#39;, ls=&#39;-&#39;, color=&#39;green&#39;) </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log10_N</span><span class="p">,</span> <span class="n">log10_eps_gaussian</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> 
+
+<span class="c1"># construct the legend:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>  <span class="c1"># Add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># show the plot here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/62bf0b4e78d09ad8cd82ca79f19464d87bcc471317c13c8c1bc7f65abfe63061.png" src="../_images/62bf0b4e78d09ad8cd82ca79f19464d87bcc471317c13c8c1bc7f65abfe63061.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="minor-digression-python-functools-and-partial-functions">
+<h1>Minor Digression: Python functools and partial functions<a class="headerlink" href="#minor-digression-python-functools-and-partial-functions" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">functools</span></code> module is for higher-order functions: functions that act on or return other functions. In general, any callable object can be treated as a function for the purposes of this module.</p>
+<p>See <a class="reference external" href="https://docs.python.org/3/library/functools.html">https://docs.python.org/3/library/functools.html</a> for details.</p>
+<p>Here, I wish to discuss <code class="docutils literal notranslate"><span class="pre">partial</span></code> functions.</p>
+<p>Suppose we have a function that takes as arguments a variable and two parameters, e.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myfunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;My function&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we want to do something with this function, e.g. integrate it in the interval <span class="math notranslate nohighlight">\([0,1]\)</span> for various values of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>. We can create a “partial” function and then use it as an argument in our higher-order functions (e.g. <code class="docutils literal notranslate"><span class="pre">gauss()</span></code>) for integration:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span> <span class="c1"># partial functions allow us to fix a certain number of arguments of a function and generate a new function.</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ai</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">bi</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="n">partial_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">myfunction</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">ai</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">bi</span><span class="p">)</span> <span class="c1"># this has created a new function with the parameters a and b fixed</span>
+        <span class="c1"># now we can pass this to our integrator!</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Integral of a*x+b in [0,1], for a=&#39;</span><span class="p">,</span><span class="n">ai</span><span class="p">,</span> <span class="s1">&#39;b=&#39;</span><span class="p">,</span><span class="n">bi</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">gauss</span><span class="p">(</span><span class="n">partial_func</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integral of a*x+b in [0,1], for a= 0.1 b= 0.4 = 0.45000000000000007
+Integral of a*x+b in [0,1], for a= 0.1 b= 0.5 = 0.55
+Integral of a*x+b in [0,1], for a= 0.1 b= 0.6 = 0.65
+Integral of a*x+b in [0,1], for a= 0.2 b= 0.4 = 0.5
+Integral of a*x+b in [0,1], for a= 0.2 b= 0.5 = 0.6000000000000001
+Integral of a*x+b in [0,1], for a= 0.2 b= 0.6 = 0.7000000000000001
+Integral of a*x+b in [0,1], for a= 0.3 b= 0.4 = 0.55
+Integral of a*x+b in [0,1], for a= 0.3 b= 0.5 = 0.6499999999999999
+Integral of a*x+b in [0,1], for a= 0.3 b= 0.6 = 0.75
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Deterministic Randomness</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Differentiation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-forward-difference-derivative">The Forward-Difference Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-1-calculate-the-forward-difference-derivative-for-the-above-data-points-and-plot-it-in-a-numpy-array-called-y">Example 4.1: Calculate the forward-difference derivative for the above data points and plot it (in a NumPy array called <code class="docutils literal notranslate"><span class="pre">y</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-2-calculate-the-forward-difference-derivatives-for-f-t-cos-t-and-g-t-exp-t-at-t-0-1-1-100-for-h-10-6-compare-to-the-analytic-results">Example 4.2: Calculate the forward-difference derivatives for <span class="math notranslate nohighlight">\(f(t) = \cos t\)</span> and <span class="math notranslate nohighlight">\(g(t) = \exp(t)\)</span> at <span class="math notranslate nohighlight">\(t=0.1, 1., 100\)</span>, for <span class="math notranslate nohighlight">\(h=10^{-6}\)</span>. Compare to the analytic results.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-difference-derivative">The Central-Difference Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-3-calculate-as-in-example-4-2-but-with-the-central-difference-derivative">Example 4.3: Calculate as in Example 4.2, but with the central-difference derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrapolated-difference-derivative">Extrapolated-Difference Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#error-assessment-in-numerical-differentiation">Error Assessment in Numerical Differentiation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-4-use-the-sweet-spot-values-of-the-step-size-to-calculate-the-derivatives-of-cos-t-and-exp-t-at-the-same-points-as-the-previous-examples">Example 4.4: Use the sweet-spot values of the step size to calculate the derivatives of <span class="math notranslate nohighlight">\(\cos (t)\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span> at the same points as the previous examples.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-5-using-the-known-analytical-results-calculate-the-relative-error-varepsilon-obtained-by-both-methods-for-the-cos-t-and-exp-t-functions-at-t-0-1-for-varying-step-size-h-down-to-h-simeq-epsilon-m-simeq-10-15-and-plot-log-10-varepsilon-vs-log-10-h-comment-on-the-behavior-at-small-and-large-h">Example 4.5: Using the known analytical results calculate the <em>relative error</em>, <span class="math notranslate nohighlight">\(\varepsilon\)</span>, obtained by both methods for the <span class="math notranslate nohighlight">\(\cos(t)\)</span> and <span class="math notranslate nohighlight">\(\exp(t)\)</span> functions at <span class="math notranslate nohighlight">\(t=0.1\)</span>, for varying step size <span class="math notranslate nohighlight">\(h\)</span> down to <span class="math notranslate nohighlight">\(h\simeq \epsilon_m \simeq 10^{-15}\)</span> and plot <span class="math notranslate nohighlight">\(\log_{10}|\varepsilon|\)</span> vs. <span class="math notranslate nohighlight">\(\log_{10} h\)</span>. Comment on the behavior at small and large <span class="math notranslate nohighlight">\(h\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-6-take-the-numerical-derivative-of-the-function-f-t-exp-t-cos-t-at-t-0-1-and-following-example-4-5-perform-an-error-assessment">Example 4.6: Take the numerical derivative of the function <span class="math notranslate nohighlight">\(f(t) = \exp(t) \cos(t)\)</span> at <span class="math notranslate nohighlight">\(t=0.1\)</span>, and following Example 4.5, perform an error assessment.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">Numerical Integration</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trapezoid-rule">The Trapezoid Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-7-construct-a-function-that-implements-the-trapezoid-rule-on-an-interval-a-b-using-n-points-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-compare-to-the-analytic-value-for-n-10-6-intervals">Example 4.7: Construct a function that implements the trapezoid rule on an interval <span class="math notranslate nohighlight">\([a,b]\)</span> using <span class="math notranslate nohighlight">\(N\)</span> points, and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>. Compare to the analytic value for <span class="math notranslate nohighlight">\(N=10^6\)</span> intervals.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-rule">Simpson’s Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-8-construct-a-function-that-implements-simpson-s-rule-on-an-interval-a-b-using-n-points-n-is-odd-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1">Example 4.8: Construct a function that implements Simpson’s rule on an interval <span class="math notranslate nohighlight">\([a,b]\)</span> using <span class="math notranslate nohighlight">\(N\)</span> points (<span class="math notranslate nohighlight">\(N\)</span> is odd!), and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-quadrature">Gaussian Quadrature</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-9-use-special-functions-to-get-the-gauss-legendre-points-and-weights-for-n-2-to-n-8-points">Example 4.9: Use special functions to get the Gauss-Legendre points and weights for <span class="math notranslate nohighlight">\(N=2\)</span> to <span class="math notranslate nohighlight">\(N=8\)</span> points.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-10-construct-a-function-that-implements-n-th-order-gaussian-quadrature-in-the-interval-a-b-and-use-to-integrate-f-x-exp-x-in-the-interval-0-1-for-n-8">Example 4.10: Construct a function that implements N-th order Gaussian quadrature in the interval <span class="math notranslate nohighlight">\([a,b]\)</span>, and use to integrate <span class="math notranslate nohighlight">\(f(x) = \exp(-x)\)</span> in the interval <span class="math notranslate nohighlight">\([0,1]\)</span> for <span class="math notranslate nohighlight">\(N=8\)</span>.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-rules-3-8-and-milne-rules">Higher Order Rules (3/8 and Milne Rules)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-error-assessment">Integration Error Assessment</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#minor-digression-python-functools-and-partial-functions">Minor Digression: Python functools and partial functions</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Papaefstathiou
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

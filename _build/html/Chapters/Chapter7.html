@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; Computational Physics  I (PHYS 3500K)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/Chapter7';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="Chapter8.html" />
+    <link rel="prev" title="Trial-and-Error Root Finding" href="Chapter6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Computational Physics  I (PHYS 3500K)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter1.html">Making Computers Obey</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter2.html">Computer Number Representations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter3.html">Deterministic Randomness</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter4.html">Numerical Differentiation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter5.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter6.html">Trial-and-Error Root Finding</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter8.html">Introduction</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter9.html">Introduction</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chapter10.html">Introduction</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapters/Chapter7.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chapters/Chapter7.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-form-for-odes">Dynamic form for ODEs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-algorithms">ODE Algorithms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-method">Euler’s Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-1-an-application-of-euler-s-method">Example 7.1: An Application of Euler’s Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-evaluation-of-the-integration-algorithm">Example 7.2: Evaluation of the Integration Algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runge-kutta-methods">Runge-Kutta Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-nonlinear-oscillators">Application: Nonlinear Oscillators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-4-oscillator-warmup-simple-harmonic-motion">Example 7.4: Oscillator warmup: Simple Harmonic Motion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-5-nonlinear-oscillator-models">Example 7.5: Nonlinear Oscillator Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><font size="6"> <strong>Chapter 7: Ordinary Differential Equations</strong> </font></p>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>Many of the laws of physics are formulated in terms of differential equations.</p>
+<p>Part of the power of computational tools is that it is easy to solve almost every differential equation. E.g. one can go beyond the small displacement in the description of oscillations, and explore interesting nonlinear phenomena.</p>
+<p>Let’s begin with a recap of some mathematical preliminaries that pertain to differential equations, and then move on, in this chapter, to to discuss algorithms for solving the ordinary differential equations.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mathematical-preliminaries">
+<h1>Mathematical Preliminaries<a class="headerlink" href="#mathematical-preliminaries" title="Link to this heading">#</a></h1>
+<p><strong>ORDER</strong>: The order of a differential equation refers to the degree of the derivative.</p>
+<p>e.g. the most general form for a <em>first-order</em> differential equation is:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} y } { \mathrm{d} x } = f(x,y)\)</span>.</p>
+<p>e.g. even if <span class="math notranslate nohighlight">\(f(x,y)\)</span> is a nasty function of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} y } { \mathrm{d} x } = x^2 y + x^{17} + y^{13}\)</span>,</p>
+<p>the equation is still <em>first order</em>.</p>
+<p>A general form of a <em>second-orrder</em> differential equation is:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d}^2 y } { \mathrm{d} x^2 } + \lambda \frac{ \mathrm{d} y } { \mathrm{d} x }  = f(x, \frac{ \mathrm{d} y } { \mathrm{d} x }, y)\)</span>.</p>
+<p>The derivative on the RHS may involved any power of the first derivative as well.</p>
+<p>In the above, <span class="math notranslate nohighlight">\(x\)</span> is known as the <em>independent</em> variable and <span class="math notranslate nohighlight">\(y\)</span> is the <em>dependent</em> variable.</p>
+<p><strong>ORDINARY VS. PARTIAL</strong></p>
+<p><em>Ordinary</em> diffrential equations contain <em>just one independent</em> variable, e.g. <span class="math notranslate nohighlight">\(x\)</span> in our discussion.</p>
+<p>In contrast, <em>partial</em> differential equations contain <em>several independent variables</em>.</p>
+<p>E.g. the Schrödinger equation in three dimensions:</p>
+<p><span class="math notranslate nohighlight">\( i \hbar \frac{ \partial \Psi(\vec{x},t) } {\partial t} = -\frac{ \hbar^2 } { 2 m } \left[ \frac{ \partial^2 \Psi} { \partial x^2 } + \frac{ \partial^2 \Psi} { \partial y^2 } + \frac{ \partial^2 \Psi} { \partial z^2 } \right] + V(\vec{x}) \Psi(\vec{x},t)\)</span>,</p>
+<p>is a partial differential equation with four independent variables <span class="math notranslate nohighlight">\(\vec{x} = (x,y,z)\)</span> and <span class="math notranslate nohighlight">\(t\)</span>, and one dependent variable <span class="math notranslate nohighlight">\(\Psi(\vec{x},t)\)</span>.</p>
+<p><strong>LINEAR VS. NONLINEAR</strong></p>
+<p>Part of the strength of computational methods is that we ar eno longer limited to solving linear equations.</p>
+<p>A <em>linear</em> equation is one in which only the first power of <span class="math notranslate nohighlight">\(y\)</span> or of <span class="math notranslate nohighlight">\(\mathrm{d}^n y / \mathrm{d}x^n\)</span> appears, e.g.:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} y } { \mathrm{d} x } = g(x) y(x)\)</span> is <em>linear</em>,</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} y } { \mathrm{d} x } = \lambda y(x) - \lambda^2 y^2(x)\)</span> is <em>nonlinear</em>.</p>
+<p><em>WARNING</em>: An important property of linear equations is no longer valid for nonlinear equations: the principle of superposition, that lets us add solutions together to form new ones: e.g. if <span class="math notranslate nohighlight">\(A(x)\)</span> is a solution and <span class="math notranslate nohighlight">\(B(x)\)</span> is a solution to a linear differential equation, then their sum:</p>
+<p><span class="math notranslate nohighlight">\(y(x) = a A(x) + b B(x)\)</span>, is also a solution, for arbritrary values of the constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. This would no longer be true for a nonlinear equation!</p>
+<p><strong>Initial and boundary conditions</strong></p>
+<p>The general solution of a first-order differential equaiton always contains one arbitrary constant. The general solution of a second-order differential equation contains two, and so on.</p>
+<p>For any specific problem, these constants are fixed by the initial conditions. E.g. for a first-order equation for <span class="math notranslate nohighlight">\(y(x)\)</span>, the sole initial condition necessary is <span class="math notranslate nohighlight">\(y(x=x_0)\)</span>, i.e. the value of <span class="math notranslate nohighlight">\(y\)</span> at some value of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>For a second-order equation, two initial conditions are required. These may e.g. be the position and velocity at some time when solving a problem involving Newton’s second law of motion:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d}^2 y } { \mathrm{d} t^2 } = \frac{1}{m} F(y,t)\)</span>.</p>
+<p>In addition to the initial conditions, it is possible to further restrict the solutions of differential equations, e.g. through <em>boundary conditions</em> that constrain one solution to have fixed values at the boundaries of the solution space.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dynamic-form-for-odes">
+<h1>Dynamic form for ODEs<a class="headerlink" href="#dynamic-form-for-odes" title="Link to this heading">#</a></h1>
+<p>The most general form of an ODE is a <em>set</em> of <span class="math notranslate nohighlight">\(M\)</span> <em>coupled first-order</em> differential equations:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d} \vec{y} } { \mathrm{d} x } = \vec{f}(x,\vec{y})\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the independent variable and <span class="math notranslate nohighlight">\(\vec{y}\)</span> is a vector of <span class="math notranslate nohighlight">\(M\)</span> dependent variables. The vector of functions <span class="math notranslate nohighlight">\(f\)</span> is an <span class="math notranslate nohighlight">\(M\)</span>-component vector as well.</p>
+<p>Differential equations of higher order can be written in this first-order coupled form, by introducing auxiliary functions.</p>
+<p>Consider, for example, the one-dimensional motion (in the <span class="math notranslate nohighlight">\(z\)</span> direction), of a particle of mass <span class="math notranslate nohighlight">\(m\)</span> under a force <em>field</em> F(z), described by the second-order differential equation (Newton’s second law):</p>
+<p><span class="math notranslate nohighlight">\( m\frac{ \mathrm{d}^2 z } { \mathrm{d} t^2 } = F(z)\)</span>.</p>
+<p>If we define the momentum as: <span class="math notranslate nohighlight">\(p(t) = m \frac{ \mathrm{d} z } { \mathrm{d} t }\)</span>,</p>
+<p>then Newton’s law becomes two coupled first-order equations (known as Hamilton’s equations):</p>
+<p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d} p } { \mathrm{d} t } = F(z)\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d} z } { \mathrm{d} t } = \frac{p}{m}\)</span>,</p>
+<p>which are of the desired general form.</p>
+<p>It is therefore sufficient to consider in detail only methods for first-order ODEs!</p>
+<p>Since the matrix structure of coupled differential equations is of this natural form, we can focus on the case where there is only one independent variable, which can be generalized readily.</p>
+<p>Thus, we will begin by consider the methods for solving:</p>
+<p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d} y } { \mathrm{d} x } = f(x,y)\)</span>, for a single dependent variable <span class="math notranslate nohighlight">\(y(x)\)</span>.</p>
+<p>In this chapter, we will discuss methods for solving ODEs, with emphasis on the initial value problem, i.e.:</p>
+<p>Find <span class="math notranslate nohighlight">\(y(x)\)</span> given the value of <span class="math notranslate nohighlight">\(y\)</span> at some initial point, say <span class="math notranslate nohighlight">\(y(x=0) = y_0\)</span>.</p>
+<p>This is the kind of problem that occurs, e.g. when we are given the initial position and momentum of a particle and we wish to find its subsequent motion.</p>
+<p>Later on, we will discuss the equally important boundary value and eigenvalue problems.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ode-algorithms">
+<h1>ODE Algorithms<a class="headerlink" href="#ode-algorithms" title="Link to this heading">#</a></h1>
+<section id="euler-s-method">
+<h2>Euler’s Method<a class="headerlink" href="#euler-s-method" title="Link to this heading">#</a></h2>
+<p>We are interested in the solution of <span class="math notranslate nohighlight">\(\frac{ \mathrm{d} y } { \mathrm{d} x } = f(x,y)\)</span>, with the initial condition <span class="math notranslate nohighlight">\(y(x=0) = y_0\)</span>.</p>
+<p>More specifically, we are usually interested in the value of <span class="math notranslate nohighlight">\(y\)</span> at particular vlaue of <span class="math notranslate nohighlight">\(x\)</span>, say <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
+<p>The general strategy is to divide the interval <span class="math notranslate nohighlight">\([0,1]\)</span> into a large number, <span class="math notranslate nohighlight">\(N\)</span>, of equally spaced subintervals of length <span class="math notranslate nohighlight">\(h=1/N\)</span> and then to develop a recursion formula relating <span class="math notranslate nohighlight">\(y_n\)</span> to <span class="math notranslate nohighlight">\(\{y_{n-1}, y_{n-2},...\}\)</span>, where <span class="math notranslate nohighlight">\(y_n\)</span> is our approximation to <span class="math notranslate nohighlight">\(y(x_n = nh)\)</span>. Such a recursion formula would then allow a step-by-step integration of the differential equation from <span class="math notranslate nohighlight">\(x=0\)</span> to <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
+<p>One of the simplest algorithms is known as Euler’s method, in which we consider the differential equation at the point <span class="math notranslate nohighlight">\(x_n\)</span>, and replace the derivative on the LHS by its forward-difference approximation:</p>
+<p><span class="math notranslate nohighlight">\(\frac{ y_{n+1} - y_n } { h } + \mathcal{O}(h) = f(x_n , y_n)\)</span>,</p>
+<p>so that, if we solve for <span class="math notranslate nohighlight">\(y_{n+1}\)</span>, we obtain a recursion relation expressing <span class="math notranslate nohighlight">\(y_{n+1}\)</span> in terms of the “previous” value, <span class="math notranslate nohighlight">\(y_n\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(y_{n+1} = y_n + h f(x_n, y_n) + \mathcal{O}(h^2)\)</span>.</p>
+<p>The formula has a “local” error (i.e. the error made in taking a single step from <span class="math notranslate nohighlight">\(y_n \rightarrow y_{n+1}\)</span>, that is <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>. The “global” error made in finding <span class="math notranslate nohighlight">\(y(1)\)</span>, after taking <span class="math notranslate nohighlight">\(N\)</span> such steps in integrating from <span class="math notranslate nohighlight">\(x=0\)</span> to <span class="math notranslate nohighlight">\(x=1\)</span> is then <span class="math notranslate nohighlight">\(N \mathcal{O}(h^2) \sim \frac{1}{h} \mathcal{O}(h^2) \sim \mathcal{O}(h)\)</span>.</p>
+<p>Evidently, this error decreases only linearly with decreasing step size, so that if we halve <span class="math notranslate nohighlight">\(h\)</span> (and perform twice as many steps), we halve the error of the final answer.</p>
+<p>Let’s apply this method to a simple problem.</p>
+<section id="example-7-1-an-application-of-euler-s-method">
+<h3>Example 7.1: An Application of Euler’s Method<a class="headerlink" href="#example-7-1-an-application-of-euler-s-method" title="Link to this heading">#</a></h3>
+<p>Apply Euler’s method to solve:</p>
+<p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d} y } { \mathrm{d} x } = -xy\)</span> with initial condition <span class="math notranslate nohighlight">\(y(0) = 1\)</span> from <span class="math notranslate nohighlight">\(x=0\)</span> to <span class="math notranslate nohighlight">\(x=3\)</span>.</p>
+<p>Use various step sizes: <span class="math notranslate nohighlight">\(h=0.500, 0.200, 0.100, 0.050, 0.020, 0.010, 0.005, 0.002, 0.001\)</span> and calculate the error relative to the analytical solution <span class="math notranslate nohighlight">\(y(x) = \exp{-x^2/2}\)</span> at the points <span class="math notranslate nohighlight">\(x=1\)</span> and <span class="math notranslate nohighlight">\(x=3\)</span>. Does it scale as you expect with <span class="math notranslate nohighlight">\(h\)</span>?</p>
+<p>Plot the <span class="math notranslate nohighlight">\(y(x)\)</span> for a few step sizes, e.g. <span class="math notranslate nohighlight">\(h=0.500, 0.050, 0.001\)</span>, as well as the analytical function.</p>
+</section>
+<section id="example-7-2-evaluation-of-the-integration-algorithm">
+<h3>Example 7.2: Evaluation of the Integration Algorithm<a class="headerlink" href="#example-7-2-evaluation-of-the-integration-algorithm" title="Link to this heading">#</a></h3>
+<p>A simple and often stringent test of an accurate numerical integration is to use the final value of <span class="math notranslate nohighlight">\(y\)</span> obtained as the initial condition to integrate backward from the final value of <span class="math notranslate nohighlight">\(x\)</span> to the starting point. The extent to which the resulting value of <span class="math notranslate nohighlight">\(y\)</span> differs from the original initial condition is then a measure of the inaccuracy.</p>
+<p>Apply this test to Example 7.1.</p>
+<p>Although Euler’s method seems to work quite well, it is generally unsatisfactory due to its lower-order accuracy.</p>
+<p>The algorithm is not recommended for general use, but it is commonly used to start off more precise algorithms.</p>
+</section>
+</section>
+<section id="runge-kutta-methods">
+<h2>Runge-Kutta Methods<a class="headerlink" href="#runge-kutta-methods" title="Link to this heading">#</a></h2>
+<p>There is a lot of freedom in writing down algorithms for integrating differential equations. There exists a large number of them, each having their own pecularities and advantages.</p>
+<p>One very convenient and widely used class of methods are the Runge-Kutta algorithms, which come in varying orders of accuracy.</p>
+<p>Here, we derive the second-order version (<code class="docutils literal notranslate"><span class="pre">rk2</span></code>) to give the spirit of the approach and then state the equations for the fourth-order method.</p>
+<p>We begin by writing down the formal integral of our differential equation:</p>
+<p><span class="math notranslate nohighlight">\(\frac{ \mathrm{d} y } { \mathrm{d} x } = f(x,y)\)</span>,</p>
+<p>as:</p>
+<p><span class="math notranslate nohighlight">\(y(x) = \int f(x,y) \mathrm{d} x\)</span>,</p>
+<p>which leads to:</p>
+<p><span class="math notranslate nohighlight">\(y_{n+1} = y_n + \int_{x_n}^{x_{n+1}} f(x,y) \mathrm{d} x\)</span>.</p>
+<p>We then expand <span class="math notranslate nohighlight">\(f(x,y)\)</span> in a Taylor series about the midpoint of the integration interval:</p>
+<p><span class="math notranslate nohighlight">\(f(x,y) \simeq f(x_{n+1/2}, y_{n+1/2}) + (x-x_{n+1/2}) \left.\frac{ \mathrm{d} f } { \mathrm{d} x } \right|_{x_{n+1/2}} + \mathcal{O}(h^2)\)</span>.</p>
+<p>Substituting into the expression for <span class="math notranslate nohighlight">\(y_{n+1}\)</span>, the linear term integrates to zero because it is equally positive and negative in the interval <span class="math notranslate nohighlight">\([x_n, x_{n+1}]\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\int_{x_n}^{x_{n+1}} (x-x_{n+1/2}) \left.\frac{ \mathrm{d} f } { \mathrm{d} x } \right|_{x_{n+1/2}} \mathrm{d}x = \left.\frac{ \mathrm{d} f } { \mathrm{d} x } \right|_{x_{n+1/2}}  \int_{x_n}^{x_{n+1}} (x-x_{n+1/2}) \mathrm{d}x = 0\)</span>.</p>
+<p>Then:</p>
+<p><span class="math notranslate nohighlight">\(y_{n+1} = y_n + h f(x_{n+1/2}, y_{n+1/2}) + \mathcal{O}(h^3)\)</span>,</p>
+<p>where the error arises from the quadratic term in the Taylor series.</p>
+<p>Although it seems as if we need to know the value of <span class="math notranslate nohighlight">\(y_{n+1/2}\)</span>, appearing in <span class="math notranslate nohighlight">\(f\)</span> in the right-hand side of this equation for it to be of any use, this is not quite true:</p>
+<p>Since the error is already <span class="math notranslate nohighlight">\(\mathcal{O}(h^3)\)</span>, an approximation to <span class="math notranslate nohighlight">\(y_{n+1}\)</span> whose error is <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span> is good enough. This is provided by the simple Euler’s method:</p>
+<p><span class="math notranslate nohighlight">\(y_{n+1/2} = y_n + \frac{h}{2} f(x_n, y_n) + \mathcal{O}(h^2)\)</span>,</p>
+<p>and thus, if we define <span class="math notranslate nohighlight">\(k_1 = h f(x_n, y_n)\)</span>, we can write:</p>
+<p><span class="math notranslate nohighlight">\(y_{n+1} = y_n + h f ( x_n + \frac{h}{2}, y_n + \frac{1}{2} k_1 ) + \mathcal{O}(h^3)\)</span>.</p>
+<p>This is the second-order Runge-Kutta algorithm. It requires the evaluation of <span class="math notranslate nohighlight">\(f\)</span> twice for each step.</p>
+<p>A fourth-order algorithm, which requires <span class="math notranslate nohighlight">\(f\)</span> to be evaluated four times for each integration step and has a local accuracy of <span class="math notranslate nohighlight">\(\mathcal{O}(h^5)\)</span> has been found by experience to give the best balance between accuracy and computational effort. It can be written as follows, with the <span class="math notranslate nohighlight">\(k_i\)</span>s as intermediate variables:</p>
+<p><span class="math notranslate nohighlight">\(k_1 = h f(x_n, y_n)\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(k_2 = h f(x_n + \frac{1}{2} h, y_n  + \frac{1}{2} k_1)\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(k_3 = h f(x_n + \frac{1}{2} h, y_n + \frac{1}{2} k_2)\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(k_4 = h f(x_n + h, y_n + k_3)\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(y_{n+1} = y_n + \frac{1}{6} (k_1 + 2 k_2 + 2 k_3 + k_4) + \mathcal{O}(h^5)\)</span>.</p>
+<section id="example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">
+<h3>Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.<a class="headerlink" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1" title="Link to this heading">#</a></h3>
+<p>Compare the accuracy of the methods.</p>
+</section>
+</section>
+<section id="application-nonlinear-oscillators">
+<h2>Application: Nonlinear Oscillators<a class="headerlink" href="#application-nonlinear-oscillators" title="Link to this heading">#</a></h2>
+<p>With several algorithms for solving ODEs in our possession, we can now examine the behavior of oscillators beyond the harmonic approximation.</p>
+<p>Newton’s second law provides the equation of motion for an oscillator, which could be, e.g. a mass attached to a spring moving in one dimension, <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(F_k(x) + F_\mathrm{ext}(x,t) = m \frac{ \mathrm{d}^2 x}{\mathrm{d}t^2}\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(F_k(x)\)</span> is the restoring force, e.g. exerted by a spring, and <span class="math notranslate nohighlight">\(F_\mathrm{ext}(x,t)\)</span> is an external (driving force), that may also depend on time.</p>
+<p>Let’s examine two models that can describe the departure from linearity, with no external forces being applied (<span class="math notranslate nohighlight">\(F_\mathrm{ext} = 0\)</span>).</p>
+<p>For the first model, let’s introduce a potential that is a harmonic oscillator for small displacements <span class="math notranslate nohighlight">\(x\)</span>, but also contains a perturbation that introduces a nonlinear term to the force for large values of <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(V_k(x) \simeq \frac{1}{2} kx^2 (1 - \frac{2}{3} \alpha x)\)</span>.</p>
+<p>Taking he derivative, we can derive <span class="math notranslate nohighlight">\(F_k(x)\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(F_k(x) = - \frac{ \mathrm{d} V}{\mathrm{d}x} = -kx ( 1 - \alpha x)\)</span>,</p>
+<p>and the ODE that we need to consider has the form:</p>
+<p><span class="math notranslate nohighlight">\(m \frac{ \mathrm{d}^2 x}{\mathrm{d}t^2} = -kx (1 - \alpha x)\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(\alpha x \ll 1\)</span>, we recover simple harmonic motion, but as <span class="math notranslate nohighlight">\(x \rightarrow 1/\alpha\)</span>, the <em>anharmonic</em> effects would be large.</p>
+<p>As long as <span class="math notranslate nohighlight">\(x &lt; 1/\alpha\)</span>, there will be a restoring force, and the motion will be periodic. In general, there will be an asymmetry in the motion to the right and left of the equilibrium position.</p>
+<p>As a second model for nonlinear oscillators, we will consider that the spring’s potential function is proportional to some arbitrary <em>even</em> power <span class="math notranslate nohighlight">\(p\)</span> of the displacement from equilibrium:</p>
+<p><span class="math notranslate nohighlight">\(V(x) = \frac{1}{p} kx^p\)</span>, (<span class="math notranslate nohighlight">\(p\)</span> even),</p>
+<p>such that the force is a restoring force:</p>
+<p><span class="math notranslate nohighlight">\(F_k(x) =  - \frac{ \mathrm{d} V}{\mathrm{d}x} = - k x^{p-1}\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(p=2\)</span>, we recover the harmonic oscillator. As <span class="math notranslate nohighlight">\(p\)</span> increases, the potential becomes more and more like a square well, where the mass almost moves freely inbetween “collisions” with the wall at <span class="math notranslate nohighlight">\(x\simeq \pm 1\)</span>. Regardless of the value of <span class="math notranslate nohighlight">\(p\)</span>, the motion will be periodic, but will only be harmonic for <span class="math notranslate nohighlight">\(p=2\)</span>.</p>
+<p>Newton’s law gives the second-order ODE that we need to solve:</p>
+<p><span class="math notranslate nohighlight">\(m \frac{ \mathrm{d}^2 x}{\mathrm{d}t^2} = - k x^{p-1}\)</span>.</p>
+<p>Following our discussion on the numerical solution of ODEs, we can reduce the second-order ODE into two  coupled first-order equations via an auxiliary variable, in this case the momentum <span class="math notranslate nohighlight">\(p\)</span>:</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d}x}{\mathrm{d}t} = \frac{p}{m}\)</span>,</p>
+<p><span class="math notranslate nohighlight">\( \frac{ \mathrm{d}p}{\mathrm{d}t} = F_k(x)\)</span>.</p>
+<p>Let’s begin by examining simple harmonic motion, that we already know a lot about, before we consider the nonlinear cases.</p>
+<section id="example-7-4-oscillator-warmup-simple-harmonic-motion">
+<h3>Example 7.4: Oscillator warmup: Simple Harmonic Motion<a class="headerlink" href="#example-7-4-oscillator-warmup-simple-harmonic-motion" title="Link to this heading">#</a></h3>
+<p>(a) Generalize the single-variable methods that we have derived to the two-variable case relevant for oscillatory motion.</p>
+<p>(b) Integrate the equations of motion for single harmonic motion, i.e. with <span class="math notranslate nohighlight">\(F_k(x) = -kx\)</span>, for values of <span class="math notranslate nohighlight">\(k=4\pi^2\)</span> and <span class="math notranslate nohighlight">\(m=1\)</span> and verify that the period <span class="math notranslate nohighlight">\(T\)</span> is what you expect from your Physics I course (recall: <span class="math notranslate nohighlight">\(T=2\pi \sqrt{m/k}\)</span>). You may choose the initial conditions (e.g. <span class="math notranslate nohighlight">\(p=0\)</span> and <span class="math notranslate nohighlight">\(x=x_0\)</span> at <span class="math notranslate nohighlight">\(t=t_0\)</span>, where <span class="math notranslate nohighlight">\(x_0\)</span> would be the amplitude).</p>
+<p>We are now in a position to investigate nonlinear oscillations. Let’s consider our two models in the next example.</p>
+</section>
+<section id="example-7-5-nonlinear-oscillator-models">
+<h3>Example 7.5: Nonlinear Oscillator Models<a class="headerlink" href="#example-7-5-nonlinear-oscillator-models" title="Link to this heading">#</a></h3>
+<p>For this example, we will use our generalized <code class="docutils literal notranslate"><span class="pre">rk4</span></code> function from Example 7.4.</p>
+<p>Consider the restoring forces arising from both potentials:</p>
+<p><span class="math notranslate nohighlight">\(F_k(x) = - kx ( 1 - \alpha x)\)</span>,</p>
+<p>and:</p>
+<p><span class="math notranslate nohighlight">\(F_k(x) =  - k x^{p-1}\)</span>.</p>
+<p>Consider values of <span class="math notranslate nohighlight">\(p = 6\)</span> and one anhmaronic strength in <span class="math notranslate nohighlight">\( 0 \leq \alpha x \leq 2\)</span>.</p>
+<p>(a) Check that the solution remains periodic with constant amplitude for a given initial condition, regardless of how nonlinear you make the force. In particular, check that the maximum speed occurs at <span class="math notranslate nohighlight">\(x=0\)</span>, and that the velocity <span class="math notranslate nohighlight">\(v=0\)</span> at the maximum <span class="math notranslate nohighlight">\(x\)</span>, the latter being a consequence of energy conservation.</p>
+<p>(b) Verify that nonharmonic oscillators are <em>nonisosynchronous</em>, i.e. that vibrations with different amplitudes have different periods.</p>
+<p>(c) Devise an algorithm to determinet he period <span class="math notranslate nohighlight">\(T\)</span> of the oscillation, by recording times at which the mass passes through the origin. Note that because the motion may be asymmetric, you must record at least three times to deduce the period.</p>
+<p>(d) Construct a graph of the deduced period as a function of initial amplitude.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Trial-and-Error Root Finding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter8.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-preliminaries">Mathematical Preliminaries</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-form-for-odes">Dynamic form for ODEs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-algorithms">ODE Algorithms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-s-method">Euler’s Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-1-an-application-of-euler-s-method">Example 7.1: An Application of Euler’s Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-2-evaluation-of-the-integration-algorithm">Example 7.2: Evaluation of the Integration Algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runge-kutta-methods">Runge-Kutta Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-3-try-out-the-second-and-fourth-order-runge-kutta-methods-on-the-problem-defined-in-example-7-1">Example 7.3: Try out the second- and fourth-order Runge-Kutta methods on the problem defined in Example 7.1.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-nonlinear-oscillators">Application: Nonlinear Oscillators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-4-oscillator-warmup-simple-harmonic-motion">Example 7.4: Oscillator warmup: Simple Harmonic Motion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-5-nonlinear-oscillator-models">Example 7.5: Nonlinear Oscillator Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Papaefstathiou
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
