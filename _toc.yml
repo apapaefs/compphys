@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: Chapters/Chapter1/Chapter1.ipynb
+- file: Chapters/Chapter2/Chapter2.ipynb
+- file: Chapters/Chapter3/Chapter3.ipynb
+- file: Chapters/Chapter4/Chapter4.ipynb
+- file: Chapters/Chapter5/Chapter5.ipynb
+- file: Chapters/Chapter6/Chapter6.ipynb
+- file: Chapters/Chapter7/Chapter7.ipynb
+- file: Chapters/Chapter8/Chapter8.ipynb
+- file: Chapters/Chapter9/Chapter9.ipynb
+- file: Chapters/Chapter10/Chapter10.ipynb
+
+
