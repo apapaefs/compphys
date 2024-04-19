@@ -3,6 +3,8 @@
 
 format: jb-book
 root: intro
+options:  # The options key will be applied to all chapters, but not sub-sections
+  numbered: True
 chapters:
 - file: Chapters/Chapter1/Chapter1.ipynb
 - file: Chapters/Chapter2/Chapter2.ipynb
