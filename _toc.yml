@@ -1,6 +1,6 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
-
+title: Computational Physics I (PHYS 3500K)
 format: jb-book
 root: intro
 options:  # The options key will be applied to all chapters, but not sub-sections
